@@ -2,43 +2,72 @@
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field, ConfigDict, validator
 
+
+
+#------------------------------------------------------
+# Special case validator or @OpenAI style function calls.
+# Create the data type/
+#
+#------------------------------------------------------
 class ToolFunction(BaseModel):
-    name: str = Field(..., description="Name of the function")
-    description: str = Field(..., description="Function description")
-    parameters: Dict[str, Any] = Field(default_factory=dict, description="JSON Schema parameters")
+    function: Optional[dict]  # Handle the nested 'function' structure
 
-class ToolCreate(BaseModel):
-    type: str = Field(..., description="Tool type (must be 'function')")
-    function: ToolFunction = Field(..., description="Function details")
-    name: Optional[str] = Field(None, description="Auto-populated from function name")
+    @validator('function', pre=True, always=True)
+    def parse_function(cls, v):
+        if isinstance(v, dict) and 'name' in v and 'description' in v:
+            return v  # Valid structure
+        elif isinstance(v, dict) and 'function' in v:
+            return v['function']  # Extract nested function dict
+        raise ValueError("Invalid function format")
 
-    @validator('name', pre=True, always=True)
-    def set_name_from_function(cls, v, values):
-        if 'function' in values and values['function']:
-            return values['function'].name
-        return v
 
-    @validator('type')
-    def validate_type(cls, v):
-        if v != "function":
-            raise ValueError("Only 'function' type is supported")
-        return v
 
 class Tool(BaseModel):
     id: str
     type: str
-    name: str
-    function: ToolFunction  # <-- key fix
+    name: Optional[str]  # Added name field
+    function: Optional[ToolFunction]
 
     model_config = ConfigDict(from_attributes=True)
 
+
+class ToolCreate(BaseModel):
+    name: str  # Add the 'name' attribute
+    type: str
+    function: Optional[ToolFunction]
+
+    @validator('function', pre=True, always=True)
+    def parse_function(cls, v):
+        if isinstance(v, ToolFunction):
+            return v
+        if isinstance(v, dict) and 'function' in v:
+            return ToolFunction(function=v['function'])
+        return ToolFunction(**v)
+
+
 class ToolRead(Tool):
-    pass
+    @validator('function', pre=True, always=True)
+    def parse_function(cls, v):
+        if isinstance(v, dict):
+            return ToolFunction(**v)
+        elif v is None:
+            return None
+        else:
+            raise ValueError("Invalid function format")
+
+    model_config = ConfigDict(from_attributes=True)
+
 
 class ToolUpdate(BaseModel):
     type: Optional[str] = None
+    name: Optional[str] = None  # Allow updating the name
     function: Optional[ToolFunction] = None
+
 
 class ToolList(BaseModel):
     tools: List[ToolRead]
+
     model_config = ConfigDict(from_attributes=True)
+
+
+

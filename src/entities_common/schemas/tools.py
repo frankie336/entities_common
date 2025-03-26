@@ -1,5 +1,5 @@
 # entities_common/schemas/tools.py
-from typing import Optional, Dict, Any
+from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field, ConfigDict, validator
 
 class ToolFunction(BaseModel):
@@ -41,3 +41,9 @@ class ToolRead(Tool):
 class ToolUpdate(BaseModel):
     type: Optional[str] = None
     function: Optional[ToolFunction] = None
+
+
+class ToolList(BaseModel):
+    tools: List[ToolRead]
+
+    model_config = ConfigDict(from_attributes=True)

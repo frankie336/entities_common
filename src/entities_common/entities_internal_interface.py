@@ -2,11 +2,11 @@ import os
 from typing import Any, Dict, Optional
 
 from dotenv import load_dotenv
-from ollama import Client as OllamaAPIClient
 
 # Use relative imports for modules within your package.
 from .clients.actions import ActionsClient
 from .clients.assistants import AssistantsClient
+from .clients.files import FileClient
 from .clients.inference import InferenceClient
 from .clients.messages import MessagesClient
 from .clients.runs import RunsClient
@@ -14,7 +14,6 @@ from .clients.synchronous_inference_stream import SynchronousInferenceStream
 from .clients.threads import ThreadsClient
 from .clients.tools import ToolsClient
 from .clients.users import UsersClient
-from .clients.files import FileClient
 from .services.logging_service import LoggingUtility
 
 # Load environment variables from .env file.
@@ -38,8 +37,6 @@ class EntitiesInternalInterface:
         self.base_url = base_url or os.getenv('ASSISTANTS_BASE_URL', 'http://localhost:9000/')
         self.api_key = api_key or os.getenv('API_KEY', 'your_api_key')
 
-        # Initialize the Ollama API client.
-        self.ollama_client: OllamaAPIClient = OllamaAPIClient()
 
         logging_utility.info("Validation initialized with base_url: %s", self.base_url)
 

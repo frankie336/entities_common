@@ -1,6 +1,6 @@
 # entities_common/schemas/tools.py
 from typing import Optional, Dict, Any, List
-from pydantic import BaseModel, Field, ConfigDict, validator
+from pydantic import BaseModel, Field, ConfigDict, validator, model_validator
 
 class ToolFunction(BaseModel):
     name: str = Field(..., description="Name of the function")
@@ -13,7 +13,7 @@ class ToolFunction(BaseModel):
 class ToolCreate(BaseModel):
     type: str = Field(..., description="Tool type (must be 'function')")
     function: ToolFunction = Field(..., description="Function details")
-    name: Optional[str] = Field(None, description="Auto-populated from function name")  # For DB compatibility
+    name: Optional[str] = Field(None, description="Auto-populated from function name")
 
     @validator('name', pre=True, always=True)
     def set_name_from_function(cls, v, values):
@@ -27,10 +27,28 @@ class ToolCreate(BaseModel):
             raise ValueError("Only 'function' type is supported")
         return v
 
+    @model_validator(mode='before')
+    @classmethod
+    def handle_nested_function(cls, data: Any) -> Any:
+        if isinstance(data, dict):
+            function_data = data.get('function', {})
+
+            # Handle OpenAI-style nested 'function' structure
+            if 'function' in function_data:
+                function_data = function_data['function']
+
+            # Ensure required fields are present in the nested function data
+            if 'name' not in function_data or 'description' not in function_data:
+                raise ValueError("'function' must include 'name' and 'description'")
+
+            data['function'] = function_data
+
+        return data
+
 class Tool(BaseModel):
     id: str
     type: str
-    name: str  # Required from DB
+    name: str
     function: Dict[str, Any]
 
     model_config = ConfigDict(from_attributes=True)
@@ -42,8 +60,9 @@ class ToolUpdate(BaseModel):
     type: Optional[str] = None
     function: Optional[ToolFunction] = None
 
-
 class ToolList(BaseModel):
     tools: List[ToolRead]
 
     model_config = ConfigDict(from_attributes=True)
+
+

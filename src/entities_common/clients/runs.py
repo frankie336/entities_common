@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from pydantic import ValidationError
 
 from entities_common.schemas.runs import Run, RunStatusUpdate, RunReadDetailed
-from entities_common.services.identifier_service import IdentifierService
+from entities_common.utils.identifier_service import IdentifierService
 from entities_common.services.logging_service import LoggingUtility
 
 load_dotenv()

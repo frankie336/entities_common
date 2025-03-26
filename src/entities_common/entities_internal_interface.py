@@ -5,6 +5,8 @@ from dotenv import load_dotenv
 
 from entities_common.clients.files import FileClient
 from entities_common.clients.runs import RunsClient
+from entities_common.clients.users import UsersClient
+
 from entities_common.services.logging_service import LoggingUtility
 
 # Use relative imports for modules within your package.
@@ -33,6 +35,13 @@ class EntitiesInternalInterface:
         logging_utility.info("Validation initialized with base_url: %s", self.base_url)
         self._file_client: Optional[FileClient] = None
         self._runs_client: Optional[RunsClient] = None  # Fixed line
+        self._users_client: Optional[UsersClient] = None
+
+    @property
+    def users(self) -> UsersClient:
+        if self._users_client is None:
+            self._users_client = UsersClient(base_url=self.base_url, api_key=self.api_key)
+        return self._users_client
 
     @property
     def runs(self) -> RunsClient:

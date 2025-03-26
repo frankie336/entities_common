@@ -10,9 +10,10 @@ from .schemas.assistants import (
     AssistantCreate, AssistantRead, AssistantUpdate
 )
 
-
-from schemas.vectors import (VectorStoreCreate, VectorStoreRead, VectorStoreStatus, VectorStoreUpdate, VectorStoreList,
-                             EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult)
+from .schemas.vectors import (
+    VectorStoreCreate, VectorStoreRead, VectorStoreStatus, VectorStoreUpdate, VectorStoreList,
+    EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult
+)
 
 from .schemas.enums import ProviderEnum, StatusEnum
 from .schemas.files import FileUploadRequest, FileResponse
@@ -33,8 +34,6 @@ from .schemas.users import (
     UserBase, UserCreate, UserRead, UserUpdate, UserDeleteResponse
 )
 from .services.logging_service import LoggingUtility
-
-# Relative imports from your package's schemas and services.
 
 # Load environment variables from .env file.
 load_dotenv()
@@ -116,7 +115,7 @@ class ValidationInterface:
     UserUpdate = UserUpdate
     UserDeleteResponse = UserDeleteResponse
 
-    # Vector Store
+    # Vector Store schemas
     VectorStoreCreate  = VectorStoreCreate
     VectorStoreRead  = VectorStoreRead
     VectorStoreStatus = VectorStoreStatus
@@ -125,6 +124,3 @@ class ValidationInterface:
     EnhancedVectorSearchResult = EnhancedVectorSearchResult
     SearchExplanation = SearchExplanation
     VectorStoreSearchResult = VectorStoreSearchResult
-
-
-

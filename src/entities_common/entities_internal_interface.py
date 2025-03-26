@@ -31,19 +31,15 @@ class EntitiesInternalInterface:
         self.base_url = base_url or os.getenv('ASSISTANTS_BASE_URL', 'http://localhost:9000/')
         self.api_key = api_key or os.getenv('API_KEY', 'your_api_key')
 
-
         logging_utility.info("Validation initialized with base_url: %s", self.base_url)
         self._file_client: Optional[FileClient] = None
-        self._runs_client = Optional[RunsClient] = None
-
-
+        self._runs_client: Optional[RunsClient] = None  # Fixed line
 
     @property
     def runs(self) -> RunsClient:
         if self._runs_client is None:
             self._runs_client = RunsClient(base_url=self.base_url, api_key=self.api_key)
         return self._runs_client
-
 
     @property
     def files(self) -> FileClient:

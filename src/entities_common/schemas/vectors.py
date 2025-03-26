@@ -5,8 +5,7 @@ from typing import List, Dict, Any, Optional
 from pydantic import BaseModel, Field, ConfigDict
 from pydantic import validator
 
-import entities.models.models
-
+from ..schemas.enums import StatusEnum
 
 class VectorStoreStatus(str, Enum):
     active = "active"
@@ -62,14 +61,14 @@ class VectorStoreFileRead(BaseModel):
     file_name: str
     file_path: str
     processed_at: Optional[int] = None
-    status: entities.models.models.StatusEnum
+    status: StatusEnum
     error_message: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = None
 
     model_config = ConfigDict(from_attributes=True)
 
 class VectorStoreFileUpdate(BaseModel):
-    status: Optional[entities.models.models.StatusEnum] = None
+    status: Optional[StatusEnum] = None
     error_message: Optional[str] = None
     metadata: Optional[Dict[str, Any]] = None
 

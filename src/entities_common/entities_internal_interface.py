@@ -3,18 +3,10 @@ from typing import Any, Dict, Optional
 
 from dotenv import load_dotenv
 
-# Use relative imports for modules within your package.
-from .clients.actions import ActionsClient
-from .clients.assistants import AssistantsClient
 from .clients.files import FileClient
-from .clients.inference import InferenceClient
-from .clients.messages import MessagesClient
-from .clients.runs import RunsClient
-from .clients.synchronous_inference_stream import SynchronousInferenceStream
-from .clients.threads import ThreadsClient
-from .clients.tools import ToolsClient
-from .clients.users import UsersClient
 from .services.logging_service import LoggingUtility
+
+# Use relative imports for modules within your package.
 
 # Load environment variables from .env file.
 load_dotenv()
@@ -40,71 +32,9 @@ class EntitiesInternalInterface:
 
         logging_utility.info("Validation initialized with base_url: %s", self.base_url)
 
-        # Lazy initialization caches for service instances.
-        self._users_client: Optional[UsersClient] = None
-        self._assistants_client: Optional[AssistantsClient] = None
-        self._tool_service: Optional[ToolsClient] = None
-        self._thread_service: Optional[ThreadsClient] = None
-        self._messages_client: Optional[MessagesClient] = None
-        self._runs_client: Optional[RunsClient] = None
-        self._actions_client: Optional[ActionsClient] = None
-        self._inference_client: Optional[InferenceClient] = None
+
         self._file_client: Optional[FileClient] = None
-        self._synchronous_inference_stream: Optional[SynchronousInferenceStream] = None
 
-    @property
-    def users(self) -> UsersClient:
-        if self._users_client is None:
-            self._users_client = UsersClient(base_url=self.base_url, api_key=self.api_key)
-        return self._users_client
-
-    @property
-    def assistants(self) -> AssistantsClient:
-        if self._assistants_client is None:
-            self._assistants_client = AssistantsClient(base_url=self.base_url, api_key=self.api_key)
-        return self._assistants_client
-
-    @property
-    def tools(self) -> ToolsClient:
-        if self._tool_service is None:
-            self._tool_service = ToolsClient(base_url=self.base_url, api_key=self.api_key)
-        return self._tool_service
-
-    @property
-    def threads(self) -> ThreadsClient:
-        if self._thread_service is None:
-            self._thread_service = ThreadsClient(base_url=self.base_url, api_key=self.api_key)
-        return self._thread_service
-
-    @property
-    def messages(self) -> MessagesClient:
-        if self._messages_client is None:
-            self._messages_client = MessagesClient(base_url=self.base_url, api_key=self.api_key)
-        return self._messages_client
-
-    @property
-    def runs(self) -> RunsClient:
-        if self._runs_client is None:
-            self._runs_client = RunsClient(base_url=self.base_url, api_key=self.api_key)
-        return self._runs_client
-
-    @property
-    def actions(self) -> ActionsClient:
-        if self._actions_client is None:
-            self._actions_client = ActionsClient(base_url=self.base_url, api_key=self.api_key)
-        return self._actions_client
-
-    @property
-    def inference(self) -> InferenceClient:
-        if self._inference_client is None:
-            self._inference_client = InferenceClient(base_url=self.base_url, api_key=self.api_key)
-        return self._inference_client
-
-    @property
-    def synchronous_inference_stream(self) -> SynchronousInferenceStream:
-        if self._synchronous_inference_stream is None:
-            self._synchronous_inference_stream = SynchronousInferenceStream(self.inference)
-        return self._synchronous_inference_stream
 
     @property
     def files(self) -> FileClient:

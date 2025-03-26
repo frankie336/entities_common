@@ -1,5 +1,7 @@
 # src/entities_common/__init__.py
 
-from .entitiescommon import EntitiesCommon
+from .entities_internal_interface import EntitiesInternalInterface
+from .validation import ValidationInterface
 
-__all__ = ['EntitiesCommon']
+__all__ = ['EntitiesInternalInterface',
+           'ValidationInterface']

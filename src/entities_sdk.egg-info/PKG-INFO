@@ -49,9 +49,9 @@ Dynamic: requires-dist
 Dynamic: requires-python
 Dynamic: summary
 
-# EntitiesCommon SDK
+# Validation SDK
 
-The **EntitiesCommon** SDK provides a programmatic interface to the  [EntitiesCommon AI API](https://github.com/frankie336/entities_api).
+The **Validation** SDK provides a programmatic interface to the  [Validation AI API](https://github.com/frankie336/entities_api).
 It offers an integrated API framework for developing projects that interact with open-source LLMs.
 It aggregates inference calls to multiple providers as well as local using the [Ollama](https://github.com/ollama) library. 
 
@@ -74,11 +74,11 @@ This documentation assumes a working knowledge of the [Ollama](https://github.co
 | [MS Azure Foundry](https://azure.microsoft.com) | **Cloud** (Enterprise)      |
 
 
-## Why EntitiesCommon API
+## Why Validation API
 
 The landscape of AI inference has become both competitive and diverse. Every month, a new AI lab or vertical provider announces a breakthrough or releases a new API offering. No single provider meets all requirements or interests, as each one offers a different API with its own keys, schemas, endpoints, and features. This diversity has quickly made AI inference cumbersome.
 
-EntitiesCommon API aggregates the core features and methodologies of all providers into one unified platform.
+Validation API aggregates the core features and methodologies of all providers into one unified platform.
 
 ## State Management
 
@@ -115,7 +115,7 @@ For example,  here is a typical LLM assistant's dialogue array:
 ```
 
 This array represents a single multi-turn conversation. In a production environment, the life cycle of this array must be managed per user, per conversation. This may require a database and other back-end infrastructure.
-The EntitiesCommon API [Threads](/docs/threads.md)  endpoint simplifies dialogue management by providing a standardized, data-driven setup and use procedure. Data storage and retrieval are handled by this endpoint.
+The Validation API [Threads](/docs/threads.md)  endpoint simplifies dialogue management by providing a standardized, data-driven setup and use procedure. Data storage and retrieval are handled by this endpoint.
 
 
 
@@ -133,9 +133,9 @@ tbc
 ```python
 
 # Import the public SDK interface.
-from entities import EntitiesCommon
+from entities import Validation
 
-client = EntitiesCommon()
+client = Validation()
 user = client.user.create_user(name='test_user')
 
 thread = client.threads.create_thread(participant_ids=[user.id])

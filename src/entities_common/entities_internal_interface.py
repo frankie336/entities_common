@@ -24,7 +24,7 @@ load_dotenv()
 logging_utility = LoggingUtility()
 
 
-class EntitiesCommon:
+class EntitiesInternalInterface:
     def __init__(
         self,
         base_url: Optional[str] = None,
@@ -41,7 +41,7 @@ class EntitiesCommon:
         # Initialize the Ollama API client.
         self.ollama_client: OllamaAPIClient = OllamaAPIClient()
 
-        logging_utility.info("EntitiesCommon initialized with base_url: %s", self.base_url)
+        logging_utility.info("Validation initialized with base_url: %s", self.base_url)
 
         # Lazy initialization caches for service instances.
         self._users_client: Optional[UsersClient] = None

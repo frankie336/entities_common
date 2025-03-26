@@ -2,7 +2,7 @@ README.md
 pyproject.toml
 setup.py
 src/entities/__init__.py
-src/entities/entitiescommon.py
+src/entities/entitiesinternalinterface.py
 src/entities/serializers.py
 src/entities/clients/__init__.py
 src/entities/clients/actions.py

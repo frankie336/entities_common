@@ -1,6 +1,7 @@
-from .entities import Entities
+from entities_common import EntitiesInternalInterface
+from entities_common import  ValidationInterface
 
-__all__ = ['EntitiesCommon']
+__all__ = ['EntitiesInternalInterface', 'ValidationInterface']
 
 try:
     from setuptools_scm import get_version

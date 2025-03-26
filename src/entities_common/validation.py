@@ -12,7 +12,7 @@ from .schemas.assistants import (
 
 
 from schemas.vectors import (VectorStoreCreate, VectorStoreRead, VectorStoreStatus, VectorStoreUpdate, VectorStoreList,
-                             EnhancedVectorSearchResult, SearchExplanation)
+                             EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult)
 
 from .schemas.enums import ProviderEnum, StatusEnum
 from .schemas.files import FileUploadRequest, FileResponse
@@ -124,6 +124,7 @@ class ValidationInterface:
     VectorStoreList = VectorStoreList
     EnhancedVectorSearchResult = EnhancedVectorSearchResult
     SearchExplanation = SearchExplanation
+    VectorStoreSearchResult = VectorStoreSearchResult
 
 
 

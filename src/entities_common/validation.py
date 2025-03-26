@@ -7,8 +7,13 @@ from .schemas.actions import (
     ActionBase, ActionStatus, ActionCreate, ActionRead, ActionList, ActionUpdate
 )
 from .schemas.assistants import (
-    AssistantCreate, AssistantRead, AssistantUpdate, VectorStoreRead
+    AssistantCreate, AssistantRead, AssistantUpdate
 )
+
+
+from schemas.vectors import (VectorStoreCreate, VectorStoreRead, VectorStoreStatus, VectorStoreUpdate, VectorStoreList,
+                             EnhancedVectorSearchResult)
+
 from .schemas.enums import ProviderEnum, StatusEnum
 from .schemas.files import FileUploadRequest, FileResponse
 from .schemas.inference import ProcessOutput, StreamRequest
@@ -110,3 +115,14 @@ class ValidationInterface:
     UserRead = UserRead
     UserUpdate = UserUpdate
     UserDeleteResponse = UserDeleteResponse
+
+    # Vector Store
+    VectorStoreCreate  = VectorStoreCreate
+    VectorStoreRead  = VectorStoreRead
+    VectorStoreStatus = VectorStoreStatus
+    VectorStoreUpdate = VectorStoreUpdate
+    VectorStoreList = VectorStoreList
+    EnhancedVectorSearchResult = EnhancedVectorSearchResult
+
+
+

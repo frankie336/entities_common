@@ -1,0 +1,2 @@
+[console_scripts]
+entities-api = src.entities.main:main

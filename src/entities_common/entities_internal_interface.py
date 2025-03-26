@@ -4,6 +4,8 @@ from typing import Any, Dict, Optional
 from dotenv import load_dotenv
 
 from .clients.files import FileClient
+from .clients.runs import RunsClient
+
 from .services.logging_service import LoggingUtility
 
 # Use relative imports for modules within your package.
@@ -31,9 +33,16 @@ class EntitiesInternalInterface:
 
 
         logging_utility.info("Validation initialized with base_url: %s", self.base_url)
-
-
         self._file_client: Optional[FileClient] = None
+        self._runs_client = Optional[RunsClient] = None
+
+
+
+    @property
+    def runs(self) -> RunsClient:
+        if self._runs_client is None:
+            self._runs_client = RunsClient(base_url=self.base_url, api_key=self.api_key)
+        return self._runs_client
 
 
     @property

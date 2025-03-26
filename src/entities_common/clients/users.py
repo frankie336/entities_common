@@ -5,7 +5,8 @@ import httpx
 from dotenv import load_dotenv
 from pydantic import ValidationError
 
-from ..schemas.schemas import UserRead, UserCreate, UserUpdate, UserDeleteResponse, AssistantRead
+from ..schemas.users import UserRead, UserCreate, UserUpdate, UserDeleteResponse
+from ..schemas.assistants import AssistantRead
 from ..services.logging_service import LoggingUtility
 
 load_dotenv()

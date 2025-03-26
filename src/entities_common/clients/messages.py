@@ -5,7 +5,7 @@ import httpx
 from pydantic import ValidationError
 from dotenv import load_dotenv
 
-from ..schemas.schemas import MessageCreate, MessageRead, MessageUpdate
+from ..schemas.messages import MessageCreate, MessageRead, MessageUpdate
 from ..services.logging_service import LoggingUtility
 
 load_dotenv()

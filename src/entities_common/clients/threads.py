@@ -4,11 +4,9 @@ from typing import List, Dict, Any, Optional
 import httpx
 from dotenv import load_dotenv
 from pydantic import ValidationError
+from ..schemas.users import UserCreate, UserRead
+from  ..schemas.threads import ThreadCreate, ThreadRead, ThreadIds, ThreadReadDetailed
 
-from ..schemas.schemas import (
-    UserCreate, UserRead, ThreadCreate, ThreadRead, ThreadUpdate,
-    ThreadIds, ThreadReadDetailed
-)
 from ..services.logging_service import LoggingUtility
 
 load_dotenv()

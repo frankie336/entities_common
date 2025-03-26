@@ -4,16 +4,17 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="entities_sdk",
+    name="entities_common",
     version="0.1.0",
     author="Francis N.",
     author_email="francis.neequaye@projectdavid.co.uk",
     description="Common shared custom packages",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/frankie336/entitites_sdk",
+    url="https://github.com/frankie336/entities_common",
     package_dir={"": "src"},  # Tells setuptools that packages live under src/
     packages=find_packages(where="src", include=["entities_common", "entities_common.*"]),
+
     classifiers=[
         "Development Status :: 3 - Alpha",
         "Intended Audience :: Developers",

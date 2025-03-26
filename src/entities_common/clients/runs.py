@@ -1,4 +1,3 @@
-import os
 import time
 from typing import List, Dict, Any, Optional
 
@@ -6,10 +5,9 @@ import httpx
 from dotenv import load_dotenv
 from pydantic import ValidationError
 
-from ..schemas.runs import Run, RunStatusUpdate, RunReadDetailed
-
-from ..services.identifier_service import IdentifierService
-from ..services.logging_service import LoggingUtility
+from entities_common.schemas.runs import Run, RunStatusUpdate, RunReadDetailed
+from entities_common.services.identifier_service import IdentifierService
+from entities_common.services.logging_service import LoggingUtility
 
 load_dotenv()
 logging_utility = LoggingUtility()

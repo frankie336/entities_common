@@ -1,7 +1,7 @@
 from typing import List, Dict, Any, Optional
 from pydantic import BaseModel, Field
 
-from ..schemas.vectors import VectorStoreRead
+from entities_common.schemas.vectors import VectorStoreRead
 
 class AssistantCreate(BaseModel):
     id: Optional[str] = Field(

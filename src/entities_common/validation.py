@@ -1,45 +1,34 @@
 # src/entities_common/validation.py
 # Use relative imports for modules within your package.
 
-from dotenv import load_dotenv
-
-from .schemas.actions import (
+from entities_common.schemas.actions import (
     ActionBase, ActionStatus, ActionCreate, ActionRead, ActionList, ActionUpdate
 )
-from .schemas.assistants import (
+from entities_common.schemas.assistants import (
     AssistantCreate, AssistantRead, AssistantUpdate
 )
-
-from .schemas.vectors import (
+from entities_common.schemas.enums import ProviderEnum, StatusEnum
+from entities_common.schemas.files import FileUploadRequest, FileResponse
+from entities_common.schemas.inference import ProcessOutput, StreamRequest
+from entities_common.schemas.messages import (
+    MessageRole, MessageCreate, MessageRead, MessageUpdate, ToolMessageCreate
+)
+from entities_common.schemas.runs import (
+    Run, RunCreate, RunReadDetailed, RunStatus, RunStatusUpdate
+)
+from entities_common.schemas.threads import (
+    ThreadCreate, ThreadRead, ThreadUpdate, ThreadParticipant, ThreadReadDetailed, ThreadIds
+)
+from entities_common.schemas.tools import (
+    ToolFunction, Tool, ToolCreate, ToolRead, ToolUpdate, ToolList
+)
+from entities_common.schemas.users import (
+    UserBase, UserCreate, UserRead, UserUpdate, UserDeleteResponse
+)
+from entities_common.schemas.vectors import (
     VectorStoreCreate, VectorStoreRead, VectorStoreStatus, VectorStoreUpdate, VectorStoreList,
     EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult
 )
-
-from .schemas.enums import ProviderEnum, StatusEnum
-from .schemas.files import FileUploadRequest, FileResponse
-from .schemas.inference import ProcessOutput, StreamRequest
-from .schemas.messages import (
-    MessageRole, MessageCreate, MessageRead, MessageUpdate, ToolMessageCreate
-)
-from .schemas.runs import (
-    Run, RunCreate, RunReadDetailed, RunStatus, RunStatusUpdate
-)
-from .schemas.threads import (
-    ThreadCreate, ThreadRead, ThreadUpdate, ThreadParticipant, ThreadReadDetailed, ThreadIds
-)
-from .schemas.tools import (
-    ToolFunction, Tool, ToolCreate, ToolRead, ToolUpdate, ToolList
-)
-from .schemas.users import (
-    UserBase, UserCreate, UserRead, UserUpdate, UserDeleteResponse
-)
-from .services.logging_service import LoggingUtility
-
-# Load environment variables from .env file.
-load_dotenv()
-
-# Initialize logging utility.
-logging_utility = LoggingUtility()
 
 
 class ValidationInterface:

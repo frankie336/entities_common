@@ -3,10 +3,9 @@ from typing import Any, Dict, Optional
 
 from dotenv import load_dotenv
 
-from .clients.files import FileClient
-from .clients.runs import RunsClient
-
-from .services.logging_service import LoggingUtility
+from entities_common.clients.files import FileClient
+from entities_common.clients.runs import RunsClient
+from entities_common.services.logging_service import LoggingUtility
 
 # Use relative imports for modules within your package.
 

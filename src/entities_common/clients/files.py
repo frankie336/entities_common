@@ -7,8 +7,8 @@ import httpx
 from dotenv import load_dotenv
 from pydantic import ValidationError
 
-from ..schemas.file_service import FileResponse
-from ..services.logging_service import LoggingUtility
+from entities_common.schemas.file_service import FileResponse
+from entities_common.services.logging_service import LoggingUtility
 
 load_dotenv()
 logging_utility = LoggingUtility()

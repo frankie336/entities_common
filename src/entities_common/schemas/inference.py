@@ -1,6 +1,6 @@
 from typing import Optional
 from pydantic import BaseModel, Field
-from ..schemas.enums import ProviderEnum
+from entities_common.schemas.enums import ProviderEnum
 
 
 class ProcessOutput(BaseModel):

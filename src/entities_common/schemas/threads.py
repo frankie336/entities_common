@@ -3,7 +3,7 @@ from typing import List, Dict, Any, Optional
 from pydantic import BaseModel, Field, ConfigDict
 
 # Assuming UserBase is defined in entities.schemas.users; adjust import as needed
-from ..schemas.users import UserBase
+from entities_common.schemas.users import UserBase
 
 
 class ThreadCreate(BaseModel):

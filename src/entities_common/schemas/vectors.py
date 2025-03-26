@@ -5,7 +5,7 @@ from typing import List, Dict, Any, Optional
 from pydantic import BaseModel, Field, ConfigDict
 from pydantic import validator
 
-from ..schemas.enums import StatusEnum
+from entities_common.schemas.enums import StatusEnum
 
 class VectorStoreStatus(str, Enum):
     active = "active"

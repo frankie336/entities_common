@@ -2,8 +2,6 @@
 from typing import Optional, Dict, Any, List
 from pydantic import BaseModel, Field, ConfigDict, validator
 
-
-
 #------------------------------------------------------
 # Special case validator or @OpenAI style function calls.
 # Create the data type/

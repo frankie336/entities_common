@@ -1,11 +1,10 @@
-from typing import List, Dict, Any, Optional
-from pydantic import BaseModel, Field, ConfigDict
+from typing import Optional
+from pydantic import BaseModel, ConfigDict
 
 
 class UserBase(BaseModel):
     id: str
     name: str
-
     model_config = ConfigDict(from_attributes=True)
 
 

@@ -1,10 +1,10 @@
-# src/entities_common/utils.py
+# src/entities_common/utilities.py
 # Use relative imports for modules within your package.
-from entities_common.utils.identifier_service import IdentifierService
-from entities_common.utils.logging_service import LoggingUtility
+from entities_common.utilities.identifier_service import IdentifierService
+from entities_common.utilities.logging_service import LoggingUtility
 
 
-class Utils:
+class UtilsInterface:
     """
     Exposes Pydantic validation classes, retaining their original naming.
 

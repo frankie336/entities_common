@@ -1,12 +1,11 @@
 from entities_common.entities_internal_interface import EntitiesInternalInterface
 from entities_common.validation import  ValidationInterface
-from entities_common.utils.logging_service import LoggingUtility
-from entities_common.utils.identifier_service import IdentifierService
+from entities_common.utils import UtilsInterface
 
 __all__ = ['EntitiesInternalInterface',
            'ValidationInterface',
-           'IdentifierService',
-           'LoggingUtility'
+           'UtilsInterface',
+
            ]
 
 try:

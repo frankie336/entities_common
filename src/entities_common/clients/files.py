@@ -193,21 +193,33 @@ class FileClient:
             logging_utility.error("Unexpected error in download_file_as_object: %s", str(e))
             raise
 
-    def get_signed_url(self, file_id: str) -> str:
+    def get_signed_url(self, file_id: str, label: str = None, markdown: bool = False) -> str:
         """
         Retrieve a signed URL for the file.
 
         Args:
-            file_id (str): The ID of the file.
+            file_id (str): The file ID for which to generate a signed link.
+            label (str, optional): Label to use in Markdown link. If not provided, only URL is returned.
+            markdown (bool): Whether to return the URL wrapped in Markdown format.
 
         Returns:
-            str: The signed URL.
+            str: Either a raw signed URL or a Markdown link format.
         """
         try:
             response = self.client.get(f"/v1/uploads/{file_id}/signed-url")
             response.raise_for_status()
             data = response.json()
-            return data.get("signed_url")
+            signed_url = data.get("signed_url")
+
+            if not signed_url:
+                raise ValueError(f"No signed URL returned for file ID {file_id}")
+
+            if markdown:
+                if not label:
+                    label = file_id
+                return f"[{label}](<{signed_url}>)"
+            return signed_url
+
         except httpx.HTTPStatusError as e:
             logging_utility.error("HTTP error in get_signed_url: %s", str(e))
             raise

@@ -73,14 +73,3 @@ class IdentifierService:
     def generate_file_id() -> str:
         """Generate valid UUID4 string for Qdrant compatibility"""
         return IdentifierService.generate_id("file")
-
-
-# Example usage:
-if __name__ == "__main__":
-    print(IdentifierService.generate_thread_id())
-    print(IdentifierService.generate_user_id())
-    print(IdentifierService.generate_message_id())
-    print(IdentifierService.generate_project_id())
-    print(IdentifierService.generate_task_id())
-    print(IdentifierService.generate_custom_id("custom"))
-    print(IdentifierService.generate_assistant_id())

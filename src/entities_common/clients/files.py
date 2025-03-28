@@ -193,40 +193,26 @@ class FileClient:
             logging_utility.error("Unexpected error in download_file_as_object: %s", str(e))
             raise
 
-    def get_signed_url(self, file_id: str, label: str = None, markdown: bool = False, expires_in: int = 600) -> str:
-        """
-        Retrieve a signed URL for the file from the server.
-
-        Args:
-            file_id (str): File ID to sign.
-            label (str, optional): Optional display label for Markdown format.
-            markdown (bool): If True, returns as [label](<url>). If False, returns raw URL.
-            expires_in (int): Expiration in seconds (default: 10 minutes)
-
-        Returns:
-            str: Signed URL, optionally Markdown-wrapped.
-        """
+    def get_signed_url(
+            self,
+            file_id: str,
+            label: str = None,
+            markdown: bool = False,
+            expires_in: int = 600,
+            use_real_filename: bool = False
+    ) -> str:
         try:
-            params = {"expires_in": expires_in}
+            params = {"expires_in": expires_in, "use_real_filename": str(use_real_filename).lower()}
             response = self.client.get(f"/v1/uploads/{file_id}/signed-url", params=params)
             response.raise_for_status()
-            data = response.json()
-            signed_url = data.get("signed_url")
-
-            if not signed_url:
-                raise ValueError(f"No signed URL returned for file ID {file_id}")
+            signed_url = response.json().get("signed_url")
 
             if markdown:
-                if not label:
-                    label = file_id
+                label = label or file_id
                 return f"[{label}](<{signed_url}>)"
             return signed_url
-
-        except httpx.HTTPStatusError as e:
-            logging_utility.error("HTTP error in get_signed_url: %s", str(e))
-            raise
         except Exception as e:
-            logging_utility.error("Unexpected error in get_signed_url: %s", str(e))
+            logging_utility.error("Error generating signed URL: %s", e)
             raise
 
     def get_file_as_base64(self, file_id: str) -> str:

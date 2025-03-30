@@ -9,6 +9,7 @@ from entities_common.clients.users import UsersClient
 from entities_common.clients.assistants import AssistantsClient
 from entities_common.clients.threads import ThreadsClient
 from entities_common.clients.messages import MessagesClient
+from entities_common.clients.actions import ActionsClient
 
 from entities_common.services.logging_service import LoggingUtility
 
@@ -42,6 +43,7 @@ class EntitiesInternalInterface:
         self._assistants_client: Optional[AssistantsClient] = None
         self._threads_client: Optional[ThreadsClient] = None
         self._messages_client: Optional[MessagesClient] = None
+        self._actions_client: Optional[ActionsClient] = None
 
     @property
     def assistants(self) -> AssistantsClient:
@@ -67,11 +69,18 @@ class EntitiesInternalInterface:
             self._users_client = UsersClient(base_url=self.base_url, api_key=self.api_key)
         return self._users_client
 
+
     @property
     def runs(self) -> RunsClient:
         if self._runs_client is None:
             self._runs_client = RunsClient(base_url=self.base_url, api_key=self.api_key)
         return self._runs_client
+
+    @property
+    def actions(self) -> ActionsClient:
+        if self._actions_client is None:
+            self._actions_client = RunsClient(base_url=self.base_url, api_key=self.api_key)
+        return self._actions_client
 
     @property
     def files(self) -> FileClient:

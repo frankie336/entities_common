@@ -1,17 +1,15 @@
 # clients/messages.py
-import time
 from typing import List, Dict, Any, Optional
 
 import httpx
 from pydantic import ValidationError
-from entities_common import ValidationInterface
 
+from entities_common.utils import UtilsInterface
+from entities_common.validation import ValidationInterface
+
+logging_utility = UtilsInterface.LoggingUtility()
 validation = ValidationInterface()
 
-from entities_common.services.logging_service import LoggingUtility
-
-# Initialize logging utility
-logging_utility = LoggingUtility()
 
 
 class MessagesClient:

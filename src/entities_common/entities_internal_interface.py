@@ -51,7 +51,7 @@ class EntitiesInternalInterface:
 
     @property
     def threads(self) -> ThreadsClient:
-        if self._assistants_client is None:
+        if self._threads_client is None:
             self._threads_client = ThreadsClient(base_url=self.base_url, api_key=self.api_key)
         return self._threads_client
 

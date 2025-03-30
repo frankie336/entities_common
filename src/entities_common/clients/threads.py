@@ -2,7 +2,10 @@ from typing import List, Dict, Any, Optional
 
 import httpx
 from dotenv import load_dotenv
-from entities_common import ValidationInterface, UtilsInterface
+
+from entities_common.validation import ValidationInterface
+from entities_common.utils import UtilsInterface
+
 from pydantic import ValidationError
 
 validator = ValidationInterface()

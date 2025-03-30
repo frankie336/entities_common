@@ -5,9 +5,22 @@ import httpx
 from dotenv import load_dotenv
 from pydantic import ValidationError
 
-from entities_common.schemas.runs import Run, RunStatusUpdate, RunReadDetailed
-from entities_common.utilities.identifier_service import IdentifierService
+from entities_common.clients.assistants import validation
+from entities_common.validation import ValidationInterface
+
+from entities_common.utils import UtilsInterface
+
+
 from entities_common.services.logging_service import LoggingUtility
+
+validation = ValidationInterface()
+
+
+
+logging_utility = UtilsInterface.LoggingUtility()
+
+
+
 
 load_dotenv()
 logging_utility = LoggingUtility()
@@ -31,7 +44,7 @@ class RunsClient:
         logging_utility.info("RunsClient initialized with base_url: %s", self.base_url)
 
     def create_run(self, assistant_id: str, thread_id: str, instructions: Optional[str] = "",
-                   meta_data: Optional[Dict[str, Any]] = {}) -> Run:
+                   meta_data: Optional[Dict[str, Any]] = {}) -> validation.Run:
         """
         Create a new run using the provided assistant_id, thread_id, and instructions.
         Returns a Run Pydantic model.
@@ -45,8 +58,8 @@ class RunsClient:
         Returns:
             Run: The created run.
         """
-        run_data = Run(
-            id=IdentifierService.generate_run_id(),
+        run_data = validation.Run(
+            id=UtilsInterface.IdentifierService.generate_run_id(),
             assistant_id=assistant_id,
             thread_id=thread_id,
             instructions=instructions,
@@ -85,7 +98,7 @@ class RunsClient:
             created_run_data = response.json()
 
             # Validate the response using the Run model
-            validated_run = Run(**created_run_data)
+            validated_run = validation.Run(**created_run_data)
             logging_utility.info("Run created successfully with id: %s", validated_run.id)
             return validated_run
 
@@ -99,7 +112,7 @@ class RunsClient:
             logging_utility.error("An error occurred while creating run: %s", str(e))
             raise
 
-    def retrieve_run(self, run_id: str) -> RunReadDetailed:
+    def retrieve_run(self, run_id: str) -> validation.RunReadDetailed:
         """
         Retrieve a run by its ID and return it as a RunReadDetailed Pydantic model.
 
@@ -114,7 +127,7 @@ class RunsClient:
             response = self.client.get(f"/v1/runs/{run_id}")
             response.raise_for_status()
             run_data = response.json()
-            validated_run = RunReadDetailed(**run_data)
+            validated_run = validation.RunReadDetailed(**run_data)
             logging_utility.info("Run with id %s retrieved and validated successfully", run_id)
             return validated_run
 
@@ -128,7 +141,7 @@ class RunsClient:
             logging_utility.error("An unexpected error occurred while retrieving run: %s", str(e))
             raise
 
-    def update_run_status(self, run_id: str, new_status: str) -> Run:
+    def update_run_status(self, run_id: str, new_status: str) -> validation.Run:
         """
         Update the status of a run.
 
@@ -143,12 +156,12 @@ class RunsClient:
         update_data = {"status": new_status}
 
         try:
-            validated_data = RunStatusUpdate(**update_data)
+            validated_data = validation.RunStatusUpdate(**update_data)
             response = self.client.put(f"/v1/runs/{run_id}/status", json=validated_data.dict())
             response.raise_for_status()
 
             updated_run = response.json()
-            validated_run = Run(**updated_run)
+            validated_run = validation.Run(**updated_run)
             logging_utility.info("Run status updated successfully")
             return validated_run
 
@@ -162,7 +175,7 @@ class RunsClient:
             logging_utility.error("An error occurred while updating run status: %s", str(e))
             raise
 
-    def list_runs(self, limit: int = 20, order: str = "asc") -> List[Run]:
+    def list_runs(self, limit: int = 20, order: str = "asc") -> List[validation.Run]:
         """
         List runs with the given limit and order.
 
@@ -179,7 +192,7 @@ class RunsClient:
             response = self.client.get("/v1/runs", params=params)
             response.raise_for_status()
             runs = response.json()
-            validated_runs = [Run(**run) for run in runs]
+            validated_runs = [validation.Run(**run) for run in runs]
             logging_utility.info("Retrieved %d runs", len(validated_runs))
             return validated_runs
         except ValidationError as e:

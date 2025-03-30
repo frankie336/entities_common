@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from entities_common.clients.files import FileClient
 from entities_common.clients.runs import RunsClient
 from entities_common.clients.users import UsersClient
+from entities_common.clients.assistants import AssistantsClient
 
 from entities_common.services.logging_service import LoggingUtility
 
@@ -36,6 +37,13 @@ class EntitiesInternalInterface:
         self._file_client: Optional[FileClient] = None
         self._runs_client: Optional[RunsClient] = None  # Fixed line
         self._users_client: Optional[UsersClient] = None
+        self._assistants_client: Optional[AssistantsClient] = None
+
+    @property
+    def assistants(self) -> AssistantsClient:
+        if self._assistants_client is None:
+            self._assistants_client = AssistantsClient(base_url=self.base_url, api_key=self.api_key)
+        return self._assistants_client
 
     @property
     def users(self) -> UsersClient:

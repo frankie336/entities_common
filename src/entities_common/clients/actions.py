@@ -4,16 +4,14 @@ from typing import Optional, Dict, Any, List
 
 import httpx
 from dotenv import load_dotenv
-from entities_common import UtilsInterface
-from entities_common import ValidationInterface
 from pydantic import ValidationError
+
+from entities_common.utils import UtilsInterface
+from entities_common.validation import ValidationInterface
 
 validation = ValidationInterface()
 
-
 load_dotenv()
-
-from entities_common.services.logging_service import LoggingUtility
 
 logging_utility = UtilsInterface.LoggingUtility()
 

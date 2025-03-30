@@ -6,7 +6,7 @@ class ProviderEnum(str, Enum):
     openai = "openai"
     deepseek = "deepseek"
     hyperbolic = "Hyperbolic"
-    togetherai = "togetherai"
+    togetherai = "Together AI"
     local = "local"
 
 

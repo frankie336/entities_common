@@ -8,6 +8,7 @@ from entities_common.clients.runs import RunsClient
 from entities_common.clients.users import UsersClient
 from entities_common.clients.assistants import AssistantsClient
 from entities_common.clients.threads import ThreadsClient
+from entities_common.clients.messages import MessagesClient
 
 from entities_common.services.logging_service import LoggingUtility
 
@@ -40,6 +41,7 @@ class EntitiesInternalInterface:
         self._users_client: Optional[UsersClient] = None
         self._assistants_client: Optional[AssistantsClient] = None
         self._threads_client: Optional[ThreadsClient] = None
+        self._messages_client: Optional[MessagesClient] = None
 
     @property
     def assistants(self) -> AssistantsClient:
@@ -52,6 +54,12 @@ class EntitiesInternalInterface:
         if self._assistants_client is None:
             self._threads_client = ThreadsClient(base_url=self.base_url, api_key=self.api_key)
         return self._threads_client
+
+    @property
+    def messages(self) -> MessagesClient:
+        if self._messages_client is None:
+            self._messages_client = MessagesClient(base_url=self.base_url, api_key=self.api_key)
+        return self._messages_client
 
     @property
     def users(self) -> UsersClient:

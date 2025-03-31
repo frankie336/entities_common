@@ -27,8 +27,10 @@ from entities_common.schemas.users import (
 )
 from entities_common.schemas.vectors import (
     VectorStoreCreate, VectorStoreRead, VectorStoreStatus, VectorStoreUpdate, VectorStoreList,
-    EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult
+    EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult, VectorStoreAddRequest
 )
+
+
 
 
 class ValidationInterface:
@@ -113,3 +115,4 @@ class ValidationInterface:
     EnhancedVectorSearchResult = EnhancedVectorSearchResult
     SearchExplanation = SearchExplanation
     VectorStoreSearchResult = VectorStoreSearchResult
+    VectorStoreAddRequest = VectorStoreAddRequest

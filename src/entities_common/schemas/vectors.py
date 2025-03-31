@@ -2,8 +2,7 @@ import time
 from enum import Enum
 from typing import List, Dict, Any, Optional
 
-from pydantic import BaseModel, Field, ConfigDict
-from pydantic import validator
+from pydantic import BaseModel, Field, ConfigDict, validator
 
 from entities_common.schemas.enums import StatusEnum
 
@@ -27,8 +26,6 @@ class VectorStoreCreate(BaseModel):
             raise ValueError(f"Invalid distance metric: {v}. Must be one of {allowed_metrics}")
         return v
 
-
-
 class VectorStoreRead(BaseModel):
     id: str = Field(..., description="Unique identifier for the vector store", example="vectorstore_123")
     name: str = Field(..., description="Name of the vector store", example="My Vector Store")
@@ -43,8 +40,6 @@ class VectorStoreRead(BaseModel):
     file_count: int = Field(0, description="Number of files in the vector store", example=10)
 
     model_config = ConfigDict(from_attributes=True)
-
-
 
 class VectorStoreUpdate(BaseModel):
     name: Optional[str] = Field(None, min_length=3, max_length=128)
@@ -84,8 +79,6 @@ class VectorStoreLinkAssistant(BaseModel):
 class VectorStoreUnlinkAssistant(BaseModel):
     assistant_id: str = Field(..., description="Assistant ID to unlink")
 
-
-
 class VectorStoreSearchResult(BaseModel):
     text: str
     metadata: Optional[dict] = None
@@ -93,7 +86,6 @@ class VectorStoreSearchResult(BaseModel):
     vector_id: Optional[str] = ""  # Made optional with default empty string
     store_id: Optional[str] = ""   # Made optional with default empty string
     retrieved_at: int = int(time.time())
-
 
 class SearchExplanation(BaseModel):
     """Provides transparency into search scoring and filtering"""
@@ -105,3 +97,21 @@ class SearchExplanation(BaseModel):
 class EnhancedVectorSearchResult(VectorStoreSearchResult):
     explanation: Optional[SearchExplanation] = None
 
+class VectorStoreAddRequest(BaseModel):
+    texts: List[str] = Field(..., description="List of texts to add to the vector store")
+    vectors: List[List[float]] = Field(..., description="List of vector embeddings corresponding to each text")
+    metadata: List[Dict[str, Any]] = Field(..., description="List of metadata dictionaries corresponding to each text")
+
+    @validator('vectors')
+    def validate_vectors_length(cls, v, values):
+        texts = values.get('texts')
+        if texts is not None and len(v) != len(texts):
+            raise ValueError("The number of vectors must match the number of texts")
+        return v
+
+    @validator('metadata')
+    def validate_metadata_length(cls, v, values):
+        texts = values.get('texts')
+        if texts is not None and len(v) != len(texts):
+            raise ValueError("The number of metadata entries must match the number of texts")
+        return v

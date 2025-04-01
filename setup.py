@@ -28,6 +28,7 @@ setup(
         "Programming Language :: Python :: 3.12",
     ],
     python_requires=">=3.8",
+
     install_requires=[
         "anyio",
         "certifi",
@@ -50,9 +51,10 @@ setup(
         "python-dotenv",
         "pdfplumber",
         "validators",
-        "qdrant_client",
-        "SentenceTransformer",
+        "qdrant-client",
+        "sentence-transformers"
     ],
+
     extras_require={
         "dev": ["pytest"],
     },

@@ -8,7 +8,6 @@ from qdrant_client.models import Distance, VectorParams, PointStruct, Filter, Fi
 
 from entities_common.utilities.logging_service import LoggingUtility
 from .base_vector_store import BaseVectorStore, StoreExistsError, StoreNotFoundError, VectorStoreError
-from entities_common.utilities.config import config
 
 load_dotenv()
 logging_utility = LoggingUtility()

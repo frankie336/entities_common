@@ -153,18 +153,23 @@ class VectorStoreClient:
 
         shared_id = IdentifierService.generate_vector_id()
 
-        qdrant_result = self.vector_manager.create_store(store_name=name,
-                                                         collection_name=collection_name,
-                                                         vector_size=vector_size,                                                distance=distance_metric)
-        # DB sync payload.
-        db_payload = {
+        collection_name = shared_id
 
+        qdrant_result = self.vector_manager.create_store(
+            store_name=name,
+            collection_name=collection_name,
+            vector_size=vector_size,
+            distance=distance_metric
+        )
+
+        db_payload = {
             "shared_id": shared_id,
             "name": name,
             "user_id": user_id,
             "vector_size": vector_size,
             "distance_metric": distance_metric,
-            "config": config
+            "config": config,
+            "collection_name": collection_name,  # ← ADD THIS
         }
 
         db_response = self._request_with_retries("POST", "/v1/vector-stores", json=db_payload)

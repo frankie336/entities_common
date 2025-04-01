@@ -22,6 +22,7 @@ class VectorStoreCreate(BaseModel):
     shared_id: str = Field(..., description="Pre-generated shared UUID for sync between DB and vector engine")
     name: str = Field(..., min_length=3, max_length=128, description="Human-friendly store name")
     user_id: str = Field(..., min_length=3, description="Owner user ID (must exist in the database)")
+    collection_name: str = Field(..., min_length=3, max_length=128, description="Globally unique Qdrant collection name")
     vector_size: int = Field(..., gt=0, description="Dimensionality of the vectors (positive integer)")
     distance_metric: str = Field(..., description="Distance metric (COSINE, EUCLID, DOT)")
     config: Optional[Dict[str, Any]] = Field(None, description="Additional configuration options")
@@ -34,8 +35,6 @@ class VectorStoreCreate(BaseModel):
         if upper not in allowed:
             raise ValueError(f"Invalid distance metric: '{v}'. Must be one of {allowed}")
         return upper
-
-    model_config = ConfigDict(from_attributes=True)
 
 
 # ---------------------------------------------------------------------

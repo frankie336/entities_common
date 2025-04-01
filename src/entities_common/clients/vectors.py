@@ -175,10 +175,12 @@ class VectorStoreClient:
     def search_vector_store(
             self, store_name: str, query_vector: List[float],
             top_k: int = 5, page: int = 1, page_size: int = 10,
-            score_threshold: float = 0.0, filters: Optional[Dict] = None
+            score_threshold: float = 0.0, filters: Optional[Dict] = None,
+            score_boosts: Optional[Dict[str, float]] = None, search_type: Optional[str] = None,
+            explain: bool = False
     ) -> Dict[str, Any]:
         offset = (page - 1) * page_size
-
+        # Pass the extra parameters to the underlying query (update your vector_manager.query_store accordingly)
         qdrant_result = self.vector_manager.query_store(
             store_name=store_name,
             query_vector=query_vector,
@@ -186,8 +188,14 @@ class VectorStoreClient:
             score_threshold=score_threshold,
             offset=offset,
             limit=page_size,
-            filters=filters  # <-- Pass filters here
+            filters=filters,
+            score_boosts=score_boosts,
+            search_type=search_type,
+            explain=explain
+
+
         )
+
 
 
         params = {

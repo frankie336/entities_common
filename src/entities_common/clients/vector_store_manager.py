@@ -73,10 +73,19 @@ class VectorStoreManager(BaseVectorStore):
             logging_utility.error(f"Add to store failed: {str(e)}")
             raise VectorStoreError(f"Insertion failed: {str(e)}")
 
-    def query_store(self, store_name: str, query_vector: List[float],
-                    top_k: int = 5, filters: Optional[dict] = None,
-                    score_threshold: float = 0.0, offset: int = 0,
-                    limit: Optional[int] = None) -> List[dict]:
+    def query_store(
+            self,
+            store_name: str,
+            query_vector: List[float],
+            top_k: int = 5,
+            filters: Optional[dict] = None,
+            score_threshold: float = 0.0,
+            offset: int = 0,
+            limit: Optional[int] = None,
+            score_boosts: Optional[Dict[str, float]] = None,
+            search_type: Optional[str] = None,
+            explain: bool = False
+    ) -> List[dict]:
         # Default limit to top_k if not provided.
         if limit is None:
             limit = top_k
@@ -86,6 +95,14 @@ class VectorStoreManager(BaseVectorStore):
                 flt = Filter(must=[
                     FieldCondition(key=filters["key"], match=MatchValue(value=filters["value"]))
                 ])
+            # Prepare extra parameters for the search request.
+            extra_params = {}
+            if score_boosts is not None:
+                extra_params["score_boosts"] = score_boosts
+            if search_type is not None:
+                extra_params["search_type"] = search_type
+            extra_params["explain"] = explain
+
             results = self.client.search(
                 collection_name=store_name,
                 query_vector=query_vector,
@@ -94,7 +111,8 @@ class VectorStoreManager(BaseVectorStore):
                 offset=offset,
                 with_payload=True,
                 with_vectors=False,
-                query_filter=flt
+                query_filter=flt,
+                **extra_params
             )
             return [{
                 "id": r.id,

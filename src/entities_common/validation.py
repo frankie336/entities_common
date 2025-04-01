@@ -30,9 +30,6 @@ from entities_common.schemas.vectors import (
     EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult, VectorStoreAddRequest
 )
 
-
-
-
 class ValidationInterface:
     """
     Exposes Pydantic validation classes, retaining their original naming.

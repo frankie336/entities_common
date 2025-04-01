@@ -10,6 +10,7 @@ from entities_common.clients.assistants import AssistantsClient
 from entities_common.clients.threads import ThreadsClient
 from entities_common.clients.messages import MessagesClient
 from entities_common.clients.actions import ActionsClient
+from .clients.vectors import VectorStoreClient
 
 from entities_common.services.logging_service import LoggingUtility
 
@@ -44,6 +45,7 @@ class EntitiesInternalInterface:
         self._threads_client: Optional[ThreadsClient] = None
         self._messages_client: Optional[MessagesClient] = None
         self._actions_client: Optional[ActionsClient] = None
+        self._vectors_client: Optional[VectorStoreClient] = None
 
     @property
     def assistants(self) -> AssistantsClient:
@@ -83,7 +85,8 @@ class EntitiesInternalInterface:
         return self._actions_client
 
     @property
-    def files(self) -> FileClient:
-        if self._file_client is None:
-            self._file_client = FileClient(base_url=self.base_url, api_key=self.api_key)
-        return self._file_client
+    def vectors(self) -> VectorStoreClient:
+        if self._vectors_client is None:
+            self._vectors_client = VectorStoreClient(base_url=self.base_url, api_key=self.api_key)
+
+        return self._vectors_client

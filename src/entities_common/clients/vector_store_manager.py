@@ -25,7 +25,12 @@ class VectorStoreManager(BaseVectorStore):
     def _generate_vector_id(self) -> str:
         return str(uuid.uuid4())
 
-    def create_store(self, store_name: str, vector_size: int = 384, distance: str = "COSINE") -> dict:
+    def create_store(self,
+                     store_name: str,
+                     collection_name,
+                     vector_size: int = 384,
+                     distance: str = "COSINE") -> dict:
+
         if store_name in self.active_stores:
             raise StoreExistsError(f"Store {store_name} exists")
         try:

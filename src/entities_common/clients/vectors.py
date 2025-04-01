@@ -143,14 +143,20 @@ class VectorStoreClient:
 
 
     def create_vector_store(
-        self, name: str, user_id: str, vector_size: int = 384,
-        distance_metric: str = "COSINE", config: Optional[Dict[str, Any]] = None
-    ) -> ValidationInterface.VectorStoreRead:
+        self, name: str,
+            user_id: str,
+            collection_name: str,
+            vector_size: int = 384,
+            distance_metric: str = "COSINE", config: Optional[Dict[str, Any]] = None
+         ) -> ValidationInterface.VectorStoreRead:
         # Qdrant operation.
 
         shared_id = IdentifierService.generate_vector_id()
 
-        qdrant_result = self.vector_manager.create_store(name, vector_size, distance_metric)
+        qdrant_result = self.vector_manager.create_store(store_name=name,
+                                                         collection_name=collection_name,
+                                                         vector_size=vector_size,
+                                                         distance=distance_metric)
 
         # DB sync payload.
         db_payload = {
@@ -162,6 +168,7 @@ class VectorStoreClient:
             "distance_metric": distance_metric,
             "config": config
         }
+
         db_response = self._request_with_retries("POST", "/v1/vector-stores", json=db_payload)
         response_data = self._parse_response(db_response)
         return ValidationInterface.VectorStoreRead.model_validate(response_data)

@@ -155,9 +155,7 @@ class VectorStoreClient:
 
         qdrant_result = self.vector_manager.create_store(store_name=name,
                                                          collection_name=collection_name,
-                                                         vector_size=vector_size,
-                                                         distance=distance_metric)
-
+                                                         vector_size=vector_size,                                                distance=distance_metric)
         # DB sync payload.
         db_payload = {
 

@@ -30,6 +30,8 @@ from entities_common.schemas.vectors import (
     EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult, VectorStoreAddRequest
 )
 
+from entities_common.schemas.keys import APIKeyRead
+
 class ValidationInterface:
     """
     Exposes Pydantic validation classes, retaining their original naming.
@@ -113,3 +115,6 @@ class ValidationInterface:
     SearchExplanation = SearchExplanation
     VectorStoreSearchResult = VectorStoreSearchResult
     VectorStoreAddRequest = VectorStoreAddRequest
+
+    # Key
+    APIKeyRead = APIKeyRead

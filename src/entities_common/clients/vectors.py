@@ -59,14 +59,14 @@ class VectorStoreClient:
                 raise
 
     def process_and_upload_file(
-        self,
-        file_path: Union[str, Path],
-        store_name: str,
-        user_metadata: Optional[Dict[str, Any]] = None,
-        source_url: Optional[str] = None,
-        embedding_model_name: str = "paraphrase-MiniLM-L6-v2",
-        chunk_size: int = 512,
-        log_to_backend: bool = True
+            self,
+            file_path: Union[str, Path],
+            store_name: str,
+            user_metadata: Optional[Dict[str, Any]] = None,
+            source_url: Optional[str] = None,
+            embedding_model_name: str = "paraphrase-MiniLM-L6-v2",
+            chunk_size: int = 512,
+            log_to_backend: bool = True
     ) -> Dict[str, Any]:
         """
         Preprocess a document (PDF or text), generate embeddings, upload them
@@ -86,19 +86,22 @@ class VectorStoreClient:
               - store_name: The target collection.
               - chunks_processed: Number of chunks processed.
               - qdrant: Result from Qdrant upload.
-              - db: Backend DB sync response.
+              - db: Backend DB sync response (if enabled).
         """
+        # Convert file path to Path object
         file_path = Path(file_path)
         file_processor = FileProcessor(chunk_size=chunk_size)
-        vector_store = VectorStoreManager()
+        vector_store = VectorStoreManager()  # Assumes VectorStoreManager is imported and configured
 
-        # Step 1: Preprocess and embed the file.
+        # Step 1: Preprocess and embed the file asynchronously.
         processed = asyncio.run(file_processor.process_file(file_path))
 
-        # Step 2: Prepare metadata.
+        # Step 2: Prepare metadata by merging user-provided metadata and source URL.
         doc_metadata = user_metadata.copy() if user_metadata else {}
         if source_url:
             doc_metadata["url"] = source_url
+
+        # Generate chunk-level metadata. This uses our internal helper.
         chunk_metadata = [
             file_processor._generate_chunk_metadata(processed, idx, doc_metadata)
             for idx in range(processed["metadata"]["chunks"])
@@ -112,12 +115,12 @@ class VectorStoreClient:
             metadata=chunk_metadata
         )
 
-        # Step 4: Sync with backend (if enabled).
+        # Step 4: Optionally sync with backend.
         db_result = None
         if log_to_backend:
             db_payload = {
                 "name": store_name,
-                "user_id": "generated_or_provided",  # Adjust as needed.
+                "user_id": "generated_or_provided",  # Adjust as needed
                 "vector_size": processed.get("vector_size", 384),
                 "distance_metric": "COSINE",
                 "config": "{}",
@@ -125,7 +128,9 @@ class VectorStoreClient:
                 "vectors": processed["vectors"],
                 "metadata": chunk_metadata
             }
-            db_response = self._request_with_retries("POST", f"/v1/vector-stores/{store_name}/add", json=db_payload)
+            db_response = self._request_with_retries(
+                "POST", f"/v1/vector-stores/{store_name}/add", json=db_payload
+            )
             db_result = self._parse_response(db_response)
 
         return {
@@ -134,6 +139,7 @@ class VectorStoreClient:
             "qdrant": qdrant_result,
             "db": db_result
         }
+
 
     def create_vector_store(
         self, name: str, user_id: str, vector_size: int = 384,

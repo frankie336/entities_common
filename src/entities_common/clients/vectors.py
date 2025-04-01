@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 from entities_common.validation import ValidationInterface
 from entities_common.clients.vector_store_manager import VectorStoreManager
 from entities_common.utilities.file_processor import FileProcessor
+from entities_common.utils import IdentifierService
 from entities_common.utilities.logging_service import LoggingUtility
 
 load_dotenv()
@@ -146,9 +147,15 @@ class VectorStoreClient:
         distance_metric: str = "COSINE", config: Optional[Dict[str, Any]] = None
     ) -> ValidationInterface.VectorStoreRead:
         # Qdrant operation.
+
+        shared_id = IdentifierService.generate_vector_id()
+
         qdrant_result = self.vector_manager.create_store(name, vector_size, distance_metric)
+
         # DB sync payload.
         db_payload = {
+
+            "shared_id": shared_id,
             "name": name,
             "user_id": user_id,
             "vector_size": vector_size,

@@ -19,6 +19,7 @@ class VectorStoreStatus(str, Enum):
 # Request Schemas (for DB sync) - these are the payloads our API accepts
 # ---------------------------------------------------------------------
 class VectorStoreCreate(BaseModel):
+    shared_id: str = Field(..., description="Pre-generated shared UUID for sync between DB and vector engine")
     name: str = Field(..., min_length=3, max_length=128, description="Human-friendly store name")
     user_id: str = Field(..., min_length=3, description="Owner user ID (must exist in the database)")
     vector_size: int = Field(..., gt=0, description="Dimensionality of the vectors (positive integer)")

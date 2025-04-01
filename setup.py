@@ -48,6 +48,9 @@ setup(
         "cryptography",
         "typing_extensions",
         "python-dotenv",
+        "pdfplumber",
+        "validators",
+        "qdrant_client"
     ],
     extras_require={
         "dev": ["pytest"],

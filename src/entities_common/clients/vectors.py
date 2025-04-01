@@ -7,7 +7,7 @@ from typing import List, Dict, Optional, Any, Union
 import httpx
 from dotenv import load_dotenv
 
-from entities_common import ValidationInterface
+from entities_common.validation import ValidationInterface
 from entities_common.clients.vector_store_manager import VectorStoreManager
 from entities_common.utilities.file_processor import FileProcessor
 from entities_common.utilities.logging_service import LoggingUtility

@@ -1,12 +1,13 @@
 import os
 import time
 from typing import List, Dict, Any, Optional
+
 import httpx
 from dotenv import load_dotenv
 from pydantic import ValidationError
-from entities_common import UtilsInterface
 
-from entities_common import ValidationInterface
+from entities_common.utils import UtilsInterface
+from entities_common.validation import ValidationInterface
 
 # Load environment variables
 load_dotenv()

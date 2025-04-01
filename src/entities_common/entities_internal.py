@@ -12,6 +12,7 @@ from entities_common.clients.threads import ThreadsClient
 from entities_common.clients.users import UsersClient
 from entities_common.services.logging_service import LoggingUtility
 from .clients.vectors import VectorStoreClient
+from .clients.keys import APIKeyClient
 
 # Use relative imports for modules within your package.
 
@@ -38,6 +39,8 @@ class EntitiesInternalInterface:
         self.api_key = api_key or os.getenv('API_KEY', 'your_api_key')
 
         logging_utility.info("Validation initialized with base_url: %s", self.base_url)
+
+        self._keys_client: Optional[APIKeyClient] = None
         self._file_client: Optional[FileClient] = None
         self._runs_client: Optional[RunsClient] = None  # Fixed line
         self._users_client: Optional[UsersClient] = None
@@ -48,10 +51,18 @@ class EntitiesInternalInterface:
         self._vectors_client: Optional[VectorStoreClient] = None
 
     @property
+    def keys(self) -> APIKeyClient:
+        if self._keys_client is None:
+            self._keys_client = APIKeyClient(base_url=self.base_url, api_key=self.api_key)
+
+        return self._keys_client
+
+    @property
     def assistants(self) -> AssistantsClient:
         if self._assistants_client is None:
             self._assistants_client = AssistantsClient(base_url=self.base_url, api_key=self.api_key)
         return self._assistants_client
+
 
     @property
     def threads(self) -> ThreadsClient:

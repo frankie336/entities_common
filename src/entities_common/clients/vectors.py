@@ -145,7 +145,6 @@ class VectorStoreClient:
     def create_vector_store(
         self, name: str,
             user_id: str,
-            collection_name: str,
             vector_size: int = 384,
             distance_metric: str = "COSINE", config: Optional[Dict[str, Any]] = None
          ) -> ValidationInterface.VectorStoreRead:

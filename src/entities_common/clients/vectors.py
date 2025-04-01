@@ -173,21 +173,23 @@ class VectorStoreClient:
         }
 
     def search_vector_store(
-        self, store_name: str, query_vector: List[float],
-        top_k: int = 5, page: int = 1, page_size: int = 10,
-        score_threshold: float = 0.0
+            self, store_name: str, query_vector: List[float],
+            top_k: int = 5, page: int = 1, page_size: int = 10,
+            score_threshold: float = 0.0, filters: Optional[Dict] = None
     ) -> Dict[str, Any]:
         offset = (page - 1) * page_size
-        # Qdrant operation.
+
         qdrant_result = self.vector_manager.query_store(
             store_name=store_name,
             query_vector=query_vector,
             top_k=top_k,
             score_threshold=score_threshold,
             offset=offset,
-            limit=page_size
+            limit=page_size,
+            filters=filters  # <-- Pass filters here
         )
-        # DB sync call (for auditing/monitoring).
+
+
         params = {
             "query_text": "query hidden from SDK here",
             "top_k": top_k,

@@ -40,7 +40,7 @@ setup(
         "databases",
         "uvicorn",
         "sqlalchemy",
-        "pydantic",  # Enforcing Pydantic v1
+        "pydantic",
         "starlette",
         "asgiref",
         "click",
@@ -50,8 +50,8 @@ setup(
         "python-dotenv",
         "pdfplumber",
         "validators",
-        "qdrant_client"
-        "SentenceTransformer"
+        "qdrant_client",
+        "SentenceTransformer",
     ],
     extras_require={
         "dev": ["pytest"],

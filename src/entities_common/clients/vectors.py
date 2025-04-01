@@ -20,14 +20,18 @@ class VectorStoreClientError(Exception):
     pass
 
 class VectorStoreClient:
-    def __init__(self, base_url: Optional[str] = None, api_key: Optional[str] = None):
+    def __init__(self, base_url: Optional[str] = None, api_key: Optional[str] = None,
+                 vector_store_host: Optional[str] = 'localhost'):
+
         self.base_url = base_url or os.getenv("BASE_URL")
         self.api_key = api_key or os.getenv("API_KEY")
         if not self.base_url:
             raise VectorStoreClientError("BASE_URL must be provided either as an argument or in environment variables.")
         headers = {"Authorization": f"Bearer {self.api_key}"} if self.api_key else {}
         self.api_client = httpx.Client(base_url=self.base_url, headers=headers)
-        self.vector_manager = VectorStoreManager()
+        self.vector_store_host = vector_store_host
+        self.vector_manager = VectorStoreManager(vector_store_host=self.vector_store_host)
+
 
     def close(self):
         self.api_client.close()

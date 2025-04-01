@@ -28,12 +28,13 @@ class EntitiesInternalInterface:
         self,
         base_url: Optional[str] = None,
         api_key: Optional[str] = None,
-        available_functions: Optional[Dict[str, Any]] = None
+        vector_store_host: Optional[str] = 'localhost'
     ):
         """
         Initialize the main client with configuration.
         Optionally, a configuration object can be injected to decouple from environment variables.
         """
+        self.vector_store_host = vector_store_host
         self.base_url = base_url or os.getenv('ASSISTANTS_BASE_URL', 'http://localhost:9000/')
         self.api_key = api_key or os.getenv('API_KEY', 'your_api_key')
 
@@ -87,6 +88,7 @@ class EntitiesInternalInterface:
     @property
     def vectors(self) -> VectorStoreClient:
         if self._vectors_client is None:
-            self._vectors_client = VectorStoreClient(base_url=self.base_url, api_key=self.api_key)
+            self._vectors_client = VectorStoreClient(base_url=self.base_url, api_key=self.api_key,
+                                                     vector_store_host=self.vector_store_host)
 
         return self._vectors_client

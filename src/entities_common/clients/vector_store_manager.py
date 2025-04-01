@@ -13,9 +13,13 @@ from entities_common.utilities.config import config
 load_dotenv()
 logging_utility = LoggingUtility()
 
+
 class VectorStoreManager(BaseVectorStore):
-    def __init__(self, host: str = config["base_url"], port: int = 6333):
-        self.client = QdrantClient(host=host, port=port)
+
+    def __init__(self, vector_store_host: str = 'localhost', port: int = 6333):
+
+        self.vector_store_host = vector_store_host
+        self.client = QdrantClient(host=self.vector_store_host, port=port)
         self.active_stores: Dict[str, dict] = {}
         logging_utility.info(f"Initialized HTTP-based VectorStoreManager. Source: {__file__}")
 

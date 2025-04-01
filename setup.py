@@ -51,6 +51,7 @@ setup(
         "pdfplumber",
         "validators",
         "qdrant_client"
+        "SentenceTransformer"
     ],
     extras_require={
         "dev": ["pytest"],

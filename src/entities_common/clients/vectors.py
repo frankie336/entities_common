@@ -273,3 +273,17 @@ class VectorStoreClient:
     def get_stores_by_user(self, user_id: str) -> List[Any]:
         response = self._request_with_retries("GET", f"/v1/users/{user_id}/vector-stores")
         return self._parse_response(response)
+
+    def retrieve_vector_store_by_collection(self, collection_name: str) -> ValidationInterface.VectorStoreRead:
+        """
+        Retrieve a vector store by its unique collection name.
+
+        Args:
+            collection_name (str): The internal unique ID used to represent the Qdrant collection.
+
+        Returns:
+            ValidationInterface.VectorStoreRead: Pydantic object representing the vector store metadata.
+        """
+        response = self._request_with_retries("GET", f"/v1/vector-stores/collection/{collection_name}")
+        data = self._parse_response(response)
+        return ValidationInterface.VectorStoreRead.model_validate(data)

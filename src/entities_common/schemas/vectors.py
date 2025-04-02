@@ -4,9 +4,7 @@ from typing import List, Dict, Any, Optional
 
 from pydantic import BaseModel, Field, ConfigDict, field_validator
 
-# Assuming StatusEnum is defined correctly elsewhere (imported)
-# from entities_common.schemas.enums import StatusEnum
-# --- Placeholder StatusEnum if not imported ---
+
 class StatusEnum(str, Enum):
     deleted = "deleted"
     active = "active"
@@ -21,16 +19,13 @@ class StatusEnum(str, Enum):
     processing = "processing"
     expired = "expired"
     retrying = "retrying"
-    inactive = "inactive" # Added if needed, check original definition
-    error = "error"       # Added if needed, check original definition
-# --- End Placeholder ---
-
-
+    inactive = "inactive"
+    error = "error"
 # ---------------------------------------------------------------------
 # Request Schemas (for DB sync) - Payloads API accepts
 # ---------------------------------------------------------------------
 class VectorStoreCreate(BaseModel):
-    # Removed collection_name - API service will set VectorStore.collection_name = shared_id
+
     shared_id: str = Field(...,
                            description="Client-generated unique ID (e.g., vs_...). Used for DB primary key and Qdrant collection name.")
     name: str = Field(..., min_length=3, max_length=128, description="Human-friendly store name")

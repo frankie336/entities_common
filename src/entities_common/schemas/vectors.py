@@ -154,7 +154,6 @@ class SearchExplanation(BaseModel):
 class EnhancedVectorSearchResult(VectorStoreSearchResult):
     explanation: Optional[SearchExplanation] = Field(None, description="Details about how the score was calculated (if requested)")
 
-
 # ---------------------------------------------------------------------
 # Request Schema for Adding Documents to the Store ( Kept for potential future use / alternative API design )
 # ---------------------------------------------------------------------

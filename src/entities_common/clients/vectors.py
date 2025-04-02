@@ -1,11 +1,12 @@
 import asyncio
 import os
-import uuid  # For generating file IDs if needed
+import uuid
 from pathlib import Path
 from typing import List, Dict, Optional, Any, Union
 
 import httpx
 from dotenv import load_dotenv
+
 from entities_common.clients.vector_store_manager import VectorStoreManager
 from entities_common.utilities.file_processor import FileProcessor
 from entities_common.utilities.logging_service import LoggingUtility
@@ -35,8 +36,8 @@ class VectorStoreClient:
         self.vector_store_host = vector_store_host
         self.vector_manager = VectorStoreManager(vector_store_host=self.vector_store_host)
         self.identifier_service = IdentifierService()
-        # Consider making FileProcessor an instance variable if config needs to be dynamic
-        # self.file_processor = FileProcessor(...)
+
+        self.file_processor = FileProcessor()
 
     async def close(self):
         await self.api_client.aclose()
@@ -182,12 +183,12 @@ class VectorStoreClient:
         #     raise
 
         # 1. Process file (chunk, embed)
-        # Consider making FileProcessor instance reusable
-        file_processor = FileProcessor(chunk_size=chunk_size, embedding_model_name=embedding_model_name)
+
+
         logging_utility.info("Processing file: %s", file_path)
         try:
             # Assuming process_file handles reading and embedding
-            processed_data = await file_processor.process_file(file_path)
+            processed_data = await self.file_processor.process_file(file_path)
             texts = processed_data["chunks"]
             vectors = processed_data["vectors"]
             # Create metadata for each chunk (important: include original file_path)
@@ -279,11 +280,11 @@ class VectorStoreClient:
 
         # 1. Embed the query text (assuming FileProcessor can embed single strings)
         # Reuse file processor instance or create one
-        # TODO: Determine embedding model based on store_info if needed
+
         embedding_model_name = "paraphrase-MiniLM-L6-v2" # Get from store_info or config
-        file_processor = FileProcessor(embedding_model_name=embedding_model_name)
+
         try:
-            query_vector = file_processor.embedding_model.encode(query_text).tolist()
+            query_vector = self.file_processor.embedding_model.encode(query_text).tolist()
         except Exception as e:
              logging_utility.error("Failed to embed query text: %s", str(e))
              raise VectorStoreClientError(f"Query embedding failed: {str(e)}") from e
@@ -410,7 +411,7 @@ class VectorStoreClient:
         """Lists files associated with a vector store by querying the API (DB)."""
         logging_utility.info("Listing files for vector store '%s' via API", vector_store_id)
         try:
-            # API endpoint: GET /v1/vector-stores/{vector_store_id}/files
+
             response_data = await self._request_with_retries("GET", f"/v1/vector-stores/{vector_store_id}/files")
             # Assuming API returns a list of file objects conforming to VectorStoreFileRead
             return [ValidationInterface.VectorStoreFileRead.model_validate(item) for item in response_data]
@@ -419,18 +420,17 @@ class VectorStoreClient:
             raise api_error
 
     # --- Assistant & User Methods ---
-    # (These seem okay, just ensure they use the async client and retries)
+
 
     async def attach_vector_store_to_assistant(self, vector_store_id: str, assistant_id: str) -> bool:
         logging_utility.info("Attaching vector store %s to assistant %s via API", vector_store_id, assistant_id)
-        # Endpoint: POST /v1/assistants/{assistant_id}/vector-stores/{vector_store_id}/attach (or similar)
-        # Adjust URL based on your actual API design
+
         response = await self._request_with_retries("POST", f"/v1/assistants/{assistant_id}/vector-stores/{vector_store_id}/attach")
-        return bool(response) # Assuming API returns true/false or confirmation object
+        return bool(response)
 
     async def detach_vector_store_from_assistant(self, vector_store_id: str, assistant_id: str) -> bool:
         logging_utility.info("Detaching vector store %s from assistant %s via API", vector_store_id, assistant_id)
-         # Endpoint: DELETE /v1/assistants/{assistant_id}/vector-stores/{vector_store_id}/detach (or similar)
+
         response = await self._request_with_retries("DELETE", f"/v1/assistants/{assistant_id}/vector-stores/{vector_store_id}/detach")
         return bool(response)
 
@@ -447,11 +447,11 @@ class VectorStoreClient:
     async def retrieve_vector_store(self, vector_store_id: str) -> ValidationInterface.VectorStoreRead:
         """Retrieves vector store metadata by its ID via API."""
         logging_utility.info("Retrieving vector store %s via API", vector_store_id)
-        # Endpoint: GET /v1/vector-stores/{vector_store_id}
+
         response = await self._request_with_retries("GET", f"/v1/vector-stores/{vector_store_id}")
         return ValidationInterface.VectorStoreRead.model_validate(response)
 
-    # Add sync version for convenience if needed in sync contexts
+    s
     def retrieve_vector_store_sync(self, vector_store_id: str) -> ValidationInterface.VectorStoreRead:
         """Synchronous version of retrieve_vector_store."""
         logging_utility.info("Retrieving vector store %s via sync API", vector_store_id)
@@ -460,11 +460,9 @@ class VectorStoreClient:
         return ValidationInterface.VectorStoreRead.model_validate(response.json())
 
 
-    # Retrieve by collection name might be less common if ID is primary identifier
     async def retrieve_vector_store_by_collection(self, collection_name: str) -> ValidationInterface.VectorStoreRead:
         """Retrieves vector store metadata by its collection name via API."""
         logging_utility.info("Retrieving vector store by collection name %s via API", collection_name)
-         # Endpoint: GET /v1/vector-stores/lookup/collection?name={collection_name} (Example endpoint)
-        # Adjust URL based on your actual API design
+
         response = await self._request_with_retries("GET", f"/v1/vector-stores/lookup/collection", params={"name": collection_name})
         return ValidationInterface.VectorStoreRead.model_validate(response)

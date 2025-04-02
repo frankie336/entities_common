@@ -3,26 +3,38 @@ from enum import Enum
 from typing import List, Dict, Any, Optional
 
 from pydantic import BaseModel, Field, ConfigDict, field_validator
-from entities_common.schemas.enums import StatusEnum  # assuming this defines status strings like "active", "deleted", etc.
 
-# ---------------------------------------------------------------------
-# Enums for response status
-# ---------------------------------------------------------------------
-class VectorStoreStatus(str, Enum):
+# Assuming StatusEnum is defined correctly elsewhere (imported)
+# from entities_common.schemas.enums import StatusEnum
+# --- Placeholder StatusEnum if not imported ---
+class StatusEnum(str, Enum):
+    deleted = "deleted"
     active = "active"
-    inactive = "inactive"
+    queued = "queued"
+    in_progress = "in_progress"
+    pending_action = "action_required"
+    completed = "completed"
+    failed = "failed"
+    cancelling = "cancelling"
+    cancelled = "cancelled"
+    pending = "pending"
     processing = "processing"
-    error = "error"
+    expired = "expired"
+    retrying = "retrying"
+    inactive = "inactive" # Added if needed, check original definition
+    error = "error"       # Added if needed, check original definition
+# --- End Placeholder ---
 
 
 # ---------------------------------------------------------------------
-# Request Schemas (for DB sync) - these are the payloads our API accepts
+# Request Schemas (for DB sync) - Payloads API accepts
 # ---------------------------------------------------------------------
 class VectorStoreCreate(BaseModel):
-    shared_id: str = Field(..., description="Pre-generated shared UUID for sync between DB and vector engine")
+    # Removed collection_name - API service will set VectorStore.collection_name = shared_id
+    shared_id: str = Field(...,
+                           description="Client-generated unique ID (e.g., vs_...). Used for DB primary key and Qdrant collection name.")
     name: str = Field(..., min_length=3, max_length=128, description="Human-friendly store name")
     user_id: str = Field(..., min_length=3, description="Owner user ID (must exist in the database)")
-    collection_name: str = Field(..., min_length=3, max_length=128, description="Globally unique Qdrant collection name")
     vector_size: int = Field(..., gt=0, description="Dimensionality of the vectors (positive integer)")
     distance_metric: str = Field(..., description="Distance metric (COSINE, EUCLID, DOT)")
     config: Optional[Dict[str, Any]] = Field(None, description="Additional configuration options")
@@ -38,70 +50,83 @@ class VectorStoreCreate(BaseModel):
 
 
 # ---------------------------------------------------------------------
-# Response Schemas - what we send back from our API after creation etc.
+# Response Schemas - What API sends back
 # ---------------------------------------------------------------------
 class VectorStoreRead(BaseModel):
-    id: str = Field(..., description="Unique identifier for the vector store", example="vectorstore_123")
-    name: str = Field(..., description="Name of the vector store", example="My Vector Store")
-    user_id: str = Field(..., description="ID of the owner user", example="user_123")
-    collection_name: str = Field(..., description="Name of the vector collection", example="my_movie_db")
+    id: str = Field(..., description="Unique identifier for the vector store (same as shared_id/collection_name)", example="vs_abc123")
+    name: str = Field(..., description="Name of the vector store", example="My Project Documents")
+    user_id: str = Field(..., description="ID of the owner user", example="user_xyz789")
+    collection_name: str = Field(..., description="Name of the corresponding Qdrant collection (same as id)", example="vs_abc123")
     vector_size: int = Field(..., description="Dimensionality of stored vectors", example=384)
     distance_metric: str = Field(..., description="Distance metric used (COSINE, EUCLID, DOT)", example="COSINE")
-    created_at: int = Field(..., description="Unix timestamp when the vector store was created", example=1640995200)
-    updated_at: Optional[int] = Field(None, description="Unix timestamp when last updated", example=1641081600)
-    status: VectorStoreStatus = Field(..., description="Current status of the vector store")
+    created_at: int = Field(..., description="Unix timestamp when the vector store record was created", example=1640995200)
+    updated_at: Optional[int] = Field(None, description="Unix timestamp when the record was last updated", example=1641081600)
+    # Use the consistent, richer StatusEnum
+    status: StatusEnum = Field(..., description="Current status of the vector store record", example=StatusEnum.active)
     config: Optional[Dict[str, Any]] = Field(None, description="Additional configuration details")
-    file_count: int = Field(0, description="Number of files in the vector store", example=10)
+    file_count: int = Field(..., ge=0, description="Number of files associated with this vector store in the DB", example=10)
 
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True) # Enable ORM mode
 
 
 # ---------------------------------------------------------------------
 # Update schema for vector store (partial update)
 # ---------------------------------------------------------------------
 class VectorStoreUpdate(BaseModel):
-    name: Optional[str] = Field(None, min_length=3, max_length=128)
-    status: Optional[VectorStoreStatus] = None
-    config: Optional[Dict[str, Any]] = None
+    name: Optional[str] = Field(None, min_length=3, max_length=128, description="New name for the vector store")
+    # Use StatusEnum for consistency
+    status: Optional[StatusEnum] = Field(None, description="New status for the vector store")
+    config: Optional[Dict[str, Any]] = Field(None, description="Updated configuration (will replace existing config)")
+    # Note: file_count is managed internally by adding/deleting files, not directly updatable here
 
 
 # ---------------------------------------------------------------------
 # File schemas
 # ---------------------------------------------------------------------
 class VectorStoreFileCreate(BaseModel):
-    file_name: str = Field(..., max_length=256)
-    file_path: str = Field(..., max_length=1024)
-    metadata: Optional[Dict[str, Any]] = None
+    # Added file_id - Client must provide this unique ID (e.g., vsf_...)
+    file_id: str = Field(..., description="Client-generated unique ID for this file record (e.g., vsf_...).")
+    file_name: str = Field(..., max_length=256, description="Original name of the file.")
+    file_path: str = Field(..., max_length=1024, description="Path identifier used in Qdrant metadata (e.g., 'source' field).")
+    # Added optional status
+    status: Optional[StatusEnum] = Field(None, description="Initial status of the file (e.g., completed, queued). Defaults to 'completed' if not provided by API.")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="Optional user-defined metadata associated with the file.")
 
 
 class VectorStoreFileRead(BaseModel):
-    id: str
-    file_name: str
-    file_path: str
-    processed_at: Optional[int] = None
-    status: StatusEnum
-    error_message: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = None
+    id: str = Field(..., description="Unique ID of the file record", example="vsf_def456")
+    # Added vector_store_id - Crucial context
+    vector_store_id: str = Field(..., description="ID of the vector store this file belongs to", example="vs_abc123")
+    file_name: str = Field(..., description="Original name of the file", example="document.pdf")
+    file_path: str = Field(..., description="Path identifier used in Qdrant metadata", example="s3://bucket/document.pdf")
+    processed_at: Optional[int] = Field(None, description="Unix timestamp when the file processing state last changed (completed/failed)", example=1641081600)
+    status: StatusEnum = Field(..., description="Current status of the file processing", example=StatusEnum.completed)
+    error_message: Optional[str] = Field(None, description="Error details if the status is 'failed'")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="User-defined metadata associated with the file")
 
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True) # Enable ORM mode
 
 
 class VectorStoreFileUpdate(BaseModel):
-    status: Optional[StatusEnum] = None
-    error_message: Optional[str] = None
-    metadata: Optional[Dict[str, Any]] = None
+    # Allows updating status, error message, or metadata for an existing file record
+    status: Optional[StatusEnum] = Field(None, description="New status for the file")
+    error_message: Optional[str] = Field(None, description="Error message if status is 'failed'")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="Updated metadata (will replace existing metadata)")
 
 
 class VectorStoreList(BaseModel):
+    # Consider adding pagination fields here if listing can be large
+    # e.g., limit: int, offset: int, total: int
     vector_stores: List[VectorStoreRead]
 
 
 class VectorStoreFileList(BaseModel):
+    # Consider adding pagination fields here
     files: List[VectorStoreFileRead]
 
 
 # ---------------------------------------------------------------------
-# Assistant Linking Schemas
+# Assistant Linking Schemas ( Kept for potential future use / alternative API design )
 # ---------------------------------------------------------------------
 class VectorStoreLinkAssistant(BaseModel):
     assistant_ids: List[str] = Field(..., min_items=1, description="List of assistant IDs to link")
@@ -112,48 +137,45 @@ class VectorStoreUnlinkAssistant(BaseModel):
 
 
 # ---------------------------------------------------------------------
-# Search Schemas
+# Search Schemas ( Appear aligned with VectorSearchHandler output )
 # ---------------------------------------------------------------------
 class VectorStoreSearchResult(BaseModel):
-    text: str
-    metadata: Optional[dict] = None
-    score: float
-    vector_id: Optional[str] = Field("", description="ID of the vector point", example="point_123")
-    store_id: Optional[str] = Field("", description="ID of the vector store", example="vectorstore_123")
-    retrieved_at: int = Field(default_factory=lambda: int(time.time()), description="Unix timestamp of retrieval")
+    text: str = Field(..., description="Retrieved text chunk")
+    metadata: Optional[dict] = Field(None, description="Metadata associated with the chunk (includes original file info, custom meta, and potentially score/explanation)")
+    score: float = Field(..., description="Similarity score from the vector search")
+    vector_id: Optional[str] = Field(None, description="ID of the specific vector point in Qdrant", example="uuid-...") # Changed example, make optional
+    store_id: Optional[str] = Field(None, description="ID of the vector store where the result was found", example="vs_abc123") # Made optional for flexibility
+    retrieved_at: int = Field(default_factory=lambda: int(time.time()), description="Unix timestamp when this result was retrieved")
 
 
 class SearchExplanation(BaseModel):
+    # Structure depends on what Qdrant/search logic provides
     base_score: float
-    filters_passed: List[str]
-    boosts_applied: Dict[str, float]
+    filters_passed: Optional[List[str]] = None # Make optional
+    boosts_applied: Optional[Dict[str, float]] = None # Make optional
     final_score: float
 
 
 class EnhancedVectorSearchResult(VectorStoreSearchResult):
-    explanation: Optional[SearchExplanation] = None
+    explanation: Optional[SearchExplanation] = Field(None, description="Details about how the score was calculated (if requested)")
 
 
 # ---------------------------------------------------------------------
-# Request Schema for Adding Documents to the Store
+# Request Schema for Adding Documents to the Store ( Kept for potential future use / alternative API design )
 # ---------------------------------------------------------------------
 class VectorStoreAddRequest(BaseModel):
     texts: List[str] = Field(..., description="List of texts to add to the vector store")
     vectors: List[List[float]] = Field(..., description="Vector embeddings corresponding to each text")
     metadata: List[Dict[str, Any]] = Field(..., description="Metadata dictionaries corresponding to each text")
 
-    @field_validator('vectors')
-    @classmethod
-    def validate_vectors_length(cls, v, values):
-        texts = values.get('texts')
-        if texts is not None and len(v) != len(texts):
-            raise ValueError("The number of vectors must match the number of texts")
-        return v
+    # Using model_validator instead of multiple field_validators for cross-field validation
+    from pydantic import model_validator
 
-    @field_validator('metadata')
-    @classmethod
-    def validate_metadata_length(cls, v, values):
-        texts = values.get('texts')
-        if texts is not None and len(v) != len(texts):
-            raise ValueError("The number of metadata entries must match the number of texts")
-        return v
+    @model_validator(mode='after')
+    def check_lengths_match(self) -> 'VectorStoreAddRequest':
+        texts_len = len(self.texts)
+        vectors_len = len(self.vectors)
+        metadata_len = len(self.metadata)
+        if not (texts_len == vectors_len == metadata_len):
+            raise ValueError(f"Lengths of texts ({texts_len}), vectors ({vectors_len}), and metadata ({metadata_len}) must all match.")
+        return self

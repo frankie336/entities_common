@@ -26,8 +26,8 @@ from entities_common.schemas.users import (
     UserBase, UserCreate, UserRead, UserUpdate, UserDeleteResponse
 )
 from entities_common.schemas.vectors import (
-    VectorStoreCreate, VectorStoreRead, VectorStoreStatus, VectorStoreUpdate, VectorStoreList,
-    EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult, VectorStoreAddRequest
+    VectorStoreCreate, VectorStoreRead, VectorStoreUpdate, VectorStoreList,
+    EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult, VectorStoreAddRequest, VectorStoreFileRead
 )
 
 from entities_common.schemas.keys import APIKeyRead, APIKeyCreate
@@ -108,7 +108,7 @@ class ValidationInterface:
     # Vector Store schemas
     VectorStoreCreate  = VectorStoreCreate
     VectorStoreRead  = VectorStoreRead
-    VectorStoreStatus = VectorStoreStatus
+    VectorStoreFileRead = VectorStoreFileRead
     VectorStoreUpdate = VectorStoreUpdate
     VectorStoreList = VectorStoreList
     EnhancedVectorSearchResult = EnhancedVectorSearchResult

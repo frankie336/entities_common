@@ -1,9 +1,11 @@
-from pathlib import Path
 import os
-from dotenv import load_dotenv
-from entities_common import UtilsInterface as utils
+from pathlib import Path
 
-log = utils.LoggingUtility()
+from dotenv import load_dotenv
+
+from entities_common.utilities.logging_service import LoggingUtility
+
+log = LoggingUtility()
 
 
 def is_inside_container() -> bool:

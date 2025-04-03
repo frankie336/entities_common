@@ -30,7 +30,7 @@ from entities_common.schemas.vectors import (
     EnhancedVectorSearchResult, SearchExplanation, VectorStoreSearchResult, VectorStoreAddRequest, VectorStoreFileRead
 )
 
-from entities_common.schemas.keys import APIKeyRead
+from entities_common.schemas.keys import APIKeyRead, APIKeyCreate
 
 class ValidationInterface:
     """
@@ -118,3 +118,4 @@ class ValidationInterface:
 
     # Key
     APIKeyRead = APIKeyRead
+    APIKeyCreate = APIKeyCreate

@@ -451,7 +451,6 @@ class VectorStoreClient:
         response = await self._request_with_retries("GET", f"/v1/vector-stores/{vector_store_id}")
         return ValidationInterface.VectorStoreRead.model_validate(response)
 
-    s
     def retrieve_vector_store_sync(self, vector_store_id: str) -> ValidationInterface.VectorStoreRead:
         """Synchronous version of retrieve_vector_store."""
         logging_utility.info("Retrieving vector store %s via sync API", vector_store_id)

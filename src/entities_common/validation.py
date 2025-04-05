@@ -67,7 +67,6 @@ from entities_common.schemas.vectors import (
     VectorStoreFileRead,
 )
 
-from entities_common.schemas.keys import APIKeyRead, APIKeyCreate
 
 
 class ValidationInterface:

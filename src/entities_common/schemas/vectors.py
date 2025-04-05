@@ -31,7 +31,8 @@ class StatusEnum(str, Enum):
 
 class VectorStoreCreate(BaseModel):
     shared_id: str = Field(
-        ..., description="Client-generated unique ID used as DB primary key and Qdrant collection name"
+        ..., description="Client-generated unique ID used as DB primary key and Qdrant collection "
+                         "name"
     )
     name: str = Field(
         ..., min_length=3, max_length=128, description="Human-friendly store name"

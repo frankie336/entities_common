@@ -1,8 +1,7 @@
-from entities_common.entities_internal import EntitiesInternalInterface
 from entities_common.validation import  ValidationInterface
 from entities_common.utils import UtilsInterface
 
-__all__ = ['EntitiesInternalInterface',
+__all__ = [
            'ValidationInterface',
            'UtilsInterface',
 

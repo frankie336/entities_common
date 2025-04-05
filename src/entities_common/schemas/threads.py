@@ -2,12 +2,14 @@ from typing import List, Dict, Any, Optional
 
 from pydantic import BaseModel, Field, ConfigDict
 
-# Assuming UserBase is defined in entities.schemas.users; adjust import as needed
+# Adjust this import path if needed
 from entities_common.schemas.users import UserBase
 
 
 class ThreadCreate(BaseModel):
-    participant_ids: List[str] = Field(..., description="List of participant IDs")
+    participant_ids: List[str] = Field(
+        ..., description="List of participant IDs"
+    )
     meta_data: Optional[Dict[str, Any]] = None
 
 

@@ -1,23 +1,19 @@
 # entities_common/schemas/tools.py
-from typing import Optional, Dict, Any, List
-from pydantic import BaseModel, Field, ConfigDict, validator
+from typing import Optional, List
 
-#------------------------------------------------------
-# Special case validator or @OpenAI style function calls.
-# Create the data type/
-#
-#------------------------------------------------------
+from pydantic import BaseModel, ConfigDict, validator
+
+
 class ToolFunction(BaseModel):
     function: Optional[dict]  # Handle the nested 'function' structure
 
-    @validator('function', pre=True, always=True)
+    @validator("function", pre=True, always=True)
     def parse_function(cls, v):
-        if isinstance(v, dict) and 'name' in v and 'description' in v:
+        if isinstance(v, dict) and "name" in v and "description" in v:
             return v  # Valid structure
-        elif isinstance(v, dict) and 'function' in v:
-            return v['function']  # Extract nested function dict
+        elif isinstance(v, dict) and "function" in v:
+            return v["function"]  # Extract nested function dict
         raise ValueError("Invalid function format")
-
 
 
 class Tool(BaseModel):
@@ -34,17 +30,17 @@ class ToolCreate(BaseModel):
     type: str
     function: Optional[ToolFunction]
 
-    @validator('function', pre=True, always=True)
+    @validator("function", pre=True, always=True)
     def parse_function(cls, v):
         if isinstance(v, ToolFunction):
             return v
-        if isinstance(v, dict) and 'function' in v:
-            return ToolFunction(function=v['function'])
+        if isinstance(v, dict) and "function" in v:
+            return ToolFunction(function=v["function"])
         return ToolFunction(**v)
 
 
 class ToolRead(Tool):
-    @validator('function', pre=True, always=True)
+    @validator("function", pre=True, always=True)
     def parse_function(cls, v):
         if isinstance(v, dict):
             return ToolFunction(**v)
@@ -66,4 +62,3 @@ class ToolList(BaseModel):
     tools: List[ToolRead]
 
     model_config = ConfigDict(from_attributes=True)
-

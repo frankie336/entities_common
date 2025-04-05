@@ -5,9 +5,12 @@ import string
 class IdentifierService:
     @staticmethod
     def generate_id(prefix: str, length: int = 22) -> str:
-        """Generate a prefixed ID with a specified length of random alphanumeric characters."""
+        """Generate a prefixed ID with a specified length of random
+        alphanumeric characters."""
         characters = string.ascii_letters + string.digits
-        random_string = ''.join(random.choice(characters) for _ in range(length))
+        random_string = "".join(
+            random.choice(characters) for _ in range(length)
+        )
         return f"{prefix}_{random_string}"
 
     @staticmethod
@@ -78,4 +81,3 @@ class IdentifierService:
     def generate_key_id() -> str:
         """Generate valid UUID4 string for Qdrant compatibility"""
         return IdentifierService.generate_id("key")
-

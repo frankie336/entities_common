@@ -13,6 +13,7 @@ class MessageRole(str, Enum):
     SYSTEM = "system"
     TOOL = "tool"
 
+
 # Add role validation to MessageCreate
 
 
@@ -26,14 +27,16 @@ class MessageCreate(BaseModel):
     meta_data: Optional[Dict[str, Any]] = None
     is_last_chunk: bool = False
 
-    @validator('role', pre=True)
+    @validator("role", pre=True)
     def validate_role(cls, v):
         valid_roles = {"platform", "assistant", "user", "system", "tool"}
         if isinstance(v, str):
             v = v.lower()
             if v in valid_roles:
                 return v
-        raise ValueError(f"Invalid role: {v}. Must be one of {list(valid_roles)}")
+        raise ValueError(
+            f"Invalid role: {v}. Must be one of {list(valid_roles)}"
+        )
 
     model_config = ConfigDict(
         json_schema_extra={
@@ -42,7 +45,7 @@ class MessageCreate(BaseModel):
                 "thread_id": "example_thread_id",
                 "assistant_id": "example_assistant_id",
                 "meta_data": {"key": "value"},
-                "role": "user"
+                "role": "user",
             }
         }
     )
@@ -53,12 +56,9 @@ class ToolMessageCreate(BaseModel):
 
     model_config = ConfigDict(
         json_schema_extra={
-            "example": {
-                "content": "This is the content of the tool message."
-            }
+            "example": {"content": "This is the content of the tool message."}
         }
     )
-
 
 
 class MessageRead(BaseModel):
@@ -88,7 +88,7 @@ class MessageUpdate(BaseModel):
     status: Optional[str]
     role: Optional[str]  # Now a plain string instead of Enum
 
-    @validator('role', pre=True)
+    @validator("role", pre=True)
     def validate_role(cls, v):
         if v is None:
             return v
@@ -96,6 +96,8 @@ class MessageUpdate(BaseModel):
         v = v.lower()
         if v in valid_roles:
             return v
-        raise ValueError(f"Invalid role: {v}. Must be one of {list(valid_roles)}")
+        raise ValueError(
+            f"Invalid role: {v}. Must be one of {list(valid_roles)}"
+        )
 
     model_config = ConfigDict(from_attributes=True)

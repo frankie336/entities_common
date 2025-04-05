@@ -34,11 +34,19 @@ class MessageCreate(BaseModel):
             v = v.lower()
             if v in valid_roles:
                 return v
-        raise ValueError(f"Invalid role: {v}. Must be one of {list(valid_roles)}")
+        raise ValueError(
+            f"Invalid role: {v}. Must be one of {list(valid_roles)}"
+        )
 
     model_config = ConfigDict(
         json_schema_extra={
-            "example": {"content": "Hello, this is a test message.", "thread_id": "example_thread_id", "assistant_id": "example_assistant_id", "meta_data": {"key": "value"}, "role": "user"}
+            "example": {
+                "content": "Hello, this is a test message.",
+                "thread_id": "example_thread_id",
+                "assistant_id": "example_assistant_id",
+                "meta_data": {"key": "value"},
+                "role": "user",
+            }
         }
     )
 
@@ -46,7 +54,11 @@ class MessageCreate(BaseModel):
 class ToolMessageCreate(BaseModel):
     content: str
 
-    model_config = ConfigDict(json_schema_extra={"example": {"content": "This is the content of the tool message."}})
+    model_config = ConfigDict(
+        json_schema_extra={
+            "example": {"content": "This is the content of the tool message."}
+        }
+    )
 
 
 class MessageRead(BaseModel):
@@ -84,6 +96,8 @@ class MessageUpdate(BaseModel):
         v = v.lower()
         if v in valid_roles:
             return v
-        raise ValueError(f"Invalid role: {v}. Must be one of {list(valid_roles)}")
+        raise ValueError(
+            f"Invalid role: {v}. Must be one of {list(valid_roles)}"
+        )
 
     model_config = ConfigDict(from_attributes=True)

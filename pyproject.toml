@@ -8,36 +8,45 @@ version = "0.1.0"
 description = "Common shared custom packages"
 readme = "README.md"
 authors = [
-  { name="Francis N.", email="francis.neequaye@projectdavid.co.uk" }
+  { name = "Francis N.", email = "francis.neequaye@projectdavid.co.uk" }
 ]
 license = { text = "MIT" }
 keywords = ["shared", "internal", "utilities", "schemas"]
 requires-python = ">=3.8"
 
-
 dependencies = [
   "pydantic",
-  "typing_extensions",
-
+  "typing_extensions"
 ]
 
 [project.optional-dependencies]
-dev = ["pytest"]
+dev = [
+  "pytest"
+]
 
 [project.urls]
 Homepage = "https://github.com/frankie336/entities_common"
 
+[project.scripts]
+entities_common-api = "entities_common.main:main"
+
 [tool.setuptools]
-package-dir = {"" = "src"}
+package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
 include = ["entities_common", "entities_common.*"]
 
 [tool.setuptools.dynamic]
-# Optional if you want version from a module
-# version = {attr = "entities_common.__version__"}
+# If you want dynamic versioning from a module, uncomment below
+# version = { attr = "entities_common.__version__" }
 
-[project.scripts]
-entities_common-api = "entities_common.main:main"
+[tool.black]
+line-length = 79
+target-version = ["py38"]
+skip-string-normalization = true
 
+[tool.flake8]
+max-line-length = 79
+extend-ignore = ["E203"]
+exclude = [".venv", ".git", "__pycache__", "build", "dist"]

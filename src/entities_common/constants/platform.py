@@ -2,7 +2,12 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-PLATFORM_TOOLS = ["code_interpreter", "web_search", "vector_store_search", "computer"]
+PLATFORM_TOOLS = [
+    "code_interpreter",
+    "web_search",
+    "vector_store_search",
+    "computer",
+]
 
 TOOLS_ID_MAP = {
     "code_interpreter": "tool_79YkQEz5cDwpJjnR7oJ80D",
@@ -13,9 +18,14 @@ TOOLS_ID_MAP = {
 
 SPECIAL_CASE_TOOL_HANDLING = ["computer", "code_interpreter"]
 
-ERROR_NO_CONTENT = "ERROR: The Tool has failed to return any content. The current stage of the workflow is tool submission. " "Please inform the user."
+ERROR_NO_CONTENT = (
+    "ERROR: The Tool has failed to return any content. The current stage of the workflow is tool submission. "
+    "Please inform the user."
+)
 
-DIRECT_DATABASE_URL = "mysql+pymysql://ollama:3e4Qv5uo2Cg31zC1@localhost:3307/cosmic_catalyst"
+DIRECT_DATABASE_URL = (
+    "mysql+pymysql://ollama:3e4Qv5uo2Cg31zC1@localhost:3307/cosmic_catalyst"
+)
 
 # ------------------------------------------------
 # Vendors sometimes have clashing model names.

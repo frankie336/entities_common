@@ -7,7 +7,9 @@ from entities_common.schemas.users import UserBase
 
 
 class ThreadCreate(BaseModel):
-    participant_ids: List[str] = Field(..., description="List of participant IDs")
+    participant_ids: List[str] = Field(
+        ..., description="List of participant IDs"
+    )
     meta_data: Optional[Dict[str, Any]] = None
 
 

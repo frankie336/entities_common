@@ -8,4 +8,6 @@ class APIKeyRead(BaseModel):
     name: str = Field(..., description="Human-readable name of the key")
     created_at: int = Field(..., description="Unix timestamp of key creation")
     revoked: bool = Field(..., description="Whether the key has been revoked")
-    revoked_at: Optional[int] = Field(None, description="Unix timestamp of revocation (if revoked)")
+    revoked_at: Optional[int] = Field(
+        None, description="Unix timestamp of revocation (if revoked)"
+    )

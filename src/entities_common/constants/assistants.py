@@ -1,7 +1,12 @@
 # entities/assistant.py
 
 # Global constants with enhanced validation
-PLATFORM_TOOLS = ["code_interpreter", "web_search", "vector_store_search", "computer"]
+PLATFORM_TOOLS = [
+    "code_interpreter",
+    "web_search",
+    "vector_store_search",
+    "computer",
+]
 
 API_TIMEOUT = 30
 DEFAULT_MODEL = "llama3.1"
@@ -16,7 +21,10 @@ BASE_TOOLS = [
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "code": {"type": "string", "description": "Python code to execute"},
+                    "code": {
+                        "type": "string",
+                        "description": "Python code to execute",
+                    },
                 },
                 "required": ["code"],
             },
@@ -30,7 +38,14 @@ BASE_TOOLS = [
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "query": {"type": "string", "description": "Search terms using advanced operators", "examples": ["filetype:pdf cybersecurity report 2023", "site:github.com AI framework"]}
+                    "query": {
+                        "type": "string",
+                        "description": "Search terms using advanced operators",
+                        "examples": [
+                            "filetype:pdf cybersecurity report 2023",
+                            "site:github.com AI framework",
+                        ],
+                    }
                 },
                 "required": ["query"],
             },
@@ -53,7 +68,11 @@ BASE_TOOLS = [
                     "commands": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": ("A list of Linux computer commands to execute sequentially," " " "as if you were typing directly into your personal computer's terminal."),
+                        "description": (
+                            "A list of Linux computer commands to execute sequentially,"
+                            " "
+                            "as if you were typing directly into your personal computer's terminal."
+                        ),
                     }
                 },
                 "required": ["commands"],
@@ -68,15 +87,50 @@ BASE_TOOLS = [
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "query": {"type": "string", "description": "Natural language search query"},
-                    "search_type": {"type": "string", "enum": ["basic_semantic", "filtered", "complex_filters", "temporal", "explainable", "hybrid"], "description": "Search methodology"},
-                    "source_type": {"type": "string", "enum": ["chat", "documents", "memory"], "description": "Data domain to search"},
+                    "query": {
+                        "type": "string",
+                        "description": "Natural language search query",
+                    },
+                    "search_type": {
+                        "type": "string",
+                        "enum": [
+                            "basic_semantic",
+                            "filtered",
+                            "complex_filters",
+                            "temporal",
+                            "explainable",
+                            "hybrid",
+                        ],
+                        "description": "Search methodology",
+                    },
+                    "source_type": {
+                        "type": "string",
+                        "enum": ["chat", "documents", "memory"],
+                        "description": "Data domain to search",
+                    },
                     "filters": {
                         "type": "object",
                         "description": "Qdrant-compatible filter syntax",
-                        "examples": {"temporal": {"created_at": {"$gte": 1672531200, "$lte": 1704067200}}, "boolean": {"$or": [{"status": "active"}, {"priority": {"$gte": 7}}]}},
+                        "examples": {
+                            "temporal": {
+                                "created_at": {
+                                    "$gte": 1672531200,
+                                    "$lte": 1704067200,
+                                }
+                            },
+                            "boolean": {
+                                "$or": [
+                                    {"status": "active"},
+                                    {"priority": {"$gte": 7}},
+                                ]
+                            },
+                        },
                     },
-                    "score_boosts": {"type": "object", "description": "Field-specific score multipliers", "examples": {"priority": 1.5, "relevance": 2.0}},
+                    "score_boosts": {
+                        "type": "object",
+                        "description": "Field-specific score multipliers",
+                        "examples": {"priority": 1.5, "relevance": 2.0},
+                    },
                 },
                 "required": ["query", "search_type", "source_type"],
             },
@@ -144,4 +198,6 @@ WEB_SEARCH_PRESENTATION_FOLLOW_UP_INSTRUCTIONS = (
     "---\n"
 )
 
-JSON_VALIDATION_PATTERN = r'\{\s*"name"\s*:\s*".+?"\s*,\s*"arguments"\s*:\s*\{.*?\}\s*\}'
+JSON_VALIDATION_PATTERN = (
+    r'\{\s*"name"\s*:\s*".+?"\s*,\s*"arguments"\s*:\s*\{.*?\}\s*\}'
+)

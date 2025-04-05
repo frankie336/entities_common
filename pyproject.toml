@@ -21,8 +21,10 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-  "pytest"
+  "pytest",
+  "fastapi"
 ]
+
 
 [project.urls]
 Homepage = "https://github.com/frankie336/entities_common"

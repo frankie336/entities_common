@@ -156,4 +156,4 @@ class ValidationInterface:
 
     # Key
     APIKeyRead = APIKeyRead
-    APIKeyCreate = APIKeyCreate
+

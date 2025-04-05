@@ -1,11 +1,10 @@
-
-# .github/workflows/test.yml
 name: Test
 
 on:
   push:
-    branches: [main, master]
+    branches: ["**"]
   pull_request:
+    branches: ["**"]
 
 jobs:
   test:
@@ -29,4 +28,3 @@ jobs:
 
       - name: Run tests
         run: pytest tests
-

@@ -3,6 +3,7 @@ from pydantic import BaseModel, Field
 
 from entities_common.schemas.vectors import VectorStoreRead
 
+
 class AssistantCreate(BaseModel):
     id: Optional[str] = Field(
         None, description="Unique identifier for the assistant. Optional on creation."

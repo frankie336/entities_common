@@ -78,4 +78,3 @@ class IdentifierService:
     def generate_key_id() -> str:
         """Generate valid UUID4 string for Qdrant compatibility"""
         return IdentifierService.generate_id("key")
-

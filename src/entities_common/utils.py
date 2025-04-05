@@ -3,6 +3,7 @@
 from entities_common.utilities.identifier_service import IdentifierService
 from entities_common.utilities.logging_service import LoggingUtility
 
+
 class UtilsInterface:
     """
     Provides access to utility services and helpers used across the system.
@@ -14,4 +15,3 @@ class UtilsInterface:
     """
     IdentifierService = IdentifierService
     LoggingUtility = LoggingUtility
-

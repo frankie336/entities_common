@@ -1,12 +1,9 @@
 # entities_common/schemas/tools.py
-from typing import Optional, Dict, Any, List
-from pydantic import BaseModel, Field, ConfigDict, validator
+from typing import Optional, List
 
-#------------------------------------------------------
-# Special case validator or @OpenAI style function calls.
-# Create the data type/
-#
-#------------------------------------------------------
+from pydantic import BaseModel, ConfigDict, validator
+
+
 class ToolFunction(BaseModel):
     function: Optional[dict]  # Handle the nested 'function' structure
 
@@ -17,7 +14,6 @@ class ToolFunction(BaseModel):
         elif isinstance(v, dict) and 'function' in v:
             return v['function']  # Extract nested function dict
         raise ValueError("Invalid function format")
-
 
 
 class Tool(BaseModel):
@@ -66,4 +62,3 @@ class ToolList(BaseModel):
     tools: List[ToolRead]
 
     model_config = ConfigDict(from_attributes=True)
-

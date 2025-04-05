@@ -29,6 +29,7 @@ class ActionStatus(str, Enum):
     cancelled = "cancelled"
     retrying = "retrying"
 
+
 class ActionCreate(BaseModel):
     id: Optional[str] = None
     tool_name: Optional[str] = None
@@ -73,6 +74,7 @@ class ActionRead(BaseModel):
         extra='forbid',
         validate_assignment=True
     )
+
 
 class ActionList(BaseModel):
     actions: List[ActionRead]

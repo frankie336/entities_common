@@ -3,10 +3,12 @@ from typing import Optional
 from fastapi import Form
 from pydantic import BaseModel, validator
 
+
 class FileUploadRequest(BaseModel):
     """Schema for file upload request data."""
     purpose: str = Form(...)
     user_id: str = Form(...)
+
 
 class FileResponse(BaseModel):
     """Schema for file response data."""

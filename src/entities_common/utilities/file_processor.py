@@ -196,7 +196,7 @@ class FileProcessor:
                 text_buffer = []
                 line_numbers = []
 
-                for line in sorted(lines, key=lambda l: l['top']):
+                for line in sorted(lines, key=lambda lined: lined['top']):
                     line_text = line['text'].strip()
                     if line_text:
                         text_buffer.append(line_text)
@@ -348,7 +348,7 @@ class FileProcessor:
             return None
         try:
             return url.split('//')[-1].split('/')[0].lower()
-        except:
+        except Exception:
             return None
 
     def process_csv_dynamic(self, file_path: Union[str, Path], text_field: str = "description") -> Dict[str, Any]:

@@ -17,8 +17,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8
+          pip install flake8 black
 
-      - name: Run flake8
+      - name: Run Black (autoformatter)
         run: |
-          flake8 src/entities_common
+          black src/ --check --line-length 100
+
+      - name: Run flake8 (style linter)
+        run: |
+          flake8 src/

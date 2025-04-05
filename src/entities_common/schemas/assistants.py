@@ -1,14 +1,13 @@
 from typing import List, Dict, Any, Optional
-
 from pydantic import BaseModel, Field
-
 from entities_common.schemas.vectors import VectorStoreRead
 
 
 class AssistantCreate(BaseModel):
     id: Optional[str] = Field(
         None,
-        description="Unique identifier for the assistant. Optional on creation.",
+        description="Unique identifier for the assistant. Optional on "
+                    "creation.",
     )
     name: str = Field(
         ..., description="Name of the assistant", example="ChatGPT Assistant"
@@ -28,8 +27,10 @@ class AssistantCreate(BaseModel):
     )
     tools: Optional[List[dict]] = Field(
         None,
-        description="A list of tools available to the assistant, each defined "
-        "as a dictionary",
+        description=(
+            "A list of tools available to the assistant, "
+            "each defined as a dictionary"
+        ),
     )
     meta_data: Optional[dict] = Field(
         None, description="Additional metadata for the assistant"
@@ -98,7 +99,9 @@ class AssistantUpdate(BaseModel):
     meta_data: Optional[Dict[str, Any]] = Field(
         None, description="Updated metadata for the assistant"
     )
-    top_p: Optional[float] = Field(None, description="Updated top-p parameter")
+    top_p: Optional[float] = Field(
+        None, description="Updated top-p parameter"
+    )
     temperature: Optional[float] = Field(
         None, description="Updated temperature parameter"
     )

@@ -93,7 +93,7 @@ class VectorStoreFileCreate(BaseModel):
                                                              "in metadata")
     status: Optional[StatusEnum] = Field(None, description="Initial processing "
                                                            "state")
-    metadata: Optional[Dict[str, Any]] = Field(None, description="Custom metadata")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="Metadata dict")
 
 
 class VectorStoreFileRead(BaseModel):

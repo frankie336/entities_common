@@ -106,8 +106,7 @@ class VectorStoreFileRead(BaseModel):
     status: StatusEnum = Field(..., description="Current processing state")
     error_message: Optional[str] = Field(None, description="Failure "
                                                            "reason if failed")
-    metadata: Optional[Dict[str, Any]] = Field(None, description=
-    "Metadata dict")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="Metadata dict")
 
     model_config = ConfigDict(from_attributes=True)
 

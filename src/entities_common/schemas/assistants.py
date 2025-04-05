@@ -7,10 +7,10 @@ from entities_common.schemas.vectors import VectorStoreRead
 class AssistantCreate(BaseModel):
     id: Optional[str] = Field(None, description="Unique identifier for the assistant. Optional on creation.")
     name: str = Field(..., description="Name of the assistant", example="ChatGPT Assistant")
-    description: str = Field("", description="A brief description of the assistant", example="An assistant for handling tasks")
+    description: str = Field("", description="A brief description of the assistant", example="An assistant " "for handling tasks")
     model: str = Field(..., description="Model used by the assistant", example="gpt-4")
     instructions: str = Field("", description="Special instructions or guidelines for the assistant", example="Be friendly and concise")
-    tools: Optional[List[dict]] = Field(None, description="A list of tools available to the assistant, each defined as a dictionary")
+    tools: Optional[List[dict]] = Field(None, description="A list of tools available to the assistant, " "each defined as a dictionary")
     meta_data: Optional[dict] = Field(None, description="Additional metadata for the assistant")
     top_p: float = Field(1.0, description="Top-p sampling parameter for text generation")
     temperature: float = Field(1.0, description="Temperature parameter for text generation")

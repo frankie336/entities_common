@@ -29,7 +29,7 @@ class StatusEnum(str, Enum):
 
 
 class VectorStoreCreate(BaseModel):
-    shared_id: str = Field(..., description="Client-generated unique ID (e.g., vs_...). Used for DB primary key and Qdrant collection name.")
+    shared_id: str = Field(..., description="Client-generated unique ID (e.g., vs_...). Used for DB primary key and " "Qdrant collection name.")
     name: str = Field(..., min_length=3, max_length=128, description="Human-friendly store name")
     user_id: str = Field(..., min_length=3, description="Owner user ID (must exist in the database)")
     vector_size: int = Field(..., gt=0, description="Dimensionality of the vectors (positive integer)")
@@ -86,10 +86,10 @@ class VectorStoreFileCreate(BaseModel):
     # Added file_id - Client must provide this unique ID (e.g., vsf_...)
     file_id: str = Field(..., description="Client-generated unique ID for this file record (e.g., vsf_...).")
     file_name: str = Field(..., max_length=256, description="Original name of the file.")
-    file_path: str = Field(..., max_length=1024, description="Path identifier used in Qdrant metadata (e.g., 'source' field).")
+    file_path: str = Field(..., max_length=1024, description="Path identifier used in Qdrant metadata " "(e.g., 'source' field).")
     # Added optional status
-    status: Optional[StatusEnum] = Field(None, description="Initial status of the file (e.g., completed, queued). Defaults to 'completed' if not provided by API.")
-    metadata: Optional[Dict[str, Any]] = Field(None, description="Optional user-defined metadata associated with the file.")
+    status: Optional[StatusEnum] = Field(None, description="Initial status of the file (e.g., completed, queued). " "Defaults to 'completed' if not provided by API.")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="Optional user-defined metadata associated with the " "file.")
 
 
 class VectorStoreFileRead(BaseModel):
@@ -98,7 +98,7 @@ class VectorStoreFileRead(BaseModel):
     vector_store_id: str = Field(..., description="ID of the vector store this file belongs to", example="vs_abc123")
     file_name: str = Field(..., description="Original name of the file", example="document.pdf")
     file_path: str = Field(..., description="Path identifier used in Qdrant metadata", example="s3://bucket/document.pdf")
-    processed_at: Optional[int] = Field(None, description="Unix timestamp when the file processing state last changed (completed/failed)", example=1641081600)
+    processed_at: Optional[int] = Field(None, description="Unix timestamp when the file " "processing state last changed " "(completed/failed)", example=1641081600)
     status: StatusEnum = Field(..., description="Current status of the file processing", example=StatusEnum.completed)
     error_message: Optional[str] = Field(None, description="Error details if the status is 'failed'")
     metadata: Optional[Dict[str, Any]] = Field(None, description="User-defined metadata associated with the file")
@@ -140,10 +140,10 @@ class VectorStoreUnlinkAssistant(BaseModel):
 # ---------------------------------------------------------------------
 class VectorStoreSearchResult(BaseModel):
     text: str = Field(..., description="Retrieved text chunk")
-    metadata: Optional[dict] = Field(None, description="Metadata associated with the chunk " "(includes original file info, custom meta, " "and potentially score/explanation)")
+    metadata: Optional[dict] = Field(None, description="Metadata associated with the chunk " "(includes original file info, custom meta, " "" "and potentially score/explanation)")
     score: float = Field(..., description="Similarity score from the vector search")
     vector_id: Optional[str] = Field(None, description="ID of the specific vector " "point in Qdrant", example="uuid-...")
-    store_id: Optional[str] = Field(None, description="ID of the vector store where the result " "was found", example="vs_abc123")
+    store_id: Optional[str] = Field(None, description="ID of the vector store where the result " "" "was found", example="vs_abc123")
     retrieved_at: int = Field(default_factory=lambda: int(time.time()), description="Unix timestamp when this result was retrieved")
 
 
@@ -178,5 +178,5 @@ class VectorStoreAddRequest(BaseModel):
         vectors_len = len(self.vectors)
         metadata_len = len(self.metadata)
         if not (texts_len == vectors_len == metadata_len):
-            raise ValueError(f"Lengths of texts ({texts_len}), vectors ({vectors_len}), and metadata ({metadata_len}) must all match.")
+            raise ValueError(f"Lengths of texts ({texts_len}), vectors ({vectors_len}), " f"and metadata ({metadata_len}) must all match.")
         return self

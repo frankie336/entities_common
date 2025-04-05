@@ -30,9 +30,7 @@ BASE_TOOLS = [
             "parameters": {
                 "type": "object",
                 "properties": {
-                    "query": {"type": "string", "description":
-                        "Search terms using advanced operators",
-                              "examples": ["filetype:pdf cybersecurity report 2023", "site:github.com AI framework"]}
+                    "query": {"type": "string", "description": "Search terms using advanced operators", "examples": ["filetype:pdf cybersecurity report 2023", "site:github.com AI framework"]}
                 },
                 "required": ["query"],
             },
@@ -55,8 +53,7 @@ BASE_TOOLS = [
                     "commands": {
                         "type": "array",
                         "items": {"type": "string"},
-                        "description": ("A list of Linux computer commands to execute sequentially,"
-                                        " " "as if you were typing directly into your personal computer's terminal."),
+                        "description": ("A list of Linux computer commands to execute sequentially," " " "as if you were typing directly into your personal computer's terminal."),
                     }
                 },
                 "required": ["commands"],
@@ -72,20 +69,14 @@ BASE_TOOLS = [
                 "type": "object",
                 "properties": {
                     "query": {"type": "string", "description": "Natural language search query"},
-                    "search_type": {"type": "string", "enum": ["basic_semantic", "filtered",
-                                                               "complex_filters", "temporal",
-                                                               "explainable", "hybrid"],
-                                    "description": "Search methodology"},
-                    "source_type": {"type": "string", "enum": ["chat", "documents", "memory"],
-                                    "description": "Data domain to search"},
+                    "search_type": {"type": "string", "enum": ["basic_semantic", "filtered", "complex_filters", "temporal", "explainable", "hybrid"], "description": "Search methodology"},
+                    "source_type": {"type": "string", "enum": ["chat", "documents", "memory"], "description": "Data domain to search"},
                     "filters": {
                         "type": "object",
                         "description": "Qdrant-compatible filter syntax",
-                        "examples": {"temporal": {"created_at": {"$gte": 1672531200, "$lte": 1704067200}},
-                                     "boolean": {"$or": [{"status": "active"}, {"priority": {"$gte": 7}}]}},
+                        "examples": {"temporal": {"created_at": {"$gte": 1672531200, "$lte": 1704067200}}, "boolean": {"$or": [{"status": "active"}, {"priority": {"$gte": 7}}]}},
                     },
-                    "score_boosts": {"type": "object", "description": "Field-specific score multipliers",
-                                     "examples": {"priority": 1.5, "relevance": 2.0}},
+                    "score_boosts": {"type": "object", "description": "Field-specific score multipliers", "examples": {"priority": 1.5, "relevance": 2.0}},
                 },
                 "required": ["query", "search_type", "source_type"],
             },

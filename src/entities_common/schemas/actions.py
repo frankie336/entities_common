@@ -88,7 +88,7 @@ class ActionRead(BaseModel):
                 "function_args": {"param1": "value1"},
                 "result": {"output": "result data"},
             }
-        }
+        },
     )
 
 

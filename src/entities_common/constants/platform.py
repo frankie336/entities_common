@@ -23,9 +23,7 @@ ERROR_NO_CONTENT = (
     "the workflow is tool submission. Please inform the user."
 )
 
-DIRECT_DATABASE_URL = (
-    "mysql+pymysql://ollama:3e4Qv5uo2Cg31zC1@localhost:3307/cosmic_catalyst"
-)
+DIRECT_DATABASE_URL = "mysql+pymysql://ollama:3e4Qv5uo2Cg31zC1@localhost:3307/cosmic_catalyst"
 
 # ------------------------------------------------
 # Vendors sometimes have clashing model names.
@@ -48,10 +46,7 @@ SUPPORTED_MIME_TYPES = {
     ".cs": "text/x-csharp",
     ".css": "text/css",
     ".doc": "application/msword",
-    ".docx": (
-        "application/vnd.openxmlformats-officedocument.wordprocessingml."
-        "document"
-    ),
+    ".docx": ("application/vnd.openxmlformats-officedocument.wordprocessingml." "document"),
     ".go": "text/x-golang",
     ".html": "text/html",
     ".java": "text/x-java",
@@ -60,10 +55,7 @@ SUPPORTED_MIME_TYPES = {
     ".md": "text/markdown",
     ".pdf": "application/pdf",
     ".php": "text/x-php",
-    ".pptx": (
-        "application/vnd.openxmlformats-officedocument.presentationml."
-        "presentation"
-    ),
+    ".pptx": ("application/vnd.openxmlformats-officedocument.presentationml." "presentation"),
     ".py": "text/x-python",
     ".pyx": "text/x-script.python",
     ".rb": "text/x-ruby",

@@ -49,9 +49,7 @@ class ToolMessageCreate(BaseModel):
     content: str
 
     model_config = ConfigDict(
-        json_schema_extra={
-            "example": {"content": "This is the content of the tool message."}
-        }
+        json_schema_extra={"example": {"content": "This is the content of the tool message."}}
     )
 
 

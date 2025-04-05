@@ -7,9 +7,7 @@ from entities_common.schemas.users import UserBase
 
 
 class ThreadCreate(BaseModel):
-    participant_ids: List[str] = Field(
-        ..., description="List of participant IDs"
-    )
+    participant_ids: List[str] = Field(..., description="List of participant IDs")
     meta_data: Optional[Dict[str, Any]] = Field(
         default=None, description="Optional metadata for thread"
     )
@@ -29,9 +27,7 @@ class ThreadUpdate(BaseModel):
     participant_ids: Optional[List[str]] = Field(
         default=None, description="Updated list of participant IDs"
     )
-    meta_data: Optional[Dict[str, Any]] = Field(
-        default=None, description="Updated metadata"
-    )
+    meta_data: Optional[Dict[str, Any]] = Field(default=None, description="Updated metadata")
 
     model_config = ConfigDict(from_attributes=True)
 

@@ -11,8 +11,7 @@ class LoggingUtility:
         # Configure formatter based on caller info requirement
         log_format = "%(asctime)s - %(levelname)s - %(message)s"
         if self.include_caller_info:
-            log_format = ("%(asctime)s - %(levelname)s - "
-                          "%(pathname)s:%(lineno)d - %(message)s")
+            log_format = "%(asctime)s - %(levelname)s - " "%(pathname)s:%(lineno)d - %(message)s"
 
         self.formatter = logging.Formatter(log_format)
 
@@ -45,18 +44,14 @@ class LoggingUtility:
         self.logger.info(message, *args, **{**self._get_log_args(), **kwargs})
 
     def warning(self, message, *args, **kwargs):
-        self.logger.warning(
-            message, *args, **{**self._get_log_args(), **kwargs}
-        )
+        self.logger.warning(message, *args, **{**self._get_log_args(), **kwargs})
 
     def error(self, message, *args, **kwargs):
         self.logger.error(message, *args, **{**self._get_log_args(), **kwargs})
         self.intercept_error_log(message, *args, **kwargs)
 
     def critical(self, message, *args, **kwargs):
-        self.logger.critical(
-            message, *args, **{**self._get_log_args(), **kwargs}
-        )
+        self.logger.critical(message, *args, **{**self._get_log_args(), **kwargs})
         self.intercept_critical_log(message, *args, **kwargs)
 
     def exception(self, message, *args, **kwargs):

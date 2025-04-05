@@ -69,8 +69,7 @@ BASE_TOOLS = [
                         "type": "array",
                         "items": {"type": "string"},
                         "description": (
-                            "A list of Linux computer commands to execute sequentially,"
-                            " "
+                            "A list of Linux computer commands to execute sequentially," " "
                             "as if you were typing directly into your personal computer's terminal."
                         ),
                     }

@@ -13,6 +13,7 @@ class MessageRole(str, Enum):
     SYSTEM = "system"
     TOOL = "tool"
 
+
 # Add role validation to MessageCreate
 
 
@@ -26,7 +27,7 @@ class MessageCreate(BaseModel):
     meta_data: Optional[Dict[str, Any]] = None
     is_last_chunk: bool = False
 
-    @validator('role', pre=True)
+    @validator("role", pre=True)
     def validate_role(cls, v):
         valid_roles = {"platform", "assistant", "user", "system", "tool"}
         if isinstance(v, str):
@@ -37,13 +38,7 @@ class MessageCreate(BaseModel):
 
     model_config = ConfigDict(
         json_schema_extra={
-            "example": {
-                "content": "Hello, this is a test message.",
-                "thread_id": "example_thread_id",
-                "assistant_id": "example_assistant_id",
-                "meta_data": {"key": "value"},
-                "role": "user"
-            }
+            "example": {"content": "Hello, this is a test message.", "thread_id": "example_thread_id", "assistant_id": "example_assistant_id", "meta_data": {"key": "value"}, "role": "user"}
         }
     )
 
@@ -51,13 +46,7 @@ class MessageCreate(BaseModel):
 class ToolMessageCreate(BaseModel):
     content: str
 
-    model_config = ConfigDict(
-        json_schema_extra={
-            "example": {
-                "content": "This is the content of the tool message."
-            }
-        }
-    )
+    model_config = ConfigDict(json_schema_extra={"example": {"content": "This is the content of the tool message."}})
 
 
 class MessageRead(BaseModel):
@@ -87,7 +76,7 @@ class MessageUpdate(BaseModel):
     status: Optional[str]
     role: Optional[str]  # Now a plain string instead of Enum
 
-    @validator('role', pre=True)
+    @validator("role", pre=True)
     def validate_role(cls, v):
         if v is None:
             return v

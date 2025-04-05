@@ -39,21 +39,15 @@ class ActionCreate(BaseModel):
     expires_at: Optional[datetime] = None
     status: Optional[str] = "pending"  # Default to pending
 
-    @validator('tool_name', pre=True, always=True)
+    @validator("tool_name", pre=True, always=True)
     def validate_tool_fields(cls, v):
         if not v:
-            raise ValueError('Tool name must be provided.')
+            raise ValueError("Tool name must be provided.")
         return v
 
     model_config = ConfigDict(
         json_schema_extra={
-            "example": {
-                "tool_name": "example_tool_name",
-                "run_id": "example_run_id",
-                "function_args": {"arg1": "value1", "arg2": "value2"},
-                "expires_at": "2024-09-10T12:00:00Z",
-                "status": "pending"
-            }
+            "example": {"tool_name": "example_tool_name", "run_id": "example_run_id", "function_args": {"arg1": "value1", "arg2": "value2"}, "expires_at": "2024-09-10T12:00:00Z", "status": "pending"}
         }
     )
 
@@ -71,10 +65,7 @@ class ActionRead(BaseModel):
     function_args: Optional[dict] = Field(None, description="Arguments passed to the tool function", example={"param1": "value1"})
     result: Optional[dict] = Field(None, description="Result returned from executing the action", example={"output": "result data"})
 
-    model_config = ConfigDict(
-        extra='forbid',
-        validate_assignment=True
-    )
+    model_config = ConfigDict(extra="forbid", validate_assignment=True)
 
 
 class ActionList(BaseModel):

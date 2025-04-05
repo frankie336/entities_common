@@ -2,26 +2,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-PLATFORM_TOOLS = [
-    "code_interpreter",
-    "web_search",
-    "vector_store_search",
-    "computer"
-]
+PLATFORM_TOOLS = ["code_interpreter", "web_search", "vector_store_search", "computer"]
 
 TOOLS_ID_MAP = {
     "code_interpreter": "tool_79YkQEz5cDwpJjnR7oJ80D",
     "web_search": "tool_BiIwycpLo1n5Dh6BHN01v8",
     "vector_store_search": "tool_MCaJpXJU3eW6vaMUybEf6i",
-    "computer": "tool_PJQ6VcnkmRCMankObjtRcn"
+    "computer": "tool_PJQ6VcnkmRCMankObjtRcn",
 }
 
 SPECIAL_CASE_TOOL_HANDLING = ["computer", "code_interpreter"]
 
-ERROR_NO_CONTENT = (
-    "ERROR: The Tool has failed to return any content. The current stage of the workflow is tool submission. "
-    "Please inform the user."
-)
+ERROR_NO_CONTENT = "ERROR: The Tool has failed to return any content. The current stage of the workflow is tool submission. " "Please inform the user."
 
 DIRECT_DATABASE_URL = "mysql+pymysql://ollama:3e4Qv5uo2Cg31zC1@localhost:3307/cosmic_catalyst"
 
@@ -42,47 +34,47 @@ WEB_SEARCH_BASE_URL = "http://localhost:8080/"
 
 SUPPORTED_MIME_TYPES = {
     # C/C++
-    '.c': 'text/x-c',
-    '.cpp': 'text/x-c++',
+    ".c": "text/x-c",
+    ".cpp": "text/x-c++",
     # C#
-    '.cs': 'text/x-csharp',
+    ".cs": "text/x-csharp",
     # CSS
-    '.css': 'text/css',
+    ".css": "text/css",
     # Word documents
-    '.doc': 'application/msword',
-    '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    ".doc": "application/msword",
+    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
     # Go
-    '.go': 'text/x-golang',
+    ".go": "text/x-golang",
     # HTML
-    '.html': 'text/html',
+    ".html": "text/html",
     # Java
-    '.java': 'text/x-java',
+    ".java": "text/x-java",
     # JavaScript
-    '.js': 'text/javascript',
+    ".js": "text/javascript",
     # JSON
-    '.json': 'application/json',
+    ".json": "application/json",
     # Markdown
-    '.md': 'text/markdown',
+    ".md": "text/markdown",
     # PDF
-    '.pdf': 'application/pdf',
+    ".pdf": "application/pdf",
     # PHP
-    '.php': 'text/x-php',
+    ".php": "text/x-php",
     # PowerPoint
-    '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
     # Python
-    '.py': 'text/x-python',
-    '.pyx': 'text/x-script.python',
+    ".py": "text/x-python",
+    ".pyx": "text/x-script.python",
     # Ruby
-    '.rb': 'text/x-ruby',
+    ".rb": "text/x-ruby",
     # Shell script
-    '.sh': 'application/x-sh',
+    ".sh": "application/x-sh",
     # TeX
-    '.tex': 'text/x-tex',
+    ".tex": "text/x-tex",
     # TypeScript
-    '.ts': 'application/typescript',
+    ".ts": "application/typescript",
     # Plain text
-    '.txt': 'text/plain',
+    ".txt": "text/plain",
 }
 
 # For text/* MIME types, define allowed encodings
-ALLOWED_TEXT_ENCODINGS = ['utf-8', 'utf-16', 'ascii']
+ALLOWED_TEXT_ENCODINGS = ["utf-8", "utf-16", "ascii"]

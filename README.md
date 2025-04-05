@@ -1,5 +1,9 @@
+# Entities Common
+[![Lint](https://github.com/frankie336/entities_common/actions/workflows/lint.yml/badge.svg)](https://github.com/frankie336/entities_common/actions/workflows/lint.yml)
+[![Test](https://github.com/frankie336/entities_common/actions/workflows/test.yml/badge.svg)](https://github.com/frankie336/entities_common/actions/workflows/test.yml)
+[![Build](https://github.com/frankie336/entities_common/actions/workflows/build.yml/badge.svg)](https://github.com/frankie336/entities_common/actions/workflows/build.yml)
+[![Publish](https://github.com/frankie336/entities_common/actions/workflows/publish.yml/badge.svg)](https://github.com/frankie336/entities_common/actions/workflows/publish.yml)
 
-# Entities Common 
 The **Entities Common** SDK is a shared library that serves as a central resource for multiple components within the same
 project. It consolidates common functionality across disparate parts of the project, reducing duplication and improving 
 maintainability. By providing a unified interface, Entities Common simplifies interactions with the 

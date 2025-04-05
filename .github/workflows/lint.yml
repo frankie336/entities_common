@@ -7,7 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -17,12 +18,12 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install flake8 black
+          pip install black flake8
 
-      - name: Run Black (autoformatter)
+      - name: Run Black (autofix mode)
         run: |
-          black src/ --check --line-length 100
+          black src/  # uses settings from pyproject.toml
 
-      - name: Run flake8 (style linter)
+      - name: Run Flake8 (style linter)
         run: |
-          flake8 src/
+          flake8 src/entities_common

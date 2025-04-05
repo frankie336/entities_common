@@ -1,6 +1,43 @@
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
-[tool.pytest.ini_options]
-testpaths = ["tests"]
+[project]
+name = "entities_common"
+version = "0.1.0"
+description = "Common shared custom packages"
+readme = "README.md"
+authors = [
+  { name="Francis N.", email="francis.neequaye@projectdavid.co.uk" }
+]
+license = { text = "MIT" }
+keywords = ["shared", "internal", "utilities", "schemas"]
+requires-python = ">=3.8"
+
+
+dependencies = [
+  "pydantic",
+  "typing_extensions",
+
+]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/frankie336/entities_common"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["entities_common", "entities_common.*"]
+
+[tool.setuptools.dynamic]
+# Optional if you want version from a module
+# version = {attr = "entities_common.__version__"}
+
+[project.scripts]
+entities_common-api = "entities_common.main:main"
+

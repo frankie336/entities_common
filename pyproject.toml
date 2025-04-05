@@ -47,6 +47,6 @@ target-version = ["py38"]
 skip-string-normalization = true
 
 [tool.flake8]
-max-line-length = 79
+max-line-length = 200
 extend-ignore = ["E203"]
 exclude = [".venv", ".git", "__pycache__", "build", "dist"]

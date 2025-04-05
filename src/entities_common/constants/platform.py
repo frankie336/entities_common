@@ -19,8 +19,8 @@ TOOLS_ID_MAP = {
 SPECIAL_CASE_TOOL_HANDLING = ["computer", "code_interpreter"]
 
 ERROR_NO_CONTENT = (
-    "ERROR: The Tool has failed to return any content. The current stage of the workflow is tool submission. "
-    "Please inform the user."
+    "ERROR: The Tool has failed to return any content. The current stage "
+    "of the workflow is tool submission. Please inform the user."
 )
 
 DIRECT_DATABASE_URL = (
@@ -43,48 +43,32 @@ MODEL_MAP = {
 WEB_SEARCH_BASE_URL = "http://localhost:8080/"
 
 SUPPORTED_MIME_TYPES = {
-    # C/C++
     ".c": "text/x-c",
     ".cpp": "text/x-c++",
-    # C#
     ".cs": "text/x-csharp",
-    # CSS
     ".css": "text/css",
-    # Word documents
     ".doc": "application/msword",
-    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    # Go
+    ".docx": (
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    ),
     ".go": "text/x-golang",
-    # HTML
     ".html": "text/html",
-    # Java
     ".java": "text/x-java",
-    # JavaScript
     ".js": "text/javascript",
-    # JSON
     ".json": "application/json",
-    # Markdown
     ".md": "text/markdown",
-    # PDF
     ".pdf": "application/pdf",
-    # PHP
     ".php": "text/x-php",
-    # PowerPoint
-    ".pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-    # Python
+    ".pptx": (
+        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+    ),
     ".py": "text/x-python",
     ".pyx": "text/x-script.python",
-    # Ruby
     ".rb": "text/x-ruby",
-    # Shell script
     ".sh": "application/x-sh",
-    # TeX
     ".tex": "text/x-tex",
-    # TypeScript
     ".ts": "application/typescript",
-    # Plain text
     ".txt": "text/plain",
 }
 
-# For text/* MIME types, define allowed encodings
 ALLOWED_TEXT_ENCODINGS = ["utf-8", "utf-16", "ascii"]

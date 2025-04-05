@@ -19,8 +19,8 @@ TOOLS_ID_MAP = {
 SPECIAL_CASE_TOOL_HANDLING = ["computer", "code_interpreter"]
 
 ERROR_NO_CONTENT = (
-    "ERROR: The Tool has failed to return any content. The current stage "
-    "of the workflow is tool submission. Please inform the user."
+    "ERROR: The Tool has failed to return any content. The current stage of "
+    "the workflow is tool submission. Please inform the user."
 )
 
 DIRECT_DATABASE_URL = (
@@ -49,7 +49,8 @@ SUPPORTED_MIME_TYPES = {
     ".css": "text/css",
     ".doc": "application/msword",
     ".docx": (
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+        "application/vnd.openxmlformats-officedocument.wordprocessingml."
+        "document"
     ),
     ".go": "text/x-golang",
     ".html": "text/html",
@@ -60,7 +61,8 @@ SUPPORTED_MIME_TYPES = {
     ".pdf": "application/pdf",
     ".php": "text/x-php",
     ".pptx": (
-        "application/vnd.openxmlformats-officedocument.presentationml.presentation"
+        "application/vnd.openxmlformats-officedocument.presentationml."
+        "presentation"
     ),
     ".py": "text/x-python",
     ".pyx": "text/x-script.python",

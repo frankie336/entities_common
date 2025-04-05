@@ -2,7 +2,7 @@ from typing import List, Dict, Any, Optional
 
 from pydantic import BaseModel, Field, ConfigDict
 
-# Assuming UserBase is defined in entities.schemas.users; adjust import as needed
+# Adjust this import path if needed
 from entities_common.schemas.users import UserBase
 
 

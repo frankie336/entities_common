@@ -1,4 +1,5 @@
 from typing import List, Dict, Any, Optional
+
 from pydantic import BaseModel, Field
 
 from entities_common.schemas.vectors import VectorStoreRead
@@ -15,7 +16,7 @@ class AssistantCreate(BaseModel):
     description: str = Field(
         "",
         description="A brief description of the assistant",
-        example="An assistant " "for handling tasks",
+        example="An assistant for handling tasks",
     )
     model: str = Field(
         ..., description="Model used by the assistant", example="gpt-4"
@@ -27,8 +28,8 @@ class AssistantCreate(BaseModel):
     )
     tools: Optional[List[dict]] = Field(
         None,
-        description="A list of tools available to the assistant, "
-        "each defined as a dictionary",
+        description="A list of tools available to the assistant, each defined "
+        "as a dictionary",
     )
     meta_data: Optional[dict] = Field(
         None, description="Additional metadata for the assistant"
@@ -75,7 +76,8 @@ class AssistantRead(BaseModel):
     temperature: float = Field(..., description="Temperature parameter")
     response_format: str = Field(..., description="Response format")
     vector_stores: Optional[List[VectorStoreRead]] = Field(
-        default_factory=list, description="List of associated vector stores"
+        default_factory=list,
+        description="List of associated vector stores",
     )
 
 

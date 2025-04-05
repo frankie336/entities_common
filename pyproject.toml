@@ -40,8 +40,7 @@ where = ["src"]
 include = ["entities_common", "entities_common.*"]
 
 [tool.setuptools.dynamic]
-# If you want dynamic versioning from a module, uncomment below
-# version = { attr = "entities_common.__version__" }
+version = { attr = "entities_common.__version__.__version__" }
 
 [tool.black]
 line-length = 79

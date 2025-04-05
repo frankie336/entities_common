@@ -3,15 +3,14 @@ from datetime import datetime
 from enum import Enum
 from typing import List, Dict, Any, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
-from pydantic import validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
 class ActionBase(BaseModel):
     id: str
     run_id: str
-    triggered_at: datetime  # Use datetime for the timestamp
-    expires_at: Optional[datetime] = None  # This now accepts a datetime
+    triggered_at: datetime
+    expires_at: Optional[datetime] = None
     is_processed: bool
     processed_at: Optional[datetime] = None
     status: str = "pending"
@@ -37,10 +36,11 @@ class ActionCreate(BaseModel):
     run_id: str
     function_args: Optional[Dict[str, Any]] = {}
     expires_at: Optional[datetime] = None
-    status: Optional[str] = "pending"  # Default to pending
+    status: Optional[str] = "pending"
 
-    @validator("tool_name", pre=True, always=True)
-    def validate_tool_fields(cls, v):
+    @field_validator("tool_name", mode="before")
+    @classmethod
+    def validate_tool_fields(cls, v: Optional[str]) -> Optional[str]:
         if not v:
             raise ValueError("Tool name must be provided.")
         return v
@@ -59,57 +59,37 @@ class ActionCreate(BaseModel):
 
 
 class ActionRead(BaseModel):
-    id: str = Field(
-        ...,
-        description="Unique identifier for the action",
-        example="action_123456",
-    )
-    run_id: Optional[str] = Field(
-        None,
-        description="Associated run ID for this action",
-        example="run_123456",
-    )
-    tool_id: Optional[str] = Field(
-        None,
-        description="Tool identifier associated with the action",
-        example="tool_123456",
-    )
-    tool_name: Optional[str] = Field(
-        None, description="Name of the tool", example="code_interpreter"
-    )
-    triggered_at: Optional[str] = Field(
-        None,
-        description="Timestamp when the action was triggered",
-        example="2025-03-24T12:00:00Z",
-    )
-    expires_at: Optional[str] = Field(
-        None,
-        description="Timestamp when the action expires",
-        example="2025-03-24T12:05:00Z",
-    )
-    is_processed: Optional[bool] = Field(
-        None, description="Indicates if the action has been processed"
-    )
-    processed_at: Optional[str] = Field(
-        None,
-        description="Timestamp when the action was processed",
-        example="2025-03-24T12:01:00Z",
-    )
-    status: Optional[str] = Field(
-        None, description="Current status of the action", example="in_progress"
-    )
-    function_args: Optional[dict] = Field(
-        None,
-        description="Arguments passed to the tool function",
-        example={"param1": "value1"},
-    )
-    result: Optional[dict] = Field(
-        None,
-        description="Result returned from executing the action",
-        example={"output": "result data"},
-    )
+    id: str = Field(...)
+    run_id: Optional[str] = None
+    tool_id: Optional[str] = None
+    tool_name: Optional[str] = None
+    triggered_at: Optional[str] = None
+    expires_at: Optional[str] = None
+    is_processed: Optional[bool] = None
+    processed_at: Optional[str] = None
+    status: Optional[str] = None
+    function_args: Optional[dict] = None
+    result: Optional[dict] = None
 
-    model_config = ConfigDict(extra="forbid", validate_assignment=True)
+    model_config = ConfigDict(
+        extra="forbid",
+        validate_assignment=True,
+        json_schema_extra={
+            "example": {
+                "id": "action_123456",
+                "run_id": "run_123456",
+                "tool_id": "tool_123456",
+                "tool_name": "code_interpreter",
+                "triggered_at": "2025-03-24T12:00:00Z",
+                "expires_at": "2025-03-24T12:05:00Z",
+                "is_processed": False,
+                "processed_at": "2025-03-24T12:01:00Z",
+                "status": "in_progress",
+                "function_args": {"param1": "value1"},
+                "result": {"output": "result data"},
+            }
+        }
+    )
 
 
 class ActionList(BaseModel):
@@ -117,7 +97,7 @@ class ActionList(BaseModel):
 
 
 class ActionUpdate(BaseModel):
-    status: ActionStatus  # Use the ActionStatus enum here
+    status: ActionStatus
     result: Optional[Dict[str, Any]] = None
 
     model_config = ConfigDict(from_attributes=True)

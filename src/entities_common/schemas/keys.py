@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from typing import Optional
 
 
@@ -11,3 +11,5 @@ class APIKeyRead(BaseModel):
     revoked_at: Optional[int] = Field(
         None, description="Unix timestamp of revocation (if revoked)"
     )
+
+    model_config = ConfigDict(from_attributes=True)

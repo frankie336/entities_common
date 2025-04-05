@@ -1,11 +1,9 @@
 from enum import Enum
 from typing import List, Dict, Any, Optional
 
-from pydantic import BaseModel, ConfigDict
-from pydantic import validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator
 
 
-# Define the MessageRole enum
 class MessageRole(str, Enum):
     PLATFORM = "platform"
     ASSISTANT = "assistant"
@@ -14,29 +12,25 @@ class MessageRole(str, Enum):
     TOOL = "tool"
 
 
-# Add role validation to MessageCreate
-
-
 class MessageCreate(BaseModel):
     content: str
     thread_id: str
     sender_id: Optional[str] = None
     assistant_id: str
-    role: str  # String-based role instead of Enum
+    role: str  # Using string instead of Enum to allow flexible validation
     tool_id: Optional[str] = None
     meta_data: Optional[Dict[str, Any]] = None
     is_last_chunk: bool = False
 
-    @validator("role", pre=True)
+    @field_validator("role", mode="before")
+    @classmethod
     def validate_role(cls, v):
         valid_roles = {"platform", "assistant", "user", "system", "tool"}
         if isinstance(v, str):
             v = v.lower()
             if v in valid_roles:
                 return v
-        raise ValueError(
-            f"Invalid role: {v}. Must be one of {list(valid_roles)}"
-        )
+        raise ValueError(f"Invalid role: {v}. Must be one of {list(valid_roles)}")
 
     model_config = ConfigDict(
         json_schema_extra={
@@ -72,12 +66,12 @@ class MessageRead(BaseModel):
     incomplete_details: Optional[Dict[str, Any]]
     meta_data: Dict[str, Any]
     object: str
-    role: str  # String-based role
+    role: str
     run_id: Optional[str]
     tool_id: Optional[str] = None
     status: Optional[str]
     thread_id: str
-    sender_id: Optional[str] = None  # ✅ Made Optional
+    sender_id: Optional[str] = None
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -86,9 +80,10 @@ class MessageUpdate(BaseModel):
     content: Optional[str]
     meta_data: Optional[Dict[str, Any]]
     status: Optional[str]
-    role: Optional[str]  # Now a plain string instead of Enum
+    role: Optional[str]
 
-    @validator("role", pre=True)
+    @field_validator("role", mode="before")
+    @classmethod
     def validate_role(cls, v):
         if v is None:
             return v
@@ -96,8 +91,6 @@ class MessageUpdate(BaseModel):
         v = v.lower()
         if v in valid_roles:
             return v
-        raise ValueError(
-            f"Invalid role: {v}. Must be one of {list(valid_roles)}"
-        )
+        raise ValueError(f"Invalid role: {v}. Must be one of {list(valid_roles)}")
 
     model_config = ConfigDict(from_attributes=True)

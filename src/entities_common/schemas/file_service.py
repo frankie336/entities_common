@@ -1,19 +1,13 @@
-# src/api/entities/schemas/files.py
 from typing import Optional
-
-from pydantic import BaseModel
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class FileUploadRequest(BaseModel):
-    """Schema for file upload request data"""
-
-    purpose: str
-    user_id: str
+    purpose: str = Field(..., description="Purpose for uploading the file")
+    user_id: str = Field(..., description="ID of the uploading user")
 
 
 class FileResponse(BaseModel):
-    """Schema for file response data."""
-
     id: str
     object: str = "file"
     bytes: int
@@ -23,5 +17,4 @@ class FileResponse(BaseModel):
     status: str = "uploaded"
     expires_at: Optional[int] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

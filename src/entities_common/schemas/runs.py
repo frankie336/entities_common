@@ -2,7 +2,7 @@ from datetime import datetime
 from enum import Enum
 from typing import List, Dict, Any, Optional
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 from entities_common.schemas.actions import ActionRead
 from entities_common.schemas.tools import Tool
@@ -55,7 +55,7 @@ class RunCreate(BaseModel):
     last_error: Optional[str] = None
     max_completion_tokens: Optional[int] = 1000
     max_prompt_tokens: Optional[int] = 500
-    meta_data: Dict[str, Any] = {}
+    meta_data: Dict[str, Any] = Field(default_factory=dict)
     model: str = "gpt-4"
     object: str = "run"
     parallel_tool_calls: bool = False
@@ -65,12 +65,12 @@ class RunCreate(BaseModel):
     status: str = "pending"
     thread_id: str
     tool_choice: str = "none"
-    tools: List[Tool] = []
-    truncation_strategy: Dict[str, Any] = {}
+    tools: List[Tool] = Field(default_factory=list)
+    truncation_strategy: Dict[str, Any] = Field(default_factory=dict)
     usage: Optional[Any] = None
     temperature: float = 0.7
     top_p: float = 0.9
-    tool_resources: Dict[str, Any] = {}
+    tool_resources: Dict[str, Any] = Field(default_factory=dict)
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -98,13 +98,13 @@ class RunReadDetailed(BaseModel):
     status: str
     thread_id: str
     tool_choice: str
-    tools: List[ToolRead]  # Nested tool details
+    tools: List[ToolRead]
     truncation_strategy: Dict[str, Any]
     usage: Optional[Any] = None
     temperature: float
     top_p: float
     tool_resources: Dict[str, Any]
-    actions: List[ActionRead] = []  # Provide a default empty list
+    actions: List[ActionRead] = Field(default_factory=list)
 
     model_config = ConfigDict(from_attributes=True)
 

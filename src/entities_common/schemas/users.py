@@ -1,15 +1,16 @@
 from typing import Optional
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict
 
 
 class UserBase(BaseModel):
     id: str
     name: str
+
     model_config = ConfigDict(from_attributes=True)
 
 
 class UserCreate(BaseModel):
-    name: Optional[str] = "Anonymous User"
+    name: Optional[str] = Field(default="Anonymous User")
 
 
 class UserRead(UserBase):
@@ -17,9 +18,9 @@ class UserRead(UserBase):
 
 
 class UserUpdate(BaseModel):
-    name: Optional[str] = None
+    name: Optional[str] = Field(default=None)
 
 
 class UserDeleteResponse(BaseModel):
     success: bool
-    message: Optional[str] = None
+    message: Optional[str] = Field(default=None)

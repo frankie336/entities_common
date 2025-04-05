@@ -1,7 +1,8 @@
 from datetime import datetime
 from typing import Optional
+
 from fastapi import Form
-from pydantic import BaseModel, validator
+from pydantic import BaseModel, Field, ConfigDict, field_validator
 
 
 class FileUploadRequest(BaseModel):
@@ -23,11 +24,11 @@ class FileResponse(BaseModel):
     status: str = "uploaded"
     expires_at: Optional[int] = None
 
-    @validator("created_at", pre=True)
+    @field_validator("created_at", mode="before")
+    @classmethod
     def datetime_to_timestamp(cls, value):
         if isinstance(value, datetime):
             return int(value.timestamp())
         return value
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

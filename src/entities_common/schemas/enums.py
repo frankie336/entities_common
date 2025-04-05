@@ -1,5 +1,4 @@
 from enum import Enum
-from enum import Enum as PyEnum
 
 
 class ProviderEnum(str, Enum):
@@ -10,9 +9,9 @@ class ProviderEnum(str, Enum):
     local = "local"
 
 
-class StatusEnum(PyEnum):
+class StatusEnum(str, Enum):
     deleted = "deleted"
-    active = "active"  # Added this member
+    active = "active"
     queued = "queued"
     in_progress = "in_progress"
     pending_action = "action_required"

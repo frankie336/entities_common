@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from entities_common.schemas.enums import ProviderEnum
 
 
@@ -7,6 +7,8 @@ class ProcessOutput(BaseModel):
     store_name: str
     status: str
     chunks_processed: int
+
+    model_config = ConfigDict(from_attributes=True)
 
 
 class StreamRequest(BaseModel):
@@ -19,3 +21,5 @@ class StreamRequest(BaseModel):
     message_id: str = Field(..., description="Message identifier")
     run_id: str = Field(..., description="Run identifier")
     assistant_id: str = Field(..., description="Assistant identifier")
+
+    model_config = ConfigDict(from_attributes=True)

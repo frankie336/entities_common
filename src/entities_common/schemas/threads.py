@@ -10,7 +10,9 @@ class ThreadCreate(BaseModel):
     participant_ids: List[str] = Field(
         ..., description="List of participant IDs"
     )
-    meta_data: Optional[Dict[str, Any]] = None
+    meta_data: Optional[Dict[str, Any]] = Field(
+        default=None, description="Optional metadata for thread"
+    )
 
 
 class ThreadRead(BaseModel):
@@ -24,8 +26,12 @@ class ThreadRead(BaseModel):
 
 
 class ThreadUpdate(BaseModel):
-    participant_ids: Optional[List[str]] = None
-    meta_data: Optional[Dict[str, Any]] = None
+    participant_ids: Optional[List[str]] = Field(
+        default=None, description="Updated list of participant IDs"
+    )
+    meta_data: Optional[Dict[str, Any]] = Field(
+        default=None, description="Updated metadata"
+    )
 
     model_config = ConfigDict(from_attributes=True)
 

@@ -60,10 +60,10 @@ class VectorStoreCreate(BaseModel):
 
 
 class VectorStoreRead(BaseModel):
-    id: str = Field(..., description="Unique identifier for the vector store", example="vs_abc123")
-    name: str = Field(..., description="Vector store name", example="Project Files")
+    id: str = Field(..., description="Unique identifier for the vector store")
+    name: str = Field(..., description="Vector store name")
     user_id: str = Field(..., description="User who owns this store")
-    collection_name: str = Field(..., description="Qdrant collection name", example="vs_abc123")
+    collection_name: str = Field(..., description="Qdrant collection name")
     vector_size: int = Field(..., description="Vector dimensionality")
     distance_metric: str = Field(..., description="Metric used for comparison")
     created_at: int = Field(..., description="Unix timestamp when created")
@@ -84,10 +84,14 @@ class VectorStoreUpdate(BaseModel):
 
 
 class VectorStoreFileCreate(BaseModel):
-    file_id: str = Field(..., description="Client-assigned unique ID for the file record")
-    file_name: str = Field(..., max_length=256, description="Original filename")
-    file_path: str = Field(..., max_length=1024, description="Identifier in metadata")
-    status: Optional[StatusEnum] = Field(None, description="Initial processing state")
+    file_id: str = Field(..., description="Client-assigned unique ID "
+                                          "for the file record")
+    file_name: str = Field(..., max_length=256, description="Original "
+                                                            "filename")
+    file_path: str = Field(..., max_length=1024, description="Identifier "
+                                                             "in metadata")
+    status: Optional[StatusEnum] = Field(None, description="Initial processing "
+                                                           "state")
     metadata: Optional[Dict[str, Any]] = Field(None, description="Custom metadata")
 
 
@@ -96,10 +100,13 @@ class VectorStoreFileRead(BaseModel):
     vector_store_id: str = Field(..., description="Owning vector store")
     file_name: str = Field(..., description="Original file name")
     file_path: str = Field(..., description="Qdrant metadata path")
-    processed_at: Optional[int] = Field(None, description="Last processing change timestamp")
+    processed_at: Optional[int] = Field(None, description="Last processing "
+                                                          "change timestamp")
     status: StatusEnum = Field(..., description="Current processing state")
-    error_message: Optional[str] = Field(None, description="Failure reason if failed")
-    metadata: Optional[Dict[str, Any]] = Field(None, description="Metadata dict")
+    error_message: Optional[str] = Field(None, description="Failure "
+                                                           "reason if failed")
+    metadata: Optional[Dict[str, Any]] = Field(None, description=
+    "Metadata dict")
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -107,7 +114,8 @@ class VectorStoreFileRead(BaseModel):
 class VectorStoreFileUpdate(BaseModel):
     status: Optional[StatusEnum] = Field(None, description="Status override")
     error_message: Optional[str] = Field(None, description="New error message")
-    metadata: Optional[Dict[str, Any]] = Field(None, description="Metadata replacement")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="Metadata "
+                                                                 "replacement")
 
 
 class VectorStoreList(BaseModel):
@@ -119,7 +127,8 @@ class VectorStoreFileList(BaseModel):
 
 
 class VectorStoreLinkAssistant(BaseModel):
-    assistant_ids: List[str] = Field(..., min_items=1, description="IDs to link")
+    assistant_ids: List[str] = Field(..., min_length=1, description="IDs to "
+                                                                    "link")
 
 
 class VectorStoreUnlinkAssistant(BaseModel):
@@ -128,7 +137,8 @@ class VectorStoreUnlinkAssistant(BaseModel):
 
 class VectorStoreSearchResult(BaseModel):
     text: str = Field(..., description="Returned chunk")
-    metadata: Optional[Dict[str, Any]] = Field(None, description="Chunk metadata")
+    metadata: Optional[Dict[str, Any]] = Field(None, description="Chunk "
+                                                                 "metadata")
     score: float = Field(..., description="Vector similarity score")
     vector_id: Optional[str] = Field(None, description="Qdrant vector ID")
     store_id: Optional[str] = Field(None, description="Store ID")
@@ -152,8 +162,10 @@ class EnhancedVectorSearchResult(VectorStoreSearchResult):
 
 class VectorStoreAddRequest(BaseModel):
     texts: List[str] = Field(..., description="Chunks to index")
-    vectors: List[List[float]] = Field(..., description="Embeddings per chunk")
-    metadata: List[Dict[str, Any]] = Field(..., description="Metadata per chunk")
+    vectors: List[List[float]] = Field(..., description="Embeddings per "
+                                                        "chunk")
+    metadata: List[Dict[str, Any]] = Field(..., description="Metadata per "
+                                                            "chunk")
 
     @model_validator(mode="after")
     def check_lengths_match(self) -> "VectorStoreAddRequest":

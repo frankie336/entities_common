@@ -1,6 +1,6 @@
 # src/entities_common/validation.py
 # Use relative imports for modules within your package.
-
+from entities_common.schemas.keys import APIKeyRead, APIKeyCreate
 
 from entities_common.schemas.actions import (
     ActionBase,
@@ -66,6 +66,7 @@ from entities_common.schemas.vectors import (
     VectorStoreAddRequest,
     VectorStoreFileRead,
 )
+
 
 
 
@@ -155,4 +156,5 @@ class ValidationInterface:
 
     # Key
     APIKeyRead = APIKeyRead
+    APIKeyCreate = APIKeyCreate
 

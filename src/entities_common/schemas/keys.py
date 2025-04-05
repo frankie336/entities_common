@@ -1,5 +1,8 @@
-from pydantic import BaseModel, Field, ConfigDict
+from datetime import datetime
 from typing import Optional
+
+from pydantic import BaseModel, Field
+from pydantic import ConfigDict
 
 
 class APIKeyRead(BaseModel):
@@ -11,3 +14,10 @@ class APIKeyRead(BaseModel):
     revoked_at: Optional[int] = Field(None, description="Unix timestamp of revocation (if revoked)")
 
     model_config = ConfigDict(from_attributes=True)
+
+class APIKeyCreate(BaseModel):
+    user_id: str = Field(..., description="ID of the user creating the key")
+    name: Optional[str] = Field(None, description="Optional human-readable name for the key")
+    expires_at: Optional[datetime] = Field(
+        None, description="Optional expiration date for the API key"
+    )

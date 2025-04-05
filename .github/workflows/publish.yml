@@ -1,3 +1,4 @@
+# .github/workflows/publish.yml
 name: Publish to TestPyPI
 
 on:
@@ -24,11 +25,15 @@ jobs:
 
       - name: Install build dependencies
         run: |
-          python -m pip install --upgrade pip setuptools wheel twine build
+          python -m pip install --upgrade pip setuptools wheel build twine
 
       - name: Build distributions
         run: |
           python -m build
+
+      - name: Check built files
+        run: |
+          twine check dist/*
 
       - name: Publish to TestPyPI
         env:

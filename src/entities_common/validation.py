@@ -68,8 +68,6 @@ from entities_common.schemas.vectors import (
 )
 
 
-
-
 class ValidationInterface:
     """
     Exposes Pydantic validation classes, retaining their original naming.
@@ -157,4 +155,3 @@ class ValidationInterface:
     # Key
     APIKeyRead = APIKeyRead
     APIKeyCreate = APIKeyCreate
-

@@ -15,6 +15,7 @@ class APIKeyRead(BaseModel):
 
     model_config = ConfigDict(from_attributes=True)
 
+
 class APIKeyCreate(BaseModel):
     user_id: str = Field(..., description="ID of the user creating the key")
     name: Optional[str] = Field(None, description="Optional human-readable name for the key")

@@ -1,0 +1,5 @@
+# requirements-dev.txt
+# Development dependencies for entities_common
+
+pytest>=7.0.0
+fastapi>=0.103.0  # Pin to a known good version from PyPI, avoiding TestPyPI issues

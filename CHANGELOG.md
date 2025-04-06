@@ -1,3 +1,10 @@
+## [0.1.12](https://github.com/frankie336/entities_common/compare/v0.1.11...v0.1.12) (2025-04-06)
+
+
+### Bug Fixes
+
+* workflow2 ([0285db9](https://github.com/frankie336/entities_common/commit/0285db9f315235578d911f35a4cd5019a86ec560))
+
 ## [0.1.11](https://github.com/frankie336/entities_common/compare/v0.1.10...v0.1.11) (2025-04-06)
 
 

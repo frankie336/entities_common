@@ -2,15 +2,12 @@
 --extra-index-url https://test.pypi.org/simple/
 --prefer-binary
 
-typing_extensions>=4.0
-
 # Core dependencies
+typing_extensions>=4.0
 pydantic~=2.10.3
+python-dotenv>=1.0.1
 setuptools~=75.8.0
-python-dotenv
-pytest>=7.0.0
-
 
 # --- Dev dependencies ---
-pytest>=7.0
-fastapi>=0.95.0
+pytest>=7.0.0
+fastapi>=0.103.0  # Avoid Test PyPI 1.0 broken build, which references missing DESCRIPTION.txt

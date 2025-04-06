@@ -1,3 +1,16 @@
+## [0.1.11](https://github.com/frankie336/entities_common/compare/v0.1.10...v0.1.11) (2025-04-06)
+
+
+### Bug Fixes
+
+* dependency ([b48dac5](https://github.com/frankie336/entities_common/commit/b48dac5a3f432d6d869cb6a160ca616ddb8e4ca2))
+* dependency 2 ([8407f0b](https://github.com/frankie336/entities_common/commit/8407f0b58dd0e4607652bee59c70a7f6032a6549))
+* requirements-dev.txt ([2f1299b](https://github.com/frankie336/entities_common/commit/2f1299bf4bc9699782ba012a93b342292c3058d9))
+* test ([abe4e39](https://github.com/frankie336/entities_common/commit/abe4e396fb42439a528bc82f6c337dfe31234cb1))
+* test_tag_release.yml ([0620759](https://github.com/frankie336/entities_common/commit/06207599e89d6edc902d2bcae9bf225345066e2e))
+* vectors.py ([73054e3](https://github.com/frankie336/entities_common/commit/73054e3d6d4328c6c7a958c99a64ab4eee8ade9c))
+* workflow ([4b5a6e4](https://github.com/frankie336/entities_common/commit/4b5a6e41f7bb5311a33ba7ac6b51feb4e0435ed6))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.

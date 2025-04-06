@@ -43,7 +43,7 @@ include = ["entities_common", "entities_common.*"]
 version = { attr = "entities_common.__version__.__version__" }
 
 [tool.black]
-line-length = 79
+line-length = 100
 target-version = ["py38"]
 skip-string-normalization = true
 

@@ -65,7 +65,15 @@ from entities_common.schemas.vectors import (
     VectorStoreSearchResult,
     VectorStoreAddRequest,
     VectorStoreFileRead,
+    VectorStoreCreateWithSharedId,
+    VectorStoreFileCreate,
+    VectorStoreFileUpdate,
+    VectorStoreFileList,
+    VectorStoreFileUpdateStatus,
+    VectorStoreLinkAssistant,
+    VectorStoreUnlinkAssistant
 )
+
 
 
 class ValidationInterface:
@@ -142,16 +150,39 @@ class ValidationInterface:
     UserDeleteResponse = UserDeleteResponse
 
     # Vector Store schemas
+
+    # Core Vector Store CRUD
     VectorStoreCreate = VectorStoreCreate
+    VectorStoreCreateWithSharedId = VectorStoreCreateWithSharedId
     VectorStoreRead = VectorStoreRead
-    VectorStoreFileRead = VectorStoreFileRead
     VectorStoreUpdate = VectorStoreUpdate
     VectorStoreList = VectorStoreList
+
+    # File-level operations
+    VectorStoreFileCreate = VectorStoreFileCreate
+    VectorStoreFileRead = VectorStoreFileRead
+    VectorStoreFileUpdate = VectorStoreFileUpdate
+    VectorStoreFileUpdateStatus = VectorStoreFileUpdateStatus
+    VectorStoreFileList = VectorStoreFileList
+
+    # Search & Results
+    VectorStoreSearchResult = VectorStoreSearchResult
     EnhancedVectorSearchResult = EnhancedVectorSearchResult
     SearchExplanation = SearchExplanation
-    VectorStoreSearchResult = VectorStoreSearchResult
+
+    # Assistant linking
+    VectorStoreLinkAssistant = VectorStoreLinkAssistant
+    VectorStoreUnlinkAssistant = VectorStoreUnlinkAssistant
+
+    # Optional: Request wrapper
     VectorStoreAddRequest = VectorStoreAddRequest
 
     # Key
     APIKeyRead = APIKeyRead
     APIKeyCreate = APIKeyCreate
+
+
+
+
+
+

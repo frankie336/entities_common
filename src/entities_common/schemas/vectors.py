@@ -1,19 +1,11 @@
-# entities_common/validation.py (or similar file defining ValidationInterface)
+# --- Models (entities_common/validation.py) ---
 
 import time
 from enum import Enum
 from typing import List, Dict, Any, Optional
-
-from pydantic import (
-    BaseModel,
-    Field,
-    ConfigDict,
-    field_validator,
-    model_validator,
-)
+from pydantic import BaseModel, Field, ConfigDict, field_validator, model_validator
 
 
-# Define or ensure StatusEnum is defined/imported here
 class StatusEnum(str, Enum):
     deleted = "deleted"
     active = "active"
@@ -33,7 +25,6 @@ class StatusEnum(str, Enum):
 
 
 class VectorStoreCreate(BaseModel):
-    # Base creation model - does not include shared_id
     name: str = Field(..., min_length=3, max_length=128, description="Human-friendly store name")
     user_id: str = Field(..., min_length=3, description="Owner user ID")
     vector_size: int = Field(..., gt=0, description="Dimensionality of the vectors")
@@ -67,10 +58,8 @@ class VectorStoreRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-# Model for API endpoint input, including shared_id (derives from base)
 class VectorStoreCreateWithSharedId(VectorStoreCreate):
     """Model representing the full payload for creating a vector store via API."""
-
     shared_id: str = Field(
         ..., description="The pre-generated unique ID for the store and collection."
     )
@@ -89,7 +78,6 @@ class VectorStoreFileCreate(BaseModel):
     file_name: str = Field(..., max_length=256, description="Original filename")
     file_path: str = Field(..., max_length=1024, description="Identifier path used in metadata")
     status: Optional[StatusEnum] = Field(None, description="Initial processing state")
-    # --- Corrected Field Name ---
     meta_data: Optional[Dict[str, Any]] = Field(None, description="Metadata dict")
 
 
@@ -98,22 +86,17 @@ class VectorStoreFileRead(BaseModel):
     vector_store_id: str = Field(..., description="Owning vector store ID")
     file_name: str = Field(..., description="Original file name")
     file_path: str = Field(..., description="Qdrant metadata path identifier")
-    processed_at: Optional[int] = Field(
-        None, description="Unix timestamp of last processing change"
-    )
+    processed_at: Optional[int] = Field(None, description="Unix timestamp of last processing change")
     status: StatusEnum = Field(..., description="Current processing state")
     error_message: Optional[str] = Field(None, description="Failure reason if applicable")
-    # --- Corrected Field Name ---
     meta_data: Optional[Dict[str, Any]] = Field(None, description="Metadata dict")
     object: str = Field("vector_store.file", description="Object type identifier.")
 
     model_config = ConfigDict(from_attributes=True)
 
 
-# Model for updating file status via API
 class VectorStoreFileUpdateStatus(BaseModel):
     """Input model for PATCH request to update a file's status."""
-
     status: StatusEnum = Field(..., description="The new status for the file record.")
     error_message: Optional[str] = Field(None, description="Error message if status is 'failed'.")
 
@@ -121,13 +104,11 @@ class VectorStoreFileUpdateStatus(BaseModel):
 class VectorStoreFileUpdate(BaseModel):
     status: Optional[StatusEnum] = Field(None, description="Status override")
     error_message: Optional[str] = Field(None, description="New error message")
-    # --- Corrected Field Name ---
     meta_data: Optional[Dict[str, Any]] = Field(
         None, description="Metadata replacement"
-    )  # Use underscore
+    )
 
 
-# --- List Models ---
 class VectorStoreList(BaseModel):
     vector_stores: List[VectorStoreRead]
     object: str = Field("list", description="Object type identifier.")
@@ -138,7 +119,6 @@ class VectorStoreFileList(BaseModel):
     object: str = Field("list", description="Object type identifier.")
 
 
-# --- Assistant Link Models ---
 class VectorStoreLinkAssistant(BaseModel):
     assistant_ids: List[str] = Field(..., min_length=1, description="List of Assistant IDs to link")
 
@@ -147,20 +127,12 @@ class VectorStoreUnlinkAssistant(BaseModel):
     assistant_id: str = Field(..., description="Assistant ID to unlink")
 
 
-# --- Search Result Models ---
 class VectorStoreSearchResult(BaseModel):
     text: str = Field(..., description="Returned text chunk")
-    # --- Corrected Field Name (assuming consistency) ---
-    meta_data: Optional[Dict[str, Any]] = Field(
-        None, description="Metadata associated with the chunk"
-    )  # Use underscore
+    meta_data: Optional[Dict[str, Any]] = Field(None, description="Metadata associated with the chunk")
     score: float = Field(..., description="Similarity score from the vector search")
-    vector_id: Optional[str] = Field(
-        None, description="Unique ID of the vector point in the database"
-    )
-    store_id: Optional[str] = Field(
-        None, description="ID of the vector store where the result originated"
-    )
+    vector_id: Optional[str] = Field(None, description="Unique ID of the vector point in the database")
+    store_id: Optional[str] = Field(None, description="ID of the vector store where the result originated")
     retrieved_at: int = Field(
         default_factory=lambda: int(time.time()),
         description="Unix timestamp when search was performed",
@@ -180,16 +152,14 @@ class EnhancedVectorSearchResult(VectorStoreSearchResult):
     )
 
 
-# --- Vector Add Request (if used directly by API, otherwise internal) ---
 class VectorStoreAddRequest(BaseModel):
     texts: List[str] = Field(..., description="List of text chunks to index")
     vectors: List[List[float]] = Field(
         ..., description="List of vector embeddings corresponding to text chunks"
     )
-    # --- Corrected Field Name (assuming consistency) ---
     meta_data: List[Dict[str, Any]] = Field(
         ..., description="List of metadata dictionaries corresponding to text chunks"
-    )  # Use underscore
+    )
 
     @model_validator(mode="after")
     def check_lengths_match(self) -> "VectorStoreAddRequest":

@@ -1,3 +1,10 @@
+## [0.1.13](https://github.com/frankie336/entities_common/compare/v0.1.12...v0.1.13) (2025-04-07)
+
+
+### Bug Fixes
+
+* vector_file meta_data issue ([dc958bd](https://github.com/frankie336/entities_common/commit/dc958bd940a034bc53517e24f2399086671819e3))
+
 ## [0.1.12](https://github.com/frankie336/entities_common/compare/v0.1.11...v0.1.12) (2025-04-06)
 
 

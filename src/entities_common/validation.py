@@ -71,9 +71,8 @@ from entities_common.schemas.vectors import (
     VectorStoreFileList,
     VectorStoreFileUpdateStatus,
     VectorStoreLinkAssistant,
-    VectorStoreUnlinkAssistant
+    VectorStoreUnlinkAssistant,
 )
-
 
 
 class ValidationInterface:
@@ -180,9 +179,3 @@ class ValidationInterface:
     # Key
     APIKeyRead = APIKeyRead
     APIKeyCreate = APIKeyCreate
-
-
-
-
-
-

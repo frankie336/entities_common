@@ -1,3 +1,10 @@
+## [0.1.14](https://github.com/frankie336/entities_common/compare/v0.1.13...v0.1.14) (2025-04-07)
+
+
+### Bug Fixes
+
+* schemas.vectors ([53bfb45](https://github.com/frankie336/entities_common/commit/53bfb4569876add37f56d83de6c4604bde1dfbd9))
+
 ## [0.1.13](https://github.com/frankie336/entities_common/compare/v0.1.12...v0.1.13) (2025-04-07)
 
 

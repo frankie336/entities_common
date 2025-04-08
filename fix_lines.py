@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 # Define base path
-base_path = Path("src/entities_common")
+base_path = Path("src/projectdavid_common")
 
 # Target file extensions
 target_extensions = [".py"]

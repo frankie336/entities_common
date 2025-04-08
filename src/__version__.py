@@ -1,1 +1,3 @@
-__version__ = "0.1.10"
+# src/projectdavid_common/__version__.py
+
+__version__ = "0.1.14"

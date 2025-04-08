@@ -2,7 +2,7 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from entities_common.schemas.vectors import VectorStoreRead
+from projectdavid_common.schemas.vectors import VectorStoreRead
 
 
 class AssistantCreate(BaseModel):

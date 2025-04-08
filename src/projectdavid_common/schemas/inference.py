@@ -2,7 +2,7 @@ from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from entities_common.schemas.enums import ProviderEnum
+from projectdavid_common.schemas.enums import ProviderEnum
 
 
 class ProcessOutput(BaseModel):

@@ -1,4 +1,4 @@
-#!
+#! python
 from enum import Enum
 from typing import Any, Dict, List, Optional
 

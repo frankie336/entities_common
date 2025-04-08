@@ -1,6 +1,6 @@
 # tests/test_vector_store_models.py
 
-from entities_common.schemas.vectors import VectorStoreCreate
+from projectdavid_common.schemas.vectors import VectorStoreCreate
 
 
 def test_vector_store_create_valid():

@@ -1,7 +1,7 @@
-# src/entities_common/utilities.py
+# src/projectdavid_common/utilities.py
 # Use relative imports for modules within your package.
-from entities_common.utilities.identifier_service import IdentifierService
-from entities_common.utilities.logging_service import LoggingUtility
+from projectdavid_common.utilities.identifier_service import IdentifierService
+from projectdavid_common.utilities.logging_service import LoggingUtility
 
 
 class UtilsInterface:

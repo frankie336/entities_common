@@ -3,8 +3,8 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "entities_common"
-version = "0.1.15"
+name = "projectdavid_common"
+version = "0.1.14"
 description = "Common shared custom packages"
 readme = "README.md"
 authors = [
@@ -21,25 +21,24 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
-  "pytest",
+  "pytest"
 ]
 
-
 [project.urls]
-Homepage = "https://github.com/frankie336/entities_common"
+Homepage = "https://github.com/frankie336/projectdavid_common"
 
 [project.scripts]
-entities_common-api = "entities_common.main:main"
+projectdavid_common-api = "projectdavid_common.main:main"
 
 [tool.setuptools]
 package-dir = { "" = "src" }
 
 [tool.setuptools.packages.find]
 where = ["src"]
-include = ["entities_common", "entities_common.*"]
+include = ["projectdavid_common", "projectdavid_common.*"]
 
 [tool.setuptools.dynamic]
-version = { attr = "entities_common.__version__.__version__" }
+version = { attr = "projectdavid_common.__version__.__version__" }
 
 [tool.black]
 line-length = 100

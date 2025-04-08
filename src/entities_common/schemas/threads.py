@@ -1,6 +1,6 @@
-from typing import List, Dict, Any, Optional
+from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, Field, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field
 
 # Adjust this import path if needed
 from entities_common.schemas.users import UserBase

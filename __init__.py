@@ -1,5 +1,5 @@
-from entities_common.validation import  ValidationInterface
 from entities_common.utils import UtilsInterface
+from entities_common.validation import ValidationInterface
 
 __all__ = [
            'ValidationInterface',

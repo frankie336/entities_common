@@ -11,3 +11,4 @@ setuptools~=75.8.0
 # --- Dev dependencies ---
 pytest>=7.0.0
 fastapi>=0.103.0  # Avoid Test PyPI 1.0 broken build, which references missing DESCRIPTION.txt
+isort

@@ -2,6 +2,7 @@ import re
 import sys
 from pathlib import Path
 
+
 def update_version(file_path, new_version):
     content = Path(file_path).read_text(encoding="utf-8")
     new_content = re.sub(

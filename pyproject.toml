@@ -12,7 +12,7 @@ authors = [
 ]
 license = { text = "MIT" }
 keywords = ["shared", "internal", "utilities", "schemas"]
-requires-python = ">=3.8"
+requires-python = ">=3.10"
 
 dependencies = [
   "pydantic",
@@ -42,10 +42,13 @@ version = { attr = "projectdavid_common.__version__.__version__" }
 
 [tool.black]
 line-length = 100
-target-version = ["py38"]
+target-version = ["py310"]
 skip-string-normalization = true
 
 [tool.flake8]
 max-line-length = 200
 extend-ignore = ["E203"]
 exclude = [".venv", ".git", "__pycache__", "build", "dist"]
+
+[tool.isort]
+profile = "black"

@@ -1,3 +1,10 @@
+## [0.1.15](https://github.com/frankie336/entities_common/compare/v0.1.14...v0.1.15) (2025-04-08)
+
+
+### Bug Fixes
+
+* Imports order ([075742d](https://github.com/frankie336/entities_common/commit/075742d51e75ddb8d86ae79e0f9b11eb6cf4c1f8))
+
 ## [0.1.14](https://github.com/frankie336/entities_common/compare/v0.1.13...v0.1.14) (2025-04-07)
 
 

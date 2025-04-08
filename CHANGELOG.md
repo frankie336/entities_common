@@ -1,3 +1,18 @@
+## [0.1.16](https://github.com/frankie336/entities_common/compare/v0.1.15...v0.1.16) (2025-04-08)
+
+
+### Bug Fixes
+
+* fastapi dependency ([dfb77c1](https://github.com/frankie336/entities_common/commit/dfb77c172b593ed9d931b7ab4de6b4ac57ecb066))
+* formatting ([9947ab2](https://github.com/frankie336/entities_common/commit/9947ab2c544a6c8e8e1753df028e45aed2b57426))
+* formatting ([1e45d1f](https://github.com/frankie336/entities_common/commit/1e45d1fa0df2ac846a4cbbb57b140a92c4be940e))
+* imports ([ed69c32](https://github.com/frankie336/entities_common/commit/ed69c32167f1864bc9c8e5d53e995eaeea3c6be2))
+* install black ([998f911](https://github.com/frankie336/entities_common/commit/998f91149c4e820a3a242b77023637944a6bd8ec))
+* name migration ([71e3a28](https://github.com/frankie336/entities_common/commit/71e3a288089b3ad25406f9d21957b7c0adedfd2c))
+* TEST_PYPI_URL ([c705014](https://github.com/frankie336/entities_common/commit/c705014fe94d64ea9522a301cc9f54bd96308783))
+* TEST_PYPI_URL2 ([1dd07dc](https://github.com/frankie336/entities_common/commit/1dd07dcd0da8c839adcec50431e548d1a6412270))
+* workflow ([2267aee](https://github.com/frankie336/entities_common/commit/2267aeed89a7646943966c134be21a7913b08199))
+
 ## [0.1.15](https://github.com/frankie336/entities_common/compare/v0.1.14...v0.1.15) (2025-04-08)
 
 

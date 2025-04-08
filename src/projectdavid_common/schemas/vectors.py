@@ -62,6 +62,7 @@ class VectorStoreRead(BaseModel):
 
 class VectorStoreCreateWithSharedId(VectorStoreCreate):
     """Model representing the full payload for creating a vector store via API."""
+
     shared_id: str = Field(
         ..., description="The pre-generated unique ID for the store and collection."
     )
@@ -88,7 +89,9 @@ class VectorStoreFileRead(BaseModel):
     vector_store_id: str = Field(..., description="Owning vector store ID")
     file_name: str = Field(..., description="Original file name")
     file_path: str = Field(..., description="Qdrant metadata path identifier")
-    processed_at: Optional[int] = Field(None, description="Unix timestamp of last processing change")
+    processed_at: Optional[int] = Field(
+        None, description="Unix timestamp of last processing change"
+    )
     status: StatusEnum = Field(..., description="Current processing state")
     error_message: Optional[str] = Field(None, description="Failure reason if applicable")
     meta_data: Optional[Dict[str, Any]] = Field(None, description="Metadata dict")
@@ -99,6 +102,7 @@ class VectorStoreFileRead(BaseModel):
 
 class VectorStoreFileUpdateStatus(BaseModel):
     """Input model for PATCH request to update a file's status."""
+
     status: StatusEnum = Field(..., description="The new status for the file record.")
     error_message: Optional[str] = Field(None, description="Error message if status is 'failed'.")
 
@@ -106,9 +110,7 @@ class VectorStoreFileUpdateStatus(BaseModel):
 class VectorStoreFileUpdate(BaseModel):
     status: Optional[StatusEnum] = Field(None, description="Status override")
     error_message: Optional[str] = Field(None, description="New error message")
-    meta_data: Optional[Dict[str, Any]] = Field(
-        None, description="Metadata replacement"
-    )
+    meta_data: Optional[Dict[str, Any]] = Field(None, description="Metadata replacement")
 
 
 class VectorStoreList(BaseModel):
@@ -131,10 +133,16 @@ class VectorStoreUnlinkAssistant(BaseModel):
 
 class VectorStoreSearchResult(BaseModel):
     text: str = Field(..., description="Returned text chunk")
-    meta_data: Optional[Dict[str, Any]] = Field(None, description="Metadata associated with the chunk")
+    meta_data: Optional[Dict[str, Any]] = Field(
+        None, description="Metadata associated with the chunk"
+    )
     score: float = Field(..., description="Similarity score from the vector search")
-    vector_id: Optional[str] = Field(None, description="Unique ID of the vector point in the database")
-    store_id: Optional[str] = Field(None, description="ID of the vector store where the result originated")
+    vector_id: Optional[str] = Field(
+        None, description="Unique ID of the vector point in the database"
+    )
+    store_id: Optional[str] = Field(
+        None, description="ID of the vector store where the result originated"
+    )
     retrieved_at: int = Field(
         default_factory=lambda: int(time.time()),
         description="Unix timestamp when search was performed",

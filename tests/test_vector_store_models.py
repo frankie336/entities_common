@@ -9,6 +9,6 @@ def test_vector_store_create_valid():
         name="My Store",
         user_id="user_123",
         vector_size=384,
-        distance_metric="cosine"
+        distance_metric="cosine",
     )
     assert obj.distance_metric == "COSINE"

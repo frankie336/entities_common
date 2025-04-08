@@ -13,6 +13,7 @@ def update_version(file_path, new_version):
     Path(file_path).write_text(new_content, encoding="utf-8")
     print(f"🔧 Patched pyproject.toml → version = {new_version}")
 
+
 if __name__ == "__main__":
     _, version = sys.argv
     update_version("pyproject.toml", version)

@@ -22,5 +22,3 @@ for filepath in base_path.rglob("*.py"):
 
 # Deduplicate and sort
 files_to_fix = sorted(set(files_to_fix))
-
-

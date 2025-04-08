@@ -38,7 +38,7 @@ jobs:
       - name: 🔧 Install lint dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          pip install --extra-index-url ${{ env.TEST_PYPI_URL }} -e ".[dev]"
+          pip install --index-url https://pypi.org/simple --extra-index-url ${{ env.TEST_PYPI_URL }} -e ".[dev]"
           pip install black isort
 
       - name: Verify Black installation
@@ -79,7 +79,7 @@ jobs:
       - name: 🔧 Install dependencies
         run: |
           python -m pip install --upgrade pip setuptools wheel
-          pip install --extra-index-url ${{ env.TEST_PYPI_URL }} -e ".[dev]"
+          pip install --index-url https://pypi.org/simple --extra-index-url ${{ env.TEST_PYPI_URL }} -e ".[dev]"
 
       - name: ✅ Run tests
         run: pytest tests/
@@ -87,23 +87,23 @@ jobs:
   release:
     name: 🚀 Tag, Build, and Publish
     runs-on: ubuntu-latest
-    needs: test  # Run release steps only if tests pass (which depends on lint passing)
+    needs: test  # Run release steps only if tests pass
     if: "github.ref_type == 'branch' && (github.ref_name == 'main' || github.ref_name == 'master' || github.ref_name == 'dev')"
     steps:
       - name: 🧾 Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # Fetch all history for semantic-release to analyze commits
+          fetch-depth: 0  # Fetch full history for semantic-release
 
       - name: 🐍 Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.11'  # Use a consistent version for build/release
+          python-version: '3.11'
 
       - name: 🔧 Install build and dev tools
         run: |
           python -m pip install --upgrade pip setuptools wheel build
-          pip install --extra-index-url ${{ env.TEST_PYPI_URL }} -e ".[dev]"
+          pip install --index-url https://pypi.org/simple --extra-index-url ${{ env.TEST_PYPI_URL }} -e ".[dev]"
 
       - name: 🚀 Setup Node.js for semantic-release
         uses: actions/setup-node@v4
@@ -130,7 +130,7 @@ jobs:
       - name: 🛡️ Verify build artifacts
         run: |
           ls -lh dist
-          test -n "$(ls -A dist 2>/dev/null)" || (echo "❌ dist/ directory is empty! Build might have failed or semantic-release determined no release was needed." ; exit 1)
+          test -n "$(ls -A dist 2>/dev/null)" || (echo "❌ dist/ is empty!" && exit 1)
 
       - name: 🧠 Decide publish target
         id: repo

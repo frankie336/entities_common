@@ -1,8 +1,6 @@
-# ------------------------------------------------
-# Vendors sometimes have clashing model names.
-# This can interfere with routing logic
-# _________________________________________________
-MODEL_MAP = {
+from typing import Final
+
+MODEL_MAP: Final[dict[str, str]] = {
     "deepseek-ai/deepseek-reasoner": "deepseek-reasoner",
     "deepseek-ai/deepseek-chat": "deepseek-chat",
     # Deepseek@TogetherAi
@@ -22,9 +20,7 @@ MODEL_MAP = {
     "hyperbolic/meta-llama/Meta-Llama-3.1-8B-Instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3.1-70B-Instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
-    # Quen@Hyperbolic
-    # --- Add Quen models here if needed ---
-    # --- Google Gemini & Gemma Models ---
+    # Google Gemini & Gemma Models
     "google/gemini-1.0-pro-vision-latest": "gemini-1.0-pro-vision-latest",
     "google/gemini-pro-vision": "gemini-pro-vision",
     "google/gemini-1.5-pro-latest": "gemini-1.5-pro-latest",
@@ -62,4 +58,4 @@ MODEL_MAP = {
     "google/gemma-3-4b-it": "gemma-3-4b-it",
     "google/gemma-3-12b-it": "gemma-3-12b-it",
     "google/gemma-3-27b-it": "gemma-3-27b-it",
-}  # End MODEL_MAP
+}

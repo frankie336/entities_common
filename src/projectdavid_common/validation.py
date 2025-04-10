@@ -31,6 +31,7 @@ from projectdavid_common.schemas.runs import (
     RunStatus,
     RunStatusUpdate,
 )
+from projectdavid_common.schemas.stream import StreamRequest
 from projectdavid_common.schemas.threads import (
     ThreadCreate,
     ThreadIds,
@@ -178,3 +179,4 @@ class ValidationInterface:
     # Key
     APIKeyRead = APIKeyRead
     APIKeyCreate = APIKeyCreate
+    StreamRequest = StreamRequest

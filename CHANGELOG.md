@@ -1,3 +1,10 @@
+## [0.2.1](https://github.com/frankie336/entities_common/compare/v0.2.0...v0.2.1) (2025-04-10)
+
+
+### Bug Fixes
+
+* MODEL_MAP types. ([d1a8568](https://github.com/frankie336/entities_common/commit/d1a85688e2831c9f9014ccd5d0e5666d3ac6af37))
+
 # [0.2.0](https://github.com/frankie336/entities_common/compare/v0.1.16...v0.2.0) (2025-04-10)
 
 

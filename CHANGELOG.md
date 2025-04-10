@@ -1,3 +1,11 @@
+# [0.2.0](https://github.com/frankie336/entities_common/compare/v0.1.16...v0.2.0) (2025-04-10)
+
+
+### Features
+
+* Add support for all google models. ([0eff4d3](https://github.com/frankie336/entities_common/commit/0eff4d356acb834e36e3459b02ed6c165beae0ae))
+* add support for websockets ([3a52965](https://github.com/frankie336/entities_common/commit/3a529653173ad6e5512e5b0d8c73b51dbfb19486))
+
 ## [0.1.16](https://github.com/frankie336/entities_common/compare/v0.1.15...v0.1.16) (2025-04-08)
 
 

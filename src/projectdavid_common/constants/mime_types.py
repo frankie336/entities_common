@@ -1,36 +1,5 @@
 import os
-import httpx
 
-DEFAULT_TIMEOUT = httpx.Timeout(timeout=60.0, connect=10.0, read=30.0, write=30.0)
-
-TERMINAL_STATUSES = {"completed", "failed", "cancelled", "expired"}
-ACTION_REQUIRED_STATUS = "pending_action"
-
-PLATFORM_TOOLS = ["code_interpreter", "web_search", "vector_store_search", "computer"]
-
-
-TOOLS_ID_MAP = {
-    "code_interpreter": "tool_79YkQEz5cDwpJjnR7oJ80D",
-    "web_search": "tool_BiIwycpLo1n5Dh6BHN01v8",
-    "vector_store_search": "tool_MCaJpXJU3eW6vaMUybEf6i",
-    "computer": "tool_PJQ6VcnkmRCMankObjtRcn",
-}
-
-
-SPECIAL_CASE_TOOL_HANDLING = ["computer", "code_interpreter"]
-
-ERROR_NO_CONTENT = (
-    "ERROR: The Tool has failed to return any content. The current stage of the workflow is tool submission. "
-    "Please inform the user."
-)
-
-
-DIRECT_DATABASE_URL = "mysql+pymysql://ollama:3e4Qv5uo2Cg31zC1@localhost:3307/cosmic_catalyst"
-
-
-WEB_SEARCH_BASE_URL = "http://localhost:8080/"
-
-# Extend SUPPORTED_MIME_TYPES and define helper
 SUPPORTED_MIME_TYPES = {
     ".c": "text/x-c",
     ".cpp": "text/x-c++",
@@ -74,12 +43,6 @@ SUPPORTED_MIME_TYPES = {
     ".ogg": "audio/ogg",
 }
 
-
-def get_mime_type(filename: str) -> str:
-    _, ext = os.path.splitext(filename)
-    return SUPPORTED_MIME_TYPES.get(ext.lower())
-
-
 BROWSER_RENDERABLE_EXTENSIONS = {
     ".pdf",
     ".txt",
@@ -93,5 +56,9 @@ BROWSER_RENDERABLE_EXTENSIONS = {
     ".webp",
 }
 
-# For text/* MIME types, define allowed encodings
 ALLOWED_TEXT_ENCODINGS = ["utf-8", "utf-16", "ascii"]
+
+
+def get_mime_type(filename: str) -> str:
+    _, ext = os.path.splitext(filename)
+    return SUPPORTED_MIME_TYPES.get(ext.lower())

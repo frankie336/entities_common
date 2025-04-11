@@ -1,6 +1,8 @@
-from typing import Final
-
-MODEL_MAP: Final[dict[str, str]] = {
+# ------------------------------------------------
+# Vendors sometimes have clashing model names.
+# This can interfere with routing logic
+# _________________________________________________
+MODEL_MAP = {
     "deepseek-ai/deepseek-reasoner": "deepseek-reasoner",
     "deepseek-ai/deepseek-chat": "deepseek-chat",
     # Deepseek@TogetherAi
@@ -10,7 +12,7 @@ MODEL_MAP: Final[dict[str, str]] = {
     "together-ai/meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
     "together-ai/meta-llama/Llama-4-Scout-17B-16E-Instruct": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
     # Deepseek@Hyperbolic
-    "hyperbolic/deepseek-ai/deepseek-ai/DeepSeek-V3-0324": "deepseek-ai/DeepSeek-V3-0324",
+    "hyperbolic/deepseek-ai/DeepSeek-V3-0324": "deepseek-ai/DeepSeek-V3-0324",
     "hyperbolic/deepseek-ai/DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
     "hyperbolic/deepseek-ai/DeepSeek-V3": "deepseek-ai/DeepSeek-V3",
     # Llama@Hyperbolic
@@ -20,7 +22,9 @@ MODEL_MAP: Final[dict[str, str]] = {
     "hyperbolic/meta-llama/Meta-Llama-3.1-8B-Instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3.1-70B-Instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
-    # Google Gemini & Gemma Models
+    # Quen@Hyperbolic
+    # --- Add Quen models here if needed ---
+    # --- Google Gemini & Gemma Models ---
     "google/gemini-1.0-pro-vision-latest": "gemini-1.0-pro-vision-latest",
     "google/gemini-pro-vision": "gemini-pro-vision",
     "google/gemini-1.5-pro-latest": "gemini-1.5-pro-latest",
@@ -58,4 +62,4 @@ MODEL_MAP: Final[dict[str, str]] = {
     "google/gemma-3-4b-it": "gemma-3-4b-it",
     "google/gemma-3-12b-it": "gemma-3-12b-it",
     "google/gemma-3-27b-it": "gemma-3-27b-it",
-}
+}  # End MODEL_MAP

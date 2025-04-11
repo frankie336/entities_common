@@ -1,8 +1,8 @@
 import os
 
-import httpx
+from dotenv import load_dotenv
 
-DEFAULT_TIMEOUT = httpx.Timeout(timeout=60.0, connect=10.0, read=30.0, write=30.0)
+load_dotenv()
 
 TERMINAL_STATUSES = {"completed", "failed", "cancelled", "expired"}
 ACTION_REQUIRED_STATUS = "pending_action"

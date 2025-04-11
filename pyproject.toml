@@ -17,7 +17,8 @@ requires-python = ">=3.10"
 dependencies = [
   "pydantic",
   "typing_extensions",
-  "fastapi>=0.70.0"  # Added FastAPI as a dependency
+  "fastapi>=0.70.0",
+  "httpx"
 ]
 
 [project.optional-dependencies]

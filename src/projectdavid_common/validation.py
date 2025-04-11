@@ -109,7 +109,7 @@ class ValidationInterface:
 
     # Inference schemas
     ProcessOutput = ProcessOutput
-    StreamRequest = StreamRequest
+
 
     # Messages schemas
     MessageRole = MessageRole

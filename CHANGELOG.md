@@ -1,3 +1,19 @@
+# [0.3.0](https://github.com/frankie336/entities_common/compare/v0.2.1...v0.3.0) (2025-04-11)
+
+
+### Bug Fixes
+
+* hyperbolic/deepseek-ai/DeepSeek-V3-0324 model map ([7210f0c](https://github.com/frankie336/entities_common/commit/7210f0c0a59610b6c390d64b7e3053c565fb6c15))
+* hyperbolic/deepseek-ai/DeepSeek-V3-0324 model map ([215d424](https://github.com/frankie336/entities_common/commit/215d4244dbbfefca24b6fa05fd3fee20d64c1616))
+
+
+### Features
+
+* Add support for all google models. ([996e0df](https://github.com/frankie336/entities_common/commit/996e0dfffce49fedc5cd1f1ec4cd0ffbbf139428))
+* add support for websockets ([ca18742](https://github.com/frankie336/entities_common/commit/ca18742b43aacfebd453882507373698ab575b31))
+* Implement modular constants ([1a345cb](https://github.com/frankie336/entities_common/commit/1a345cb42d87dcadc2877df48150919102a5e035))
+* Implement modular constants ([cae537c](https://github.com/frankie336/entities_common/commit/cae537cc0511c41a2f66d108888d393f92b23851))
+
 ## [0.2.1](https://github.com/frankie336/entities_common/compare/v0.2.0...v0.2.1) (2025-04-10)
 
 

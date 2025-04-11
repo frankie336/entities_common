@@ -110,7 +110,6 @@ class ValidationInterface:
     # Inference schemas
     ProcessOutput = ProcessOutput
 
-
     # Messages schemas
     MessageRole = MessageRole
     MessageCreate = MessageCreate

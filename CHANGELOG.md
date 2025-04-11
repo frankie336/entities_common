@@ -1,3 +1,12 @@
+## [0.3.1](https://github.com/frankie336/entities_common/compare/v0.3.0...v0.3.1) (2025-04-11)
+
+
+### Bug Fixes
+
+* remove StreamRequest conflict. ([59b970c](https://github.com/frankie336/entities_common/commit/59b970cc681cc42f4531dd465fbbb21b94b5c1b4))
+* remove StreamRequest conflict. ([d0a2d85](https://github.com/frankie336/entities_common/commit/d0a2d85ac8a084fc2f6b23065ec1ff04b4842564))
+* remove StreamRequest conflict. ([fbf32e9](https://github.com/frankie336/entities_common/commit/fbf32e997c840880412869cf2a4c96e0046949af))
+
 # [0.3.0](https://github.com/frankie336/entities_common/compare/v0.2.1...v0.3.0) (2025-04-11)
 
 

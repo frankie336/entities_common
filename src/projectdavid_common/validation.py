@@ -15,7 +15,7 @@ from projectdavid_common.schemas.assistants import (
 )
 from projectdavid_common.schemas.enums import ProviderEnum, StatusEnum
 from projectdavid_common.schemas.files import FileResponse, FileUploadRequest
-from projectdavid_common.schemas.inference import ProcessOutput, StreamRequest
+from projectdavid_common.schemas.inference import ProcessOutput
 from projectdavid_common.schemas.keys import APIKeyCreate, APIKeyRead
 from projectdavid_common.schemas.messages import (
     MessageCreate,

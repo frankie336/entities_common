@@ -1,3 +1,21 @@
+# [0.4.0](https://github.com/frankie336/entities_common/compare/v0.3.1...v0.4.0) (2025-04-12)
+
+
+### Bug Fixes
+
+* remove StreamRequest conflict. ([68a4536](https://github.com/frankie336/entities_common/commit/68a4536b56447c85b301fc8d913f58d7f55ef776))
+* remove StreamRequest conflict. ([35301dd](https://github.com/frankie336/entities_common/commit/35301ddc35b40d9c6853a839ce2331eff05eff0e))
+
+
+### Features
+
+* Implement API key protected routes ([900203e](https://github.com/frankie336/entities_common/commit/900203eea08de85ec8c9e02d2285574c4fab57c4))
+* Implement API key protected routes ([a394e08](https://github.com/frankie336/entities_common/commit/a394e086b05a7ab44b87fcc3aa36b528f4e64274))
+* Implement API key protected routes ([3208d38](https://github.com/frankie336/entities_common/commit/3208d382e2bc804f6ed8e133d344dad79f007fb1))
+* Implement API key protected routes ([4cd0421](https://github.com/frankie336/entities_common/commit/4cd0421ea63ad8cc02e3dc384920915114062bff))
+* Implement API key protected routes ([5dcc028](https://github.com/frankie336/entities_common/commit/5dcc028332c473b0f6f6cb06766e6b688783798a))
+* Implement API key protected routes ([788cade](https://github.com/frankie336/entities_common/commit/788cade223c12cce1c83c75d6bab1c7261c5cce6))
+
 ## [0.3.1](https://github.com/frankie336/entities_common/compare/v0.3.0...v0.3.1) (2025-04-11)
 
 

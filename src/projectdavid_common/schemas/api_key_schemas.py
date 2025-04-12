@@ -10,8 +10,6 @@ from pydantic import BaseModel, ConfigDict, Field
 # Option 2: Keep 'import datetime' and use 'datetime.datetime' below
 
 
-
-
 class ApiKeyCreateRequest(BaseModel):
     """
     Schema for the request body when creating a new API key.

@@ -1,13 +1,10 @@
 # src/projectdavid_common/schemas/api_key_schemas.py
 
-# --- CORRECTION: Import the datetime CLASS, not the module ---
-# Option 1: Import the class directly
+# Import the datetime CLASS from the datetime module, aliased as 'dt'
 from datetime import datetime as dt
 from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
-
-# Option 2: Keep 'import datetime' and use 'datetime.datetime' below
 
 
 class ApiKeyCreateRequest(BaseModel):
@@ -53,14 +50,12 @@ class ApiKeyDetails(BaseModel):
     )
     user_id: str = Field(..., description="The ID of the user who owns this key.")
 
-    # --- CORRECTION: Use the datetime CLASS ---
+    # --- Use the datetime CLASS (aliased as dt) for type hints ---
     created_at: dt = Field(..., description="The timestamp (UTC) when the key was created.")
-    # --- CORRECTION: Use the datetime CLASS ---
     expires_at: Optional[dt] = Field(
         default=None,
         description="The timestamp (UTC) when the key will expire, if an expiration was set.",
     )
-    # --- CORRECTION: Use the datetime CLASS ---
     last_used_at: Optional[dt] = Field(
         default=None,
         description="The timestamp (UTC) when the key was last successfully used for authentication (if tracked).",
@@ -70,7 +65,7 @@ class ApiKeyDetails(BaseModel):
     )
 
     # Configure Pydantic to work with ORM objects (SQLAlchemy models)
-    model_config = ConfigDict(from_attributes=True)
+    model_config = ConfigDict(from_attributes=True)  # Pydantic v2 standard
 
 
 class ApiKeyCreateResponse(BaseModel):

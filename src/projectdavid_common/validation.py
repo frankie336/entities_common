@@ -1,5 +1,5 @@
 # src/projectdavid_common/validation.py
-# Use relative imports for modules within your package.
+
 from projectdavid_common.schemas.actions import (
     ActionBase,
     ActionCreate,
@@ -7,6 +7,12 @@ from projectdavid_common.schemas.actions import (
     ActionRead,
     ActionStatus,
     ActionUpdate,
+)
+from projectdavid_common.schemas.api_key_schemas import (
+    ApiKeyCreateRequest,
+    ApiKeyCreateResponse,
+    ApiKeyDetails,
+    ApiKeyListResponse,
 )
 from projectdavid_common.schemas.assistants import (
     AssistantCreate,
@@ -16,7 +22,6 @@ from projectdavid_common.schemas.assistants import (
 from projectdavid_common.schemas.enums import ProviderEnum, StatusEnum
 from projectdavid_common.schemas.files import FileResponse, FileUploadRequest
 from projectdavid_common.schemas.inference import ProcessOutput
-from projectdavid_common.schemas.keys import APIKeyCreate, APIKeyRead
 from projectdavid_common.schemas.messages import (
     MessageCreate,
     MessageRead,
@@ -176,6 +181,7 @@ class ValidationInterface:
     VectorStoreAddRequest = VectorStoreAddRequest
 
     # Key
-    APIKeyRead = APIKeyRead
-    APIKeyCreate = APIKeyCreate
-    StreamRequest = StreamRequest
+    ApiKeyCreateRequest = ApiKeyCreateRequest
+    ApiKeyCreateResponse = ApiKeyCreateResponse
+    ApiKeyDetails = ApiKeyDetails
+    ApiKeyListResponse = ApiKeyListResponse

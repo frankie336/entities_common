@@ -1,10 +1,14 @@
-# --- Models (projectdavid_common/validation.py) ---
+# src/projectdavid_common/validation.py # Or schemas/vector_store_schemas.py depending on your structure
 
 import time
 from enum import Enum
 from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
+
+# Ensure you import the datetime class correctly if/when needed in OTHER models
+# from datetime import datetime as dt
+
 
 
 class StatusEnum(str, Enum):
@@ -49,6 +53,7 @@ class VectorStoreRead(BaseModel):
     collection_name: str = Field(..., description="Qdrant collection name (matches ID)")
     vector_size: int = Field(..., description="Vector dimensionality")
     distance_metric: str = Field(..., description="Metric used for comparison")
+    # --- Using int for timestamps, which is correct based on this schema ---
     created_at: int = Field(..., description="Unix timestamp when created")
     updated_at: Optional[int] = Field(None, description="Last modified timestamp")
     status: StatusEnum = Field(..., description="Vector store status")
@@ -60,8 +65,6 @@ class VectorStoreRead(BaseModel):
 
 
 class VectorStoreCreateWithSharedId(VectorStoreCreate):
-    """Model representing the full payload for creating a vector store via API."""
-
     shared_id: str = Field(
         ..., description="The pre-generated unique ID for the store and collection."
     )
@@ -88,6 +91,7 @@ class VectorStoreFileRead(BaseModel):
     vector_store_id: str = Field(..., description="Owning vector store ID")
     file_name: str = Field(..., description="Original file name")
     file_path: str = Field(..., description="Qdrant metadata path identifier")
+    # --- Using int for timestamp, which is correct based on this schema ---
     processed_at: Optional[int] = Field(
         None, description="Unix timestamp of last processing change"
     )
@@ -100,8 +104,6 @@ class VectorStoreFileRead(BaseModel):
 
 
 class VectorStoreFileUpdateStatus(BaseModel):
-    """Input model for PATCH request to update a file's status."""
-
     status: StatusEnum = Field(..., description="The new status for the file record.")
     error_message: Optional[str] = Field(None, description="Error message if status is 'failed'.")
 
@@ -142,6 +144,7 @@ class VectorStoreSearchResult(BaseModel):
     store_id: Optional[str] = Field(
         None, description="ID of the vector store where the result originated"
     )
+    # --- Using int for timestamp, which is correct based on this schema ---
     retrieved_at: int = Field(
         default_factory=lambda: int(time.time()),
         description="Unix timestamp when search was performed",

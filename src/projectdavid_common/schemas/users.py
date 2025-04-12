@@ -1,3 +1,4 @@
+import datetime
 from typing import Optional
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -14,8 +15,14 @@ class UserCreate(BaseModel):
     name: Optional[str] = Field(default="Anonymous User")
 
 
-class UserRead(UserBase):
-    pass
+class UserRead(BaseModel):
+    id: str
+    email: Optional[str] = None
+    full_name: Optional[str] = None
+    created_at: datetime
+    updated_at: datetime
+
+    model_config = ConfigDict(from_attributes=True)
 
 
 class UserUpdate(BaseModel):

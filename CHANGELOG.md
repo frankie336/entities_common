@@ -1,3 +1,58 @@
+## [0.3.1](https://github.com/frankie336/entities_common/compare/v0.3.0...v0.3.1) (2025-04-11)
+
+
+### Bug Fixes
+
+* remove StreamRequest conflict. ([59b970c](https://github.com/frankie336/entities_common/commit/59b970cc681cc42f4531dd465fbbb21b94b5c1b4))
+* remove StreamRequest conflict. ([d0a2d85](https://github.com/frankie336/entities_common/commit/d0a2d85ac8a084fc2f6b23065ec1ff04b4842564))
+* remove StreamRequest conflict. ([fbf32e9](https://github.com/frankie336/entities_common/commit/fbf32e997c840880412869cf2a4c96e0046949af))
+
+# [0.3.0](https://github.com/frankie336/entities_common/compare/v0.2.1...v0.3.0) (2025-04-11)
+
+
+### Bug Fixes
+
+* hyperbolic/deepseek-ai/DeepSeek-V3-0324 model map ([7210f0c](https://github.com/frankie336/entities_common/commit/7210f0c0a59610b6c390d64b7e3053c565fb6c15))
+* hyperbolic/deepseek-ai/DeepSeek-V3-0324 model map ([215d424](https://github.com/frankie336/entities_common/commit/215d4244dbbfefca24b6fa05fd3fee20d64c1616))
+
+
+### Features
+
+* Add support for all google models. ([996e0df](https://github.com/frankie336/entities_common/commit/996e0dfffce49fedc5cd1f1ec4cd0ffbbf139428))
+* add support for websockets ([ca18742](https://github.com/frankie336/entities_common/commit/ca18742b43aacfebd453882507373698ab575b31))
+* Implement modular constants ([1a345cb](https://github.com/frankie336/entities_common/commit/1a345cb42d87dcadc2877df48150919102a5e035))
+* Implement modular constants ([cae537c](https://github.com/frankie336/entities_common/commit/cae537cc0511c41a2f66d108888d393f92b23851))
+
+## [0.2.1](https://github.com/frankie336/entities_common/compare/v0.2.0...v0.2.1) (2025-04-10)
+
+
+### Bug Fixes
+
+* MODEL_MAP types. ([d1a8568](https://github.com/frankie336/entities_common/commit/d1a85688e2831c9f9014ccd5d0e5666d3ac6af37))
+
+# [0.2.0](https://github.com/frankie336/entities_common/compare/v0.1.16...v0.2.0) (2025-04-10)
+
+
+### Features
+
+* Add support for all google models. ([0eff4d3](https://github.com/frankie336/entities_common/commit/0eff4d356acb834e36e3459b02ed6c165beae0ae))
+* add support for websockets ([3a52965](https://github.com/frankie336/entities_common/commit/3a529653173ad6e5512e5b0d8c73b51dbfb19486))
+
+## [0.1.16](https://github.com/frankie336/entities_common/compare/v0.1.15...v0.1.16) (2025-04-08)
+
+
+### Bug Fixes
+
+* fastapi dependency ([dfb77c1](https://github.com/frankie336/entities_common/commit/dfb77c172b593ed9d931b7ab4de6b4ac57ecb066))
+* formatting ([9947ab2](https://github.com/frankie336/entities_common/commit/9947ab2c544a6c8e8e1753df028e45aed2b57426))
+* formatting ([1e45d1f](https://github.com/frankie336/entities_common/commit/1e45d1fa0df2ac846a4cbbb57b140a92c4be940e))
+* imports ([ed69c32](https://github.com/frankie336/entities_common/commit/ed69c32167f1864bc9c8e5d53e995eaeea3c6be2))
+* install black ([998f911](https://github.com/frankie336/entities_common/commit/998f91149c4e820a3a242b77023637944a6bd8ec))
+* name migration ([71e3a28](https://github.com/frankie336/entities_common/commit/71e3a288089b3ad25406f9d21957b7c0adedfd2c))
+* TEST_PYPI_URL ([c705014](https://github.com/frankie336/entities_common/commit/c705014fe94d64ea9522a301cc9f54bd96308783))
+* TEST_PYPI_URL2 ([1dd07dc](https://github.com/frankie336/entities_common/commit/1dd07dcd0da8c839adcec50431e548d1a6412270))
+* workflow ([2267aee](https://github.com/frankie336/entities_common/commit/2267aeed89a7646943966c134be21a7913b08199))
+
 ## [0.1.15](https://github.com/frankie336/entities_common/compare/v0.1.14...v0.1.15) (2025-04-08)
 
 

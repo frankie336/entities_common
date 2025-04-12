@@ -10,7 +10,6 @@ from pydantic import BaseModel, ConfigDict, Field, field_validator, model_valida
 # from datetime import datetime as dt
 
 
-
 class StatusEnum(str, Enum):
     deleted = "deleted"
     active = "active"

@@ -1,9 +1,15 @@
 # src/projectdavid_common/schemas/api_key_schemas.py
 
-from datetime import datetime
+# --- CORRECTION: Import the datetime CLASS, not the module ---
+# Option 1: Import the class directly
+from datetime import datetime as dt
 from typing import List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
+
+# Option 2: Keep 'import datetime' and use 'datetime.datetime' below
+
+
 
 
 class ApiKeyCreateRequest(BaseModel):
@@ -22,7 +28,6 @@ class ApiKeyCreateRequest(BaseModel):
         description="Optional number of days from now until the key automatically expires. Minimum value is 1.",
     )
 
-    # Example for Pydantic v2 model_config if needed for validation examples
     model_config = ConfigDict(
         extra='forbid',  # Don't allow extra fields in the request
         json_schema_extra={
@@ -49,12 +54,16 @@ class ApiKeyDetails(BaseModel):
         default=None, description="The user-friendly name assigned to the key, if any."
     )
     user_id: str = Field(..., description="The ID of the user who owns this key.")
-    created_at: datetime = Field(..., description="The timestamp (UTC) when the key was created.")
-    expires_at: Optional[datetime] = Field(
+
+    # --- CORRECTION: Use the datetime CLASS ---
+    created_at: dt = Field(..., description="The timestamp (UTC) when the key was created.")
+    # --- CORRECTION: Use the datetime CLASS ---
+    expires_at: Optional[dt] = Field(
         default=None,
         description="The timestamp (UTC) when the key will expire, if an expiration was set.",
     )
-    last_used_at: Optional[datetime] = Field(
+    # --- CORRECTION: Use the datetime CLASS ---
+    last_used_at: Optional[dt] = Field(
         default=None,
         description="The timestamp (UTC) when the key was last successfully used for authentication (if tracked).",
     )
@@ -63,7 +72,7 @@ class ApiKeyDetails(BaseModel):
     )
 
     # Configure Pydantic to work with ORM objects (SQLAlchemy models)
-    model_config = ConfigDict(from_attributes=True)  # Pydantic v2 replaces orm_mode=True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class ApiKeyCreateResponse(BaseModel):
@@ -89,6 +98,7 @@ class ApiKeyCreateResponse(BaseModel):
                         "prefix": "ea_abc123",
                         "key_name": "My New Key",
                         "user_id": "user_jkl456",
+                        # Example string representation, Pydantic handles conversion
                         "created_at": "2023-10-27T10:00:00Z",
                         "expires_at": None,
                         "last_used_at": None,

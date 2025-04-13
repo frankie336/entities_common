@@ -185,3 +185,6 @@ class ValidationInterface:
     ApiKeyCreateResponse = ApiKeyCreateResponse
     ApiKeyDetails = ApiKeyDetails
     ApiKeyListResponse = ApiKeyListResponse
+
+    # Stream
+    StreamRequest = StreamRequest

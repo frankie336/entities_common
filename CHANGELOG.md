@@ -1,3 +1,10 @@
+## [0.4.1](https://github.com/frankie336/entities_common/compare/v0.4.0...v0.4.1) (2025-04-13)
+
+
+### Bug Fixes
+
+* StreamRequest ([5cf752e](https://github.com/frankie336/entities_common/commit/5cf752e4485cd47774a0219c47350348ae7873e5))
+
 # [0.4.0](https://github.com/frankie336/entities_common/compare/v0.3.1...v0.4.0) (2025-04-12)
 
 

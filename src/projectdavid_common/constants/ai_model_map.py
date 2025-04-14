@@ -27,7 +27,6 @@ MODEL_MAP = {
     "hyperbolic/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
     "hyperbolic/Qwen/wen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
     "hyperbolic/Qwen/QwQ-32B-Preview": "Qwen/QwQ-32B-Preview",
-
     # --- Google Gemini & Gemma Models ---
     "google/gemini-1.0-pro-vision-latest": "gemini-1.0-pro-vision-latest",
     "google/gemini-pro-vision": "gemini-pro-vision",

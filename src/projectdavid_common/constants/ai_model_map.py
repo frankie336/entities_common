@@ -24,8 +24,6 @@ MODEL_MAP = {
     "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
     # Quen@Hyperbolic
     "hyperbolic/Qwen/QwQ-32B": "Qwen/QwQ-32B",
-    "hyperbolic/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
-    "hyperbolic/Qwen/QwQ-32B-Preview": "Qwen/QwQ-32B-Preview",
     # --- Add Quen models here if needed ---
     "hyperbolic/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
     "hyperbolic/Qwen/wen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",

@@ -1,3 +1,10 @@
+# [0.7.0](https://github.com/frankie336/entities_common/compare/v0.6.0...v0.7.0) (2025-04-17)
+
+
+### Features
+
+* Qwen/QwQ-32B-Preview ([4cf7707](https://github.com/frankie336/entities_common/commit/4cf77078b37f344a5976178e2ba6cc17789caa69))
+
 # [0.6.0](https://github.com/frankie336/entities_common/compare/v0.5.0...v0.6.0) (2025-04-14)
 
 

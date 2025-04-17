@@ -1,3 +1,11 @@
+# [0.10.0](https://github.com/frankie336/entities_common/compare/v0.9.0...v0.10.0) (2025-04-17)
+
+
+### Features
+
+* add support for new models ([245b383](https://github.com/frankie336/entities_common/commit/245b38320b1e0cb611ef7a2e37ca9f7e54ba9e6f))
+* add support for new models1 ([ba1f9ad](https://github.com/frankie336/entities_common/commit/ba1f9add466fbfeb1a79911e344e8b293f5aa7cf))
+
 # [0.9.0](https://github.com/frankie336/entities_common/compare/v0.8.0...v0.9.0) (2025-04-17)
 
 

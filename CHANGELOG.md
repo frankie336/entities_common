@@ -1,3 +1,15 @@
+# [0.9.0](https://github.com/frankie336/entities_common/compare/v0.8.0...v0.9.0) (2025-04-17)
+
+
+### Bug Fixes
+
+* -"hyperbolic/Qwen/wen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct", ([fc34b90](https://github.com/frankie336/entities_common/commit/fc34b90f7f8445407b85d8705bd7fac60c0c6e0d))
+
+
+### Features
+
+* add support for new models ([b45ba96](https://github.com/frankie336/entities_common/commit/b45ba96e18b2da811dc3ed40d86a3a68088ec2ac))
+
 # [0.8.0](https://github.com/frankie336/entities_common/compare/v0.7.1...v0.8.0) (2025-04-17)
 
 

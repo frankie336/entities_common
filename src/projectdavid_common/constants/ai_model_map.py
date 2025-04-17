@@ -11,6 +11,7 @@ MODEL_MAP = {
     # Llama@TogetherAi
     "together-ai/meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8": "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8",
     "together-ai/meta-llama/Llama-4-Scout-17B-16E-Instruct": "meta-llama/Llama-4-Scout-17B-16E-Instruct",
+
     # Deepseek@Hyperbolic
     "hyperbolic/deepseek-ai/DeepSeek-V3-0324": "deepseek-ai/DeepSeek-V3-0324",
     "hyperbolic/deepseek-ai/DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
@@ -22,10 +23,11 @@ MODEL_MAP = {
     "hyperbolic/meta-llama/Meta-Llama-3.1-8B-Instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3.1-70B-Instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
+
     # Quen@Hyperbolic
     "hyperbolic/Qwen/QwQ-32B": "Qwen/QwQ-32B",
     "hyperbolic/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
-    "hyperbolic/Qwen/wen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
+    "hyperbolic/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
     "hyperbolic/Qwen/QwQ-32B-Preview": "Qwen/QwQ-32B-Preview",
     # --- Google Gemini & Gemma Models ---
     "google/gemini-1.0-pro-vision-latest": "gemini-1.0-pro-vision-latest",

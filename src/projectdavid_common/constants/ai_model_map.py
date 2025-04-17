@@ -23,6 +23,9 @@ MODEL_MAP = {
     "hyperbolic/meta-llama/Meta-Llama-3.1-70B-Instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
     # Quen@Hyperbolic
+    "hyperbolic/Qwen/QwQ-32B": "Qwen/QwQ-32B",
+    "hyperbolic/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
+    "hyperbolic/Qwen/QwQ-32B-Preview": "Qwen/QwQ-32B-Preview",
     # --- Add Quen models here if needed ---
     # --- Google Gemini & Gemma Models ---
     "google/gemini-1.0-pro-vision-latest": "gemini-1.0-pro-vision-latest",

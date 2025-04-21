@@ -1,4 +1,4 @@
-from typing import Optional
+from typing import Optional, Literal, Annotated
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -15,7 +15,7 @@ class FileUploadRequest(BaseModel):
 
 class FileResponse(BaseModel):
     id: str = Field(..., description="Unique identifier of the file")
-    object: str = Field("file", const=True, description="The string 'file'")
+    object: Annotated[Literal["file"], Field(description="The string 'file'")] = "file"
     bytes: int = Field(..., description="Size of the file in bytes")
     created_at: int = Field(..., description="Unix timestamp of when the file was created")
     filename: str = Field(..., description="Original filename")
@@ -28,7 +28,7 @@ class FileResponse(BaseModel):
 
 class FileDeleteResponse(BaseModel):
     id: str = Field(..., description="Unique identifier of the file")
-    object: str = Field("file", const=True, description="The string 'file'")
+    object: Annotated[Literal["file"], Field(description="The string 'file'")] = "file"
     deleted: bool = Field(..., description="True if deletion was successful")
 
     model_config = ConfigDict(from_attributes=True)

@@ -5,7 +5,10 @@ from pydantic import BaseModel, ConfigDict, Field
 
 class FileUploadRequest(BaseModel):
     purpose: str = Field(..., description="Purpose for uploading the file")
-    user_id: str = Field(..., description="ID of the uploading user")
+    user_id: Optional[str] = Field(
+        None,
+        description="ID of the uploading user. If not provided, will be inferred from the authenticated API key.",
+    )
 
     model_config = ConfigDict(from_attributes=True)
 

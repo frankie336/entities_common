@@ -1,3 +1,11 @@
+## [0.10.1](https://github.com/frankie336/entities_common/compare/v0.10.0...v0.10.1) (2025-04-21)
+
+
+### Bug Fixes
+
+* File validation ([8bc7d03](https://github.com/frankie336/entities_common/commit/8bc7d0357f52533ed0e029a616792343c87b8aba))
+* File validation1 ([f683c06](https://github.com/frankie336/entities_common/commit/f683c068eb23711d3cd86a968d6ddbcd7ab77c9d))
+
 # [0.10.0](https://github.com/frankie336/entities_common/compare/v0.9.0...v0.10.0) (2025-04-17)
 
 

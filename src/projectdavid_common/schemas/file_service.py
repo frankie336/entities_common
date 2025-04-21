@@ -1,5 +1,5 @@
 #!src/projectdavid_common/schemas/file_service.py
-from typing import Optional, Literal, Annotated
+from typing import Annotated, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 

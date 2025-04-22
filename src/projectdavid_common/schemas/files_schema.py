@@ -1,5 +1,6 @@
 #!src/projectdavid_common/schemas/files_schema.py
 from typing import Annotated, Literal, Optional
+
 from pydantic import BaseModel, ConfigDict, Field
 
 

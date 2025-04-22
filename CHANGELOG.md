@@ -1,3 +1,12 @@
+## [0.10.4](https://github.com/frankie336/entities_common/compare/v0.10.3...v0.10.4) (2025-04-22)
+
+
+### Bug Fixes
+
+*  Delete duplicate files.py ([69a54a1](https://github.com/frankie336/entities_common/commit/69a54a129e0e7c8320bdc2e73eff0b74ef374a9b))
+*  Delete duplicate files.py ([5c2447b](https://github.com/frankie336/entities_common/commit/5c2447bc9adc4c0d594cc449c483076766cbbf30))
+*  Delete duplicate files.py ([a96a52e](https://github.com/frankie336/entities_common/commit/a96a52ec71a14680839bf5e9ca97be66e79726e3))
+
 ## [0.10.3](https://github.com/frankie336/entities_common/compare/v0.10.2...v0.10.3) (2025-04-21)
 
 

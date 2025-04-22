@@ -1,3 +1,10 @@
+## [0.10.5](https://github.com/frankie336/entities_common/compare/v0.10.4...v0.10.5) (2025-04-22)
+
+
+### Bug Fixes
+
+*  Expose FileDeleteResponse ([04a64a8](https://github.com/frankie336/entities_common/commit/04a64a8e4d69ad19f87f141e2de5b37f042a19f4))
+
 ## [0.10.4](https://github.com/frankie336/entities_common/compare/v0.10.3...v0.10.4) (2025-04-22)
 
 

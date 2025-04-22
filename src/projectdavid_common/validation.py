@@ -10,7 +10,6 @@ from projectdavid_common.schemas.actions import (
 )
 
 
-
 from projectdavid_common.schemas.api_key_schemas import (
     ApiKeyCreateRequest,
     ApiKeyCreateResponse,

@@ -1,6 +1,9 @@
 # ------------------------------------------------
 # Vendors sometimes have clashing model names.
 # This can interfere with routing logic
+# This map resolves any likely clashes
+# Also serves as source of truth, describing
+# supported models
 # _________________________________________________
 MODEL_MAP = {
     "deepseek-ai/deepseek-reasoner": "deepseek-reasoner",

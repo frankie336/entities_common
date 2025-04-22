@@ -1,3 +1,12 @@
+## [0.10.3](https://github.com/frankie336/entities_common/compare/v0.10.2...v0.10.3) (2025-04-21)
+
+
+### Bug Fixes
+
+*  FileDeleteResponse ([396e5e8](https://github.com/frankie336/entities_common/commit/396e5e874a8379fab7963351c8f97838f32e9787))
+*  FileDeleteResponse ([6879f19](https://github.com/frankie336/entities_common/commit/6879f193bf84a9a73dbf72632e37315b24fd59f5))
+*  FileDeleteResponse ([49f521c](https://github.com/frankie336/entities_common/commit/49f521cf720d3a7a45179b6b1254d6a26da320d5))
+
 ## [0.10.2](https://github.com/frankie336/entities_common/compare/v0.10.1...v0.10.2) (2025-04-21)
 
 

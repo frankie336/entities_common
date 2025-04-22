@@ -1,3 +1,11 @@
+## [0.10.6](https://github.com/frankie336/entities_common/compare/v0.10.5...v0.10.6) (2025-04-22)
+
+
+### Bug Fixes
+
+*  FileUploadRequest ([7cafa84](https://github.com/frankie336/entities_common/commit/7cafa842bc269e280091c689986c323c1528bbd2))
+*  FileUploadRequest ([9078875](https://github.com/frankie336/entities_common/commit/9078875e9683499a44d6c52fa6d80f21ed499a91))
+
 ## [0.10.5](https://github.com/frankie336/entities_common/compare/v0.10.4...v0.10.5) (2025-04-22)
 
 

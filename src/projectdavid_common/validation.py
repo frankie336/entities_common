@@ -1,5 +1,4 @@
 # src/projectdavid_common/validation.py
-
 from projectdavid_common.schemas.actions import (
     ActionBase,
     ActionCreate,
@@ -8,8 +7,6 @@ from projectdavid_common.schemas.actions import (
     ActionStatus,
     ActionUpdate,
 )
-
-
 from projectdavid_common.schemas.api_key_schemas import (
     ApiKeyCreateRequest,
     ApiKeyCreateResponse,

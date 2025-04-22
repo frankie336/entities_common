@@ -8,6 +8,9 @@ from projectdavid_common.schemas.actions import (
     ActionStatus,
     ActionUpdate,
 )
+
+
+
 from projectdavid_common.schemas.api_key_schemas import (
     ApiKeyCreateRequest,
     ApiKeyCreateResponse,
@@ -20,7 +23,7 @@ from projectdavid_common.schemas.assistants import (
     AssistantUpdate,
 )
 from projectdavid_common.schemas.enums import ProviderEnum, StatusEnum
-from projectdavid_common.schemas.files import FileResponse, FileUploadRequest
+from projectdavid_common.schemas.files_schema import FileResponse, FileUploadRequest
 from projectdavid_common.schemas.inference import ProcessOutput
 from projectdavid_common.schemas.messages import (
     MessageCreate,

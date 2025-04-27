@@ -1,3 +1,10 @@
+# [0.11.0](https://github.com/frankie336/entities_common/compare/v0.10.7...v0.11.0) (2025-04-27)
+
+
+### Features
+
+* adding platform_tools ([abf3757](https://github.com/frankie336/entities_common/commit/abf3757da2f578d1b64b22418b0b5f0d7ee8cbb8))
+
 ## [0.10.7](https://github.com/frankie336/entities_common/compare/v0.10.6...v0.10.7) (2025-04-22)
 
 

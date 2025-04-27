@@ -1,3 +1,10 @@
+## [0.10.7](https://github.com/frankie336/entities_common/compare/v0.10.6...v0.10.7) (2025-04-22)
+
+
+### Bug Fixes
+
+*  created_at ---> ISO format ([bc6a609](https://github.com/frankie336/entities_common/commit/bc6a609d60382b28c16239c86db1fa37bc02f202))
+
 ## [0.10.6](https://github.com/frankie336/entities_common/compare/v0.10.5...v0.10.6) (2025-04-22)
 
 

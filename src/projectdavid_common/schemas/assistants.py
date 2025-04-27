@@ -1,17 +1,11 @@
 from typing import Any, Dict, List, Optional
 
-from pydantic import (  # Import HttpUrl for validation
-    BaseModel,
-    ConfigDict,
-    Field,
-    HttpUrl,
-)
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl
 
 from projectdavid_common.schemas.vectors import VectorStoreRead
 
 
 # --- AssistantCreate ---
-# Add optional webhook_url and webhook_secret fields here.
 class AssistantCreate(BaseModel):
     id: Optional[str] = Field(
         None,
@@ -27,24 +21,26 @@ class AssistantCreate(BaseModel):
         None,
         description="A list of tools available to the assistant, each defined as a dictionary",
     )
+    platform_tools: Optional[List[Dict[str, Any]]] = Field(
+        None,
+        description="Optional array of inline tool specifications for the assistant, e.g. [{'type': 'file_search', 'vector_store_ids': ['...']}]",
+    )
     meta_data: Optional[dict] = Field(None, description="Additional metadata for the assistant")
     top_p: float = Field(1.0, description="Top-p sampling parameter for text generation")
     temperature: float = Field(1.0, description="Temperature parameter for text generation")
     response_format: str = Field("auto", description="Format of the assistant's response")
 
-    # --- ADDED FIELDS ---
-    webhook_url: Optional[HttpUrl] = Field(  # Use HttpUrl for basic validation
+    webhook_url: Optional[HttpUrl] = Field(
         None,
         description="Optional URL endpoint to send 'run.action_required' webhook events to.",
         examples=["https://myapp.com/webhooks/projectdavid/actions"],
     )
     webhook_secret: Optional[str] = Field(
         None,
-        min_length=16,  # Example: Enforce a minimum length for secrets
+        min_length=16,
         description="Optional secret used to sign outgoing 'run.action_required' webhooks. Min 16 chars.",
         examples=["whsec_MySecureS3cr3tValueF0rHMAC"],
     )
-    # --- END ADDED FIELDS ---
 
     model_config = ConfigDict(
         json_schema_extra={
@@ -53,22 +49,20 @@ class AssistantCreate(BaseModel):
                 "description": "An assistant configured for webhooks",
                 "model": "gpt-4-turbo",
                 "instructions": "Use tools when needed and await webhook callback.",
-                "tools": [{"name": "get_flight_times"}],  # Example consumer tool
+                "tools": [{"name": "get_flight_times"}],
+                "platform_tools": [{"type": "file_search", "vector_store_ids": ["vs_demo_store"]}],
                 "meta_data": {"project": "webhook-test"},
                 "top_p": 0.9,
                 "temperature": 0.7,
                 "response_format": "auto",
-                # --- ADDED EXAMPLE FIELDS ---
                 "webhook_url": "https://api.example.com/my-webhook-receiver",
                 "webhook_secret": "whsec_ReplaceWithARealSecureSecretKey123",
-                # --- END ADDED EXAMPLE FIELDS ---
             }
         }
     )
 
 
 # --- AssistantRead ---
-# Add webhook_url here, but EXCLUDE webhook_secret for security.
 class AssistantRead(BaseModel):
     id: str = Field(..., description="Unique identifier for the assistant")
     user_id: Optional[str] = Field(
@@ -83,6 +77,10 @@ class AssistantRead(BaseModel):
     tools: Optional[List[dict]] = Field(
         None, description="List of tool definitions associated with the assistant"
     )
+    platform_tools: Optional[List[Dict[str, Any]]] = Field(
+        None,
+        description="Inline platform tool specifications attached directly to the assistant",
+    )
     meta_data: Optional[Dict[str, Any]] = Field(
         None, description="Additional metadata for the assistant"
     )
@@ -93,15 +91,12 @@ class AssistantRead(BaseModel):
         default_factory=list, description="List of associated vector stores"
     )
 
-    # --- ADDED FIELD (URL only) ---
     webhook_url: Optional[HttpUrl] = Field(
         None, description="Configured URL endpoint for 'run.action_required' webhooks (if any)."
     )
-    # --- Note: webhook_secret is intentionally omitted for security ---
 
     model_config = ConfigDict(
-        # Indicate that this model is read from ORM attributes
-        from_attributes=True,  # Important if reading directly from SQLAlchemy models
+        from_attributes=True,
         json_schema_extra={
             "example": {
                 "id": "asst_abc123",
@@ -113,27 +108,29 @@ class AssistantRead(BaseModel):
                 "model": "gpt-4-turbo",
                 "instructions": "Use tools when needed and await webhook callback.",
                 "tools": [{"name": "get_flight_times"}],
+                "platform_tools": [{"type": "file_search", "vector_store_ids": ["vs_demo_store"]}],
                 "meta_data": {"department": "automation"},
                 "top_p": 1.0,
                 "temperature": 0.7,
                 "response_format": "auto",
                 "vector_stores": [],
-                # --- ADDED EXAMPLE FIELD ---
                 "webhook_url": "https://api.example.com/my-webhook-receiver",
-                # --- webhook_secret is NOT included ---
             }
         },
     )
 
 
 # --- AssistantUpdate ---
-# Add optional webhook_url and webhook_secret fields here for updates.
 class AssistantUpdate(BaseModel):
     name: Optional[str] = Field(None, description="Updated name for the assistant")
     description: Optional[str] = Field(None, description="Updated description for the assistant")
     model: Optional[str] = Field(None, description="Updated model name")
     instructions: Optional[str] = Field(None, description="Updated instructions for the assistant")
     tools: Optional[List[Any]] = Field(None, description="Updated list of tools for the assistant")
+    platform_tools: Optional[List[Dict[str, Any]]] = Field(
+        None,
+        description="Updated inline platform tool specifications for the assistant",
+    )
     meta_data: Optional[Dict[str, Any]] = Field(
         None, description="Updated metadata for the assistant"
     )
@@ -141,30 +138,25 @@ class AssistantUpdate(BaseModel):
     temperature: Optional[float] = Field(None, description="Updated temperature parameter")
     response_format: Optional[str] = Field(None, description="Updated response format")
 
-    # --- ADDED FIELDS ---
-    webhook_url: Optional[HttpUrl] = Field(  # Use HttpUrl for basic validation
+    webhook_url: Optional[HttpUrl] = Field(
         None,
         description="Updated URL endpoint for 'run.action_required' webhooks. Set to null to remove.",
         examples=["https://myapp.com/webhooks/new_endpoint", None],
     )
     webhook_secret: Optional[str] = Field(
         None,
-        min_length=16,  # Example: Enforce a minimum length for secrets
+        min_length=16,
         description="Updated secret for signing webhooks. Min 16 chars. Provide only if changing.",
         examples=["whsec_AnotherSecureSecretKeyABC"],
-        # Note: Don't require providing the secret unless it's actually being changed.
-        # Your service layer should handle partial updates carefully.
     )
-    # --- END ADDED FIELDS ---
 
     model_config = ConfigDict(
         json_schema_extra={
             "example": {
                 "name": "Updated Assistant Name",
                 "instructions": "New instructions here.",
+                "platform_tools": [{"type": "calculator"}],
                 "webhook_url": "https://api.example.com/my-new-webhook-endpoint",
-                # Typically you only send the secret if you are changing it
-                # "webhook_secret": "whsec_ThisWouldBeANewSecretValue123"
             }
         }
     )

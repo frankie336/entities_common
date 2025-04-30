@@ -1,3 +1,10 @@
+# [0.13.0](https://github.com/frankie336/entities_common/compare/v0.12.0...v0.13.0) (2025-04-30)
+
+
+### Features
+
+* Drop user_id from create_vector_store(), inferring it from the API key. Add list_my_vector_stores() (token-scoped) and deprecates the old get_stores_by_user() ([747412e](https://github.com/frankie336/entities_common/commit/747412ea45bcf1b5d236f753e94a6f8a778427ad))
+
 # [0.12.0](https://github.com/frankie336/entities_common/compare/v0.11.0...v0.12.0) (2025-04-29)
 
 

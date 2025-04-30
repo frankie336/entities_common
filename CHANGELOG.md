@@ -1,3 +1,10 @@
+# [0.12.0](https://github.com/frankie336/entities_common/compare/v0.11.0...v0.12.0) (2025-04-29)
+
+
+### Features
+
+* add tools_resources field ([a7dd99d](https://github.com/frankie336/entities_common/commit/a7dd99df88b300edf006626ff3cae569fd0135ed))
+
 # [0.11.0](https://github.com/frankie336/entities_common/compare/v0.10.7...v0.11.0) (2025-04-27)
 
 

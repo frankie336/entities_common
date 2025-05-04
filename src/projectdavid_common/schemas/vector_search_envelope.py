@@ -5,9 +5,11 @@ from pydantic import BaseModel
 
 class FileCitation(BaseModel):
     type: Literal["file_citation"] = "file_citation"
-    index: int  # char‑offset inside answer_text
+    index: int
     file_id: str
     filename: str
+    page: Optional[int] = None  # new
+    lines: Optional[List[int]] = None
 
 
 class OutputText(BaseModel):

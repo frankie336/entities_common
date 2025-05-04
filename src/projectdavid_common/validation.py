@@ -63,6 +63,13 @@ from projectdavid_common.schemas.users import (
     UserRead,
     UserUpdate,
 )
+from projectdavid_common.schemas.vector_search_envelope import (
+    AssistantMessage,
+    FileCitation,
+    FileSearchCall,
+    FileSearchEnvelope,
+    OutputText,
+)
 from projectdavid_common.schemas.vectors import (
     EnhancedVectorSearchResult,
     SearchExplanation,
@@ -192,3 +199,9 @@ class ValidationInterface:
 
     # Stream
     StreamRequest = StreamRequest
+
+    # Vector Search
+    FileCitation = FileCitation
+    OutputText = OutputText
+    AssistantMessage = AssistantMessage
+    FileSearchCall = FileSearchCall

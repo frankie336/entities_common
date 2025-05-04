@@ -1,3 +1,10 @@
+## [0.13.1](https://github.com/frankie336/entities_common/compare/v0.13.0...v0.13.1) (2025-05-01)
+
+
+### Bug Fixes
+
+* Adding  tool_resources schema. ([e665ae2](https://github.com/frankie336/entities_common/commit/e665ae27109a48b86dcbe651c69d3a8b684acb95))
+
 # [0.13.0](https://github.com/frankie336/entities_common/compare/v0.12.0...v0.13.0) (2025-04-30)
 
 

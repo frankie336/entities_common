@@ -1,3 +1,10 @@
+## [0.14.1](https://github.com/frankie336/entities_common/compare/v0.14.0...v0.14.1) (2025-05-04)
+
+
+### Bug Fixes
+
+* Adding support for structured vector search output ([e5111f7](https://github.com/frankie336/entities_common/commit/e5111f7e662336c2439151c7d384d7018e8bcf83))
+
 # [0.14.0](https://github.com/frankie336/entities_common/compare/v0.13.1...v0.14.0) (2025-05-04)
 
 

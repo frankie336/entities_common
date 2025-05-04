@@ -79,3 +79,8 @@ class IdentifierService:
     def generate_key_id() -> str:
         """Generate valid UUID4 string for Qdrant compatibility"""
         return IdentifierService.generate_id("key")
+
+    @staticmethod
+    def generate_prefixed_id(prefix) -> str:
+        """Generate valid UUID4 string for Qdrant compatibility"""
+        return IdentifierService.generate_id(prefix)

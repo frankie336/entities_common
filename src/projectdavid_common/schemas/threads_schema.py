@@ -2,13 +2,16 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
-# Adjust this import path if needed
-from projectdavid_common.schemas.users import UserBase
+from projectdavid_common.schemas.users_schema import UserBase
 
 
 class ThreadCreate(BaseModel):
-    participant_ids: List[str] = Field(..., description="List of participant IDs")
-    meta_data: Optional[Dict[str, Any]] = Field(
+    # ⬇ default=[] lets the field be omitted entirely
+    participant_ids: list[str] = Field(
+        default_factory=list,
+        description="Additional participant IDs (caller is added automatically)",
+    )
+    meta_data: dict[str, Any] | None = Field(
         default=None, description="Optional metadata for thread"
     )
 

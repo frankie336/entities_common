@@ -1,5 +1,5 @@
 # src/projectdavid_common/validation.py
-from projectdavid_common.schemas.actions import (
+from projectdavid_common.schemas.actions_schema import (
     ActionBase,
     ActionCreate,
     ActionList,
@@ -13,7 +13,7 @@ from projectdavid_common.schemas.api_key_schemas import (
     ApiKeyDetails,
     ApiKeyListResponse,
 )
-from projectdavid_common.schemas.assistants import (
+from projectdavid_common.schemas.assistants_schema import (
     AssistantCreate,
     AssistantRead,
     AssistantUpdate,
@@ -24,23 +24,23 @@ from projectdavid_common.schemas.files_schema import (
     FileResponse,
     FileUploadRequest,
 )
-from projectdavid_common.schemas.inference import ProcessOutput
-from projectdavid_common.schemas.messages import (
+from projectdavid_common.schemas.inference_schema import ProcessOutput
+from projectdavid_common.schemas.messages_schema import (
     MessageCreate,
     MessageRead,
     MessageRole,
     MessageUpdate,
     ToolMessageCreate,
 )
-from projectdavid_common.schemas.runs import (
+from projectdavid_common.schemas.runs_schema import (
     Run,
     RunCreate,
     RunReadDetailed,
     RunStatus,
     RunStatusUpdate,
 )
-from projectdavid_common.schemas.stream import StreamRequest
-from projectdavid_common.schemas.threads import (
+from projectdavid_common.schemas.stream_schema import StreamRequest
+from projectdavid_common.schemas.threads_schema import (
     ThreadCreate,
     ThreadIds,
     ThreadParticipant,
@@ -48,7 +48,7 @@ from projectdavid_common.schemas.threads import (
     ThreadReadDetailed,
     ThreadUpdate,
 )
-from projectdavid_common.schemas.tools import (
+from projectdavid_common.schemas.tools_schema import (
     Tool,
     ToolCreate,
     ToolFunction,
@@ -56,7 +56,7 @@ from projectdavid_common.schemas.tools import (
     ToolRead,
     ToolUpdate,
 )
-from projectdavid_common.schemas.users import (
+from projectdavid_common.schemas.users_schema import (
     UserBase,
     UserCreate,
     UserDeleteResponse,
@@ -70,7 +70,7 @@ from projectdavid_common.schemas.vector_search_envelope import (
     FileSearchEnvelope,
     OutputText,
 )
-from projectdavid_common.schemas.vectors import (
+from projectdavid_common.schemas.vectors_schema import (
     EnhancedVectorSearchResult,
     SearchExplanation,
     VectorStoreAddRequest,

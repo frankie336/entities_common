@@ -14,7 +14,7 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl
 
-from projectdavid_common.schemas.vectors import VectorStoreRead
+from projectdavid_common.schemas.vectors_schema import VectorStoreRead
 
 
 # ────────────────────────────────────────────────────────────────────────────

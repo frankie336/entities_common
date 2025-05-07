@@ -4,8 +4,8 @@ from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
-from projectdavid_common.schemas.actions import ActionRead
-from projectdavid_common.schemas.tools import Tool, ToolRead
+from projectdavid_common.schemas.actions_schema import ActionRead
+from projectdavid_common.schemas.tools_schema import Tool, ToolRead
 
 
 class Run(BaseModel):

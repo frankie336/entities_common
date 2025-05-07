@@ -1,3 +1,10 @@
+## [0.15.1](https://github.com/frankie336/entities_common/compare/v0.15.0...v0.15.1) (2025-05-07)
+
+
+### Bug Fixes
+
+* Pydantic schema – make participant_ids optional ([dfc6a55](https://github.com/frankie336/entities_common/commit/dfc6a55be35754c9f40fecdf9c34bce357c194ed))
+
 # [0.15.0](https://github.com/frankie336/entities_common/compare/v0.14.1...v0.15.0) (2025-05-04)
 
 

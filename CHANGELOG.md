@@ -1,3 +1,10 @@
+# [0.15.0](https://github.com/frankie336/entities_common/compare/v0.14.1...v0.15.0) (2025-05-04)
+
+
+### Features
+
+* Add support to display line and page numbers in vector search output ([882eff4](https://github.com/frankie336/entities_common/commit/882eff499310c26fe04ba46e100cabc34bb95708))
+
 ## [0.14.1](https://github.com/frankie336/entities_common/compare/v0.14.0...v0.14.1) (2025-05-04)
 
 

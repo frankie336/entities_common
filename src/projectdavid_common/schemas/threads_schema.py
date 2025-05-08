@@ -6,12 +6,13 @@ from projectdavid_common.schemas.users_schema import UserBase
 
 
 class ThreadCreate(BaseModel):
-    participant_ids: list[str] = Field(
-        default_factory=list,
-        description="Additional participant IDs (caller is added automatically)",
+    # ➊ Now optional
+    participant_ids: Optional[List[str]] = Field(
+        default=None,
+        description="List of participant IDs. " "Omit to default to the authenticated user.",
     )
-    meta_data: dict[str, Any] | None = Field(
-        default=None, description="Optional metadata for thread"
+    meta_data: Optional[Dict[str, Any]] = Field(
+        default=None, description="Optional metadata for the thread"
     )
 
 

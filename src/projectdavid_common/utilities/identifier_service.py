@@ -1,9 +1,6 @@
 import random
 import string
 
-from transformers.models.esm.openfold_utils.rigid_utils import identity_trans
-
-
 class IdentifierService:
     @staticmethod
     def generate_id(prefix: str, length: int = 22) -> str:

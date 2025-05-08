@@ -1,6 +1,7 @@
 import random
 import string
 
+
 class IdentifierService:
     @staticmethod
     def generate_id(prefix: str, length: int = 22) -> str:

@@ -6,7 +6,6 @@ from projectdavid_common.schemas.users_schema import UserBase
 
 
 class ThreadCreate(BaseModel):
-    # ⬇ default=[] lets the field be omitted entirely
     participant_ids: list[str] = Field(
         default_factory=list,
         description="Additional participant IDs (caller is added automatically)",

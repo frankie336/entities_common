@@ -1,6 +1,8 @@
 import random
 import string
 
+from transformers.models.esm.openfold_utils.rigid_utils import identity_trans
+
 
 class IdentifierService:
     @staticmethod
@@ -84,3 +86,8 @@ class IdentifierService:
     def generate_prefixed_id(prefix) -> str:
         """Generate valid UUID4 string for Qdrant compatibility"""
         return IdentifierService.generate_id(prefix)
+
+
+if __name__ == "__main__":
+    identity = IdentifierService()
+    print(identity.generate_prefixed_id(prefix='plt_ast'))

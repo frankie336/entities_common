@@ -1,3 +1,10 @@
+## [0.16.1](https://github.com/frankie336/entities_common/compare/v0.16.0...v0.16.1) (2025-05-08)
+
+
+### Bug Fixes
+
+* participant ID optional param ([e98b1d2](https://github.com/frankie336/entities_common/commit/e98b1d2156074e3d5b5c00615dc3507e6a360514))
+
 # [0.16.0](https://github.com/frankie336/entities_common/compare/v0.15.1...v0.16.0) (2025-05-08)
 
 

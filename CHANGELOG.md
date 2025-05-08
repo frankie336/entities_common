@@ -1,3 +1,13 @@
+# [0.16.0](https://github.com/frankie336/entities_common/compare/v0.15.1...v0.16.0) (2025-05-08)
+
+
+### Features
+
+* PLATFORM_ASSISTANT_ID_MAP ([0875f9b](https://github.com/frankie336/entities_common/commit/0875f9b417b12fe2ae400684f00081f0d8778188))
+* PLATFORM_ASSISTANT_ID_MAP ([3b9dd5d](https://github.com/frankie336/entities_common/commit/3b9dd5ddbb6b330da4fff641be518175cbd3ff42))
+* PLATFORM_ASSISTANT_ID_MAP ([8e23d18](https://github.com/frankie336/entities_common/commit/8e23d18ab9d7759467a8321f775e8c65e43eaaa8))
+* PLATFORM_ASSISTANT_ID_MAP ([9e71cc6](https://github.com/frankie336/entities_common/commit/9e71cc68f6c115b2263089944ead7f5fdd276e54))
+
 ## [0.15.1](https://github.com/frankie336/entities_common/compare/v0.15.0...v0.15.1) (2025-05-07)
 
 

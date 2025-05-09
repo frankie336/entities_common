@@ -3,6 +3,7 @@ PLATFORM_TOOLS = [
     "web_search",
     "vector_store_search",
     "computer",
+    "file_search",
 ]
 
 TOOLS_ID_MAP = {

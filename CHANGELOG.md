@@ -1,3 +1,10 @@
+# [0.17.0](https://github.com/frankie336/entities_common/compare/v0.16.2...v0.17.0) (2025-05-13)
+
+
+### Features
+
+* Associate runs with user_id ([5621874](https://github.com/frankie336/entities_common/commit/56218742d85515951c79f51f3550bad5c9f0cfe1))
+
 ## [0.16.2](https://github.com/frankie336/entities_common/compare/v0.16.1...v0.16.2) (2025-05-09)
 
 

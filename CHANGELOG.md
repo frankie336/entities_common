@@ -1,3 +1,10 @@
+## [0.16.2](https://github.com/frankie336/entities_common/compare/v0.16.1...v0.16.2) (2025-05-09)
+
+
+### Bug Fixes
+
+* add file_search to PLATFORM_TOOLS ([61481c5](https://github.com/frankie336/entities_common/commit/61481c55328caf9c1c3540096bf79c7d7d65f107))
+
 ## [0.16.1](https://github.com/frankie336/entities_common/compare/v0.16.0...v0.16.1) (2025-05-08)
 
 

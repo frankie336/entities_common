@@ -1,3 +1,8 @@
+"""
+schemas/run_schema.py
+Keeps client / server / SDK in sync with the new user_id column on runs.
+"""
+
 from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Optional
@@ -8,8 +13,28 @@ from projectdavid_common.schemas.actions_schema import ActionRead
 from projectdavid_common.schemas.tools_schema import Tool, ToolRead
 
 
+# --------------------------------------------------------------------------- #
+#  Status enum (unchanged)
+# --------------------------------------------------------------------------- #
+class RunStatus(str, Enum):
+    queued = "queued"
+    in_progress = "in_progress"
+    pending_action = "action_required"
+    completed = "completed"
+    failed = "failed"
+    cancelled = "cancelled"
+    pending = "pending"
+    processing = "processing"
+    expired = "expired"
+    retrying = "retrying"
+
+
+# --------------------------------------------------------------------------- #
+#  Base‑level model returned by most endpoints
+# --------------------------------------------------------------------------- #
 class Run(BaseModel):
     id: str
+    user_id: str  # ← NEW
     assistant_id: str
     cancelled_at: Optional[int]
     completed_at: Optional[int]
@@ -28,7 +53,7 @@ class Run(BaseModel):
     required_action: Optional[str]
     response_format: str
     started_at: Optional[int]
-    status: str
+    status: RunStatus | str  # accepts Enum or raw str
     thread_id: str
     tool_choice: str
     tools: List[Tool]
@@ -41,9 +66,19 @@ class Run(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+# --------------------------------------------------------------------------- #
+#  Payload used by SDK / tests when creating runs
+#  user_id is optional ‑ server overwrites it from auth context
+# --------------------------------------------------------------------------- #
 class RunCreate(BaseModel):
     id: str
     assistant_id: str
+    # ── NEW optional user_id (ignored by server if provided) ───────────── #
+    user_id: Optional[str] = Field(
+        default=None,
+        json_schema_extra={"readOnly": True},  # treated as server‑generated
+    )
+    # ───────────────────────────────────────────────────────────────────── #
     cancelled_at: Optional[int] = None
     completed_at: Optional[int] = None
     created_at: int
@@ -61,7 +96,7 @@ class RunCreate(BaseModel):
     required_action: Optional[str] = None
     response_format: str = "text"
     started_at: Optional[int] = None
-    status: str = "pending"
+    status: RunStatus | str = RunStatus.pending
     thread_id: str
     tool_choice: str = "none"
     tools: List[Tool] = Field(default_factory=list)
@@ -74,8 +109,12 @@ class RunCreate(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
+# --------------------------------------------------------------------------- #
+#  Rich read model with actions attached
+# --------------------------------------------------------------------------- #
 class RunReadDetailed(BaseModel):
     id: str
+    user_id: str  # ← NEW
     assistant_id: str
     cancelled_at: Optional[datetime] = None
     completed_at: Optional[datetime] = None
@@ -94,7 +133,7 @@ class RunReadDetailed(BaseModel):
     required_action: Optional[str] = None
     response_format: str
     started_at: Optional[int] = None
-    status: str
+    status: RunStatus | str
     thread_id: str
     tool_choice: str
     tools: List[ToolRead]
@@ -108,18 +147,8 @@ class RunReadDetailed(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
 
-class RunStatus(str, Enum):
-    queued = "queued"
-    in_progress = "in_progress"
-    pending_action = "action_required"
-    completed = "completed"
-    failed = "failed"
-    cancelled = "cancelled"
-    pending = "pending"
-    processing = "processing"
-    expired = "expired"
-    retrying = "retrying"
-
-
+# --------------------------------------------------------------------------- #
+#  Small helper for the status‑only update endpoint
+# --------------------------------------------------------------------------- #
 class RunStatusUpdate(BaseModel):
     status: RunStatus

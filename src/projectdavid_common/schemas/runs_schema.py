@@ -34,7 +34,10 @@ class RunStatus(str, Enum):
 # --------------------------------------------------------------------------- #
 class Run(BaseModel):
     id: str
-    user_id: str  # ← NEW
+    user_id: Optional[str] = Field(
+        default=None,
+        json_schema_extra={"readOnly": True},  # ← Ensure this is set
+    )
     assistant_id: str
     cancelled_at: Optional[int]
     completed_at: Optional[int]

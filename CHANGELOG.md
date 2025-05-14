@@ -1,3 +1,10 @@
+## [0.17.1](https://github.com/frankie336/entities_common/compare/v0.17.0...v0.17.1) (2025-05-14)
+
+
+### Bug Fixes
+
+* user-id logic ([f95411d](https://github.com/frankie336/entities_common/commit/f95411d710b64279a6fbdb6a3b203bdd4bef533c))
+
 # [0.17.0](https://github.com/frankie336/entities_common/compare/v0.16.2...v0.17.0) (2025-05-13)
 
 

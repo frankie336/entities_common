@@ -1,3 +1,11 @@
+## [0.17.2](https://github.com/frankie336/entities_common/compare/v0.17.1...v0.17.2) (2025-05-15)
+
+
+### Bug Fixes
+
+* enforce specific platform tool types ([60b7bbe](https://github.com/frankie336/entities_common/commit/60b7bbed62a37af20214f64de49f3b9da7a5acda))
+* enforce specific platform tool types ([421ce35](https://github.com/frankie336/entities_common/commit/421ce3562a9eaf352481cf0ee009001940bd43c7))
+
 ## [0.17.1](https://github.com/frankie336/entities_common/compare/v0.17.0...v0.17.1) (2025-05-14)
 
 

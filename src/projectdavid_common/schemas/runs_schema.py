@@ -36,8 +36,10 @@ class Run(BaseModel):
     id: str
     user_id: Optional[str] = Field(
         default=None,
-        json_schema_extra={"readOnly": True},  # ← Ensure this is set
+        description="Filled in by the server from the caller’s API‑key. "
+        "Clients MAY omit or set to None.",
     )
+
     assistant_id: str
     cancelled_at: Optional[int]
     completed_at: Optional[int]

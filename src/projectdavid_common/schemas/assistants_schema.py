@@ -1,12 +1,8 @@
-from enum import Enum
 from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl
 
-from projectdavid_common.constants.tools import PLATFORM_TOOLS
 from projectdavid_common.schemas.vectors_schema import VectorStoreRead
-
-ToolName = Enum("ToolName", {name.upper(): name for name in PLATFORM_TOOLS})
 
 
 # ────────────────────────────────────────────────────────────────────────────
@@ -25,13 +21,6 @@ class AssistantCreate(BaseModel):
     # ─── tool definitions ────────────────────────────────────────────
     tools: Optional[List[dict]] = Field(
         None, description="OpenAI-style tool specs (name, parameters …)"
-    )
-    platform_tools: Optional[List[Dict[str, Any]]] = Field(
-        None,
-        description=(
-            "Inline platform tools. "
-            "Example: [{'type': 'file_search', 'vector_store_ids': ['vs_123']}]"
-        ),
     )
     tool_resources: Optional[Dict[str, Dict[str, Any]]] = Field(
         None,
@@ -63,19 +52,6 @@ class AssistantCreate(BaseModel):
         examples=["whsec_ReplaceWithARealSecureSecret123"],
     )
 
-    @field_validator("platform_tools")
-    def validate_platform_tools(cls, v):
-        if v is None:
-            return v
-        for tool in v:
-            if "type" not in tool:
-                raise ValueError("Platform tool must have a 'type' field")
-            if tool["type"] not in [t.value for t in ToolName]:
-                raise ValueError(
-                    f"Invalid tool type: {tool['type']}. Allowed types are {[t.value for t in ToolName]}"
-                )
-        return v
-
     model_config = ConfigDict(
         json_schema_extra={
             "example": {
@@ -83,7 +59,6 @@ class AssistantCreate(BaseModel):
                 "description": "Assistant that can search company docs",
                 "model": "gpt-4o-mini",
                 "instructions": "Use tools when relevant.",
-                "platform_tools": [{"type": "file_search", "vector_store_ids": ["vs_docs"]}],
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
                 "top_p": 0.9,
                 "temperature": 0.7,
@@ -106,7 +81,6 @@ class AssistantRead(BaseModel):
     instructions: Optional[str] = None
 
     tools: Optional[List[dict]] = None
-    platform_tools: Optional[List[Dict[str, Any]]] = None
     tool_resources: Optional[Dict[str, Dict[str, Any]]] = None
 
     meta_data: Optional[Dict[str, Any]] = None
@@ -116,19 +90,6 @@ class AssistantRead(BaseModel):
 
     vector_stores: List[VectorStoreRead] = Field(default_factory=list)
     webhook_url: Optional[HttpUrl] = None
-
-    @field_validator("platform_tools")
-    def validate_platform_tools(cls, v):
-        if v is None:
-            return v
-        for tool in v:
-            if "type" not in tool:
-                raise ValueError("Platform tool must have a 'type' field")
-            if tool["type"] not in [t.value for t in ToolName]:
-                raise ValueError(
-                    f"Invalid tool type: {tool['type']}. Allowed types are {[t.value for t in ToolName]}"
-                )
-        return v
 
     model_config = ConfigDict(
         from_attributes=True,
@@ -140,7 +101,6 @@ class AssistantRead(BaseModel):
                 "created_at": 1710000000,
                 "name": "Search Assistant",
                 "model": "gpt-4o-mini",
-                "platform_tools": [{"type": "file_search", "vector_store_ids": ["vs_docs"]}],
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
                 "top_p": 1.0,
                 "temperature": 0.7,
@@ -160,7 +120,6 @@ class AssistantUpdate(BaseModel):
     instructions: Optional[str] = None
 
     tools: Optional[List[Any]] = None
-    platform_tools: Optional[List[Dict[str, Any]]] = None
     tool_resources: Optional[Dict[str, Dict[str, Any]]] = None
 
     meta_data: Optional[Dict[str, Any]] = None
@@ -171,24 +130,10 @@ class AssistantUpdate(BaseModel):
     webhook_url: Optional[HttpUrl] = None
     webhook_secret: Optional[str] = Field(None, min_length=16)
 
-    @field_validator("platform_tools")
-    def validate_platform_tools(cls, v):
-        if v is None:
-            return v
-        for tool in v:
-            if "type" not in tool:
-                raise ValueError("Platform tool must have a 'type' field")
-            if tool["type"] not in [t.value for t in ToolName]:
-                raise ValueError(
-                    f"Invalid tool type: {tool['type']}. Allowed types are {[t.value for t in ToolName]}"
-                )
-        return v
-
     model_config = ConfigDict(
         json_schema_extra={
             "example": {
                 "name": "Updated name",
-                "platform_tools": [{"type": "calculator"}],
                 "tool_resources": {"code_interpreter": {"file_ids": ["f_new_readme"]}},
             }
         }

@@ -1,3 +1,10 @@
+## [0.17.3](https://github.com/frankie336/entities_common/compare/v0.17.2...v0.17.3) (2025-06-30)
+
+
+### Bug Fixes
+
+* Remove platform_tools from schema requirement. ([2eb208a](https://github.com/frankie336/entities_common/commit/2eb208a71318a725ca8601973c8390669c5db062))
+
 ## [0.17.2](https://github.com/frankie336/entities_common/compare/v0.17.1...v0.17.2) (2025-05-15)
 
 

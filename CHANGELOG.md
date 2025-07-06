@@ -1,3 +1,11 @@
+## [0.17.7](https://github.com/frankie336/entities_common/compare/v0.17.6...v0.17.7) (2025-07-06)
+
+
+### Bug Fixes
+
+* Expose ThreadDeleted ([03c8367](https://github.com/frankie336/entities_common/commit/03c8367c81c58f15728d441f8195eea32b299a8a))
+* Expose ThreadDeleted ([1eaa8b3](https://github.com/frankie336/entities_common/commit/1eaa8b3de66c5be452b23962eb87d4f0db4ba6f1))
+
 ## [0.17.6](https://github.com/frankie336/entities_common/compare/v0.17.5...v0.17.6) (2025-07-06)
 
 

@@ -42,12 +42,12 @@ from projectdavid_common.schemas.runs_schema import (
 from projectdavid_common.schemas.stream_schema import StreamRequest
 from projectdavid_common.schemas.threads_schema import (
     ThreadCreate,
+    ThreadDeleted,
     ThreadIds,
     ThreadParticipant,
     ThreadRead,
     ThreadReadDetailed,
     ThreadUpdate,
-    ThreadDeleted,
 )
 from projectdavid_common.schemas.tools_schema import (
     Tool,

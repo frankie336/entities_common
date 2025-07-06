@@ -1,3 +1,10 @@
+## [0.17.5](https://github.com/frankie336/entities_common/compare/v0.17.4...v0.17.5) (2025-07-06)
+
+
+### Bug Fixes
+
+* Add DeleteThread schema. ([8fb4cf4](https://github.com/frankie336/entities_common/commit/8fb4cf49197788d9955ec3a768522c9a08969c60))
+
 ## [0.17.4](https://github.com/frankie336/entities_common/compare/v0.17.3...v0.17.4) (2025-07-06)
 
 

@@ -1,3 +1,10 @@
+## [0.17.4](https://github.com/frankie336/entities_common/compare/v0.17.3...v0.17.4) (2025-07-06)
+
+
+### Bug Fixes
+
+* Update AssistantUpdate with new schema. ([79af8c7](https://github.com/frankie336/entities_common/commit/79af8c768c53fa58fe7fe43cffffb0490924408c))
+
 ## [0.17.3](https://github.com/frankie336/entities_common/compare/v0.17.2...v0.17.3) (2025-06-30)
 
 

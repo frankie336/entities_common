@@ -49,3 +49,9 @@ class ThreadIds(BaseModel):
     thread_ids: List[str]
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class ThreadDeleted(BaseModel):
+    id: str
+    object: str = "thread.deleted"
+    deleted: bool = True

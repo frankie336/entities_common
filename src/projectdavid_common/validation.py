@@ -47,6 +47,7 @@ from projectdavid_common.schemas.threads_schema import (
     ThreadRead,
     ThreadReadDetailed,
     ThreadUpdate,
+    ThreadDeleted,
 )
 from projectdavid_common.schemas.tools_schema import (
     Tool,
@@ -147,6 +148,7 @@ class ValidationInterface:
     ThreadParticipant = ThreadParticipant
     ThreadReadDetailed = ThreadReadDetailed
     ThreadIds = ThreadIds
+    ThreadDeleted = ThreadDeleted
 
     # Tools schemas
     ToolFunction = ToolFunction

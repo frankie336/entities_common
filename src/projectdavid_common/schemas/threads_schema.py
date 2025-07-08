@@ -1,4 +1,3 @@
-#
 from typing import Any, Dict, List, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
@@ -32,6 +31,9 @@ class ThreadUpdate(BaseModel):
         default=None, description="Updated list of participant IDs"
     )
     meta_data: Optional[Dict[str, Any]] = Field(default=None, description="Updated metadata")
+    tool_resources: Optional[Dict[str, Any]] = Field(
+        default=None, description="Updated tool resources for the thread"
+    )
 
     model_config = ConfigDict(from_attributes=True)
 

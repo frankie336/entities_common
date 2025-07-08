@@ -1,3 +1,10 @@
+## [0.17.8](https://github.com/frankie336/entities_common/compare/v0.17.7...v0.17.8) (2025-07-08)
+
+
+### Bug Fixes
+
+* Expose ThreadUpdate ([1fb582c](https://github.com/frankie336/entities_common/commit/1fb582cf5bfc410ac9fda0433a39157b092a1578))
+
 ## [0.17.7](https://github.com/frankie336/entities_common/compare/v0.17.6...v0.17.7) (2025-07-06)
 
 

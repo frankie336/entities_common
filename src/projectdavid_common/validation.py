@@ -29,6 +29,7 @@ from projectdavid_common.schemas.messages_schema import (
     MessageCreate,
     MessageRead,
     MessageRole,
+    MessagesList,
     MessageUpdate,
     ToolMessageCreate,
 )
@@ -133,6 +134,7 @@ class ValidationInterface:
     MessageRead = MessageRead
     MessageUpdate = MessageUpdate
     ToolMessageCreate = ToolMessageCreate
+    MessagesList = MessagesList
 
     # Runs schemas
     Run = Run

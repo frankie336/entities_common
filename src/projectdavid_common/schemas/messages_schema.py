@@ -93,3 +93,18 @@ class MessageUpdate(BaseModel):
         raise ValueError(f"Invalid role: {v}. Must be one of {list(valid_roles)}")
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class MessagesList(BaseModel):
+    object: str = "list"
+    data: List[MessageRead]
+    first_id: str | None = None
+    last_id: str | None = None
+    has_more: bool = False  # earmarked for pagination later
+
+    # QoL helper ------------------------------------------------------
+    def to_list(self):
+        """Return plain list[dict] for quick consumption."""
+        return [m.dict() for m in self.data]
+
+    model_config = ConfigDict(from_attributes=True)

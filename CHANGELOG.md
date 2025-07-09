@@ -1,3 +1,10 @@
+## [0.17.10](https://github.com/frankie336/entities_common/compare/v0.17.9...v0.17.10) (2025-07-09)
+
+
+### Bug Fixes
+
+* properly expose MessagesList ([2a47066](https://github.com/frankie336/entities_common/commit/2a47066101952f7b98a6ff66f75cb6ac78ff8dc1))
+
 ## [0.17.9](https://github.com/frankie336/entities_common/compare/v0.17.8...v0.17.9) (2025-07-09)
 
 

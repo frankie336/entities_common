@@ -1,3 +1,10 @@
+## [0.17.9](https://github.com/frankie336/entities_common/compare/v0.17.8...v0.17.9) (2025-07-09)
+
+
+### Bug Fixes
+
+* MessagesList schema for message list envelope. ([291d12e](https://github.com/frankie336/entities_common/commit/291d12ea9256132ce06807c7a19622e020168a58))
+
 ## [0.17.8](https://github.com/frankie336/entities_common/compare/v0.17.7...v0.17.8) (2025-07-08)
 
 

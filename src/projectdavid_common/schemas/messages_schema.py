@@ -108,3 +108,12 @@ class MessagesList(BaseModel):
         return [m.dict() for m in self.data]
 
     model_config = ConfigDict(from_attributes=True)
+
+
+class MessageDeleted(BaseModel):
+
+    id: str
+    object: str = "thread.message.deleted"
+    deleted: bool = True
+
+    model_config = ConfigDict(from_attributes=True)

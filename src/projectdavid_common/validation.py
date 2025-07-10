@@ -27,6 +27,7 @@ from projectdavid_common.schemas.files_schema import (
 from projectdavid_common.schemas.inference_schema import ProcessOutput
 from projectdavid_common.schemas.messages_schema import (
     MessageCreate,
+    MessageDeleted,
     MessageRead,
     MessageRole,
     MessagesList,
@@ -135,6 +136,7 @@ class ValidationInterface:
     MessageUpdate = MessageUpdate
     ToolMessageCreate = ToolMessageCreate
     MessagesList = MessagesList
+    MessageDeleted = MessageDeleted
 
     # Runs schemas
     Run = Run

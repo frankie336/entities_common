@@ -1,3 +1,10 @@
+## [0.17.11](https://github.com/frankie336/entities_common/compare/v0.17.10...v0.17.11) (2025-07-10)
+
+
+### Bug Fixes
+
+* Add MessageDeleted to schema's ([c36af00](https://github.com/frankie336/entities_common/commit/c36af007be63b90c3c3cda1e135f51b6bb7e74fe))
+
 ## [0.17.10](https://github.com/frankie336/entities_common/compare/v0.17.9...v0.17.10) (2025-07-09)
 
 

@@ -5,7 +5,7 @@ Keeps client / server / SDK in sync with the new user_id column on runs.
 
 from datetime import datetime
 from enum import Enum
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -157,3 +157,14 @@ class RunReadDetailed(BaseModel):
 # --------------------------------------------------------------------------- #
 class RunStatusUpdate(BaseModel):
     status: RunStatus
+
+
+# --------------------------------------------------------------------------- #
+#  Small helper for the status‑only update endpoint
+# --------------------------------------------------------------------------- #
+class RunListResponse(BaseModel):
+    object: Literal["list"] = "list"
+    data: List[Run]
+    first_id: Optional[str] = None
+    last_id: Optional[str] = None
+    has_more: bool = False

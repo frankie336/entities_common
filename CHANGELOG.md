@@ -1,3 +1,10 @@
+## [0.17.12](https://github.com/frankie336/entities_common/compare/v0.17.11...v0.17.12) (2025-08-12)
+
+
+### Bug Fixes
+
+* add RunListResponse ([9b5ea72](https://github.com/frankie336/entities_common/commit/9b5ea72ba94b7eccd88ee6d1ca2588e4633dc8e4))
+
 ## [0.17.11](https://github.com/frankie336/entities_common/compare/v0.17.10...v0.17.11) (2025-07-10)
 
 

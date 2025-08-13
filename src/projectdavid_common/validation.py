@@ -37,6 +37,7 @@ from projectdavid_common.schemas.messages_schema import (
 from projectdavid_common.schemas.runs_schema import (
     Run,
     RunCreate,
+    RunListResponse,
     RunReadDetailed,
     RunStatus,
     RunStatusUpdate,
@@ -144,6 +145,7 @@ class ValidationInterface:
     RunReadDetailed = RunReadDetailed
     RunStatus = RunStatus
     RunStatusUpdate = RunStatusUpdate
+    RunListResponse = RunListResponse
 
     # Threads schemas
     ThreadCreate = ThreadCreate
@@ -211,3 +213,4 @@ class ValidationInterface:
     OutputText = OutputText
     AssistantMessage = AssistantMessage
     FileSearchCall = FileSearchCall
+    FileSearchEnvelope = FileSearchEnvelope

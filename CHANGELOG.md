@@ -1,3 +1,10 @@
+## [0.17.14](https://github.com/frankie336/entities_common/compare/v0.17.13...v0.17.14) (2025-08-21)
+
+
+### Bug Fixes
+
+* Normalize time stamps to epoch integer format instead of datetime. ([ed4673e](https://github.com/frankie336/entities_common/commit/ed4673e9a8f5d382dcde1156f8505c1534dab2ae))
+
 ## [0.17.13](https://github.com/frankie336/entities_common/compare/v0.17.12...v0.17.13) (2025-08-13)
 
 

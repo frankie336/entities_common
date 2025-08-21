@@ -1,3 +1,10 @@
+## [0.17.13](https://github.com/frankie336/entities_common/compare/v0.17.12...v0.17.13) (2025-08-13)
+
+
+### Bug Fixes
+
+* correctly import RunListResponse ([9fe0e50](https://github.com/frankie336/entities_common/commit/9fe0e505eaa240ffed5e210dcaa949fdadd38527))
+
 ## [0.17.12](https://github.com/frankie336/entities_common/compare/v0.17.11...v0.17.12) (2025-08-12)
 
 

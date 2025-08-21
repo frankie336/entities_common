@@ -126,7 +126,7 @@ class RunReadDetailed(BaseModel):
     created_at: int
     expires_at: Optional[int] = None
     failed_at: Optional[int] = None
-    incomplete_details: Optional[Dict[str, Any]] = None
+    incomplete_details: Optional[str] = None
     instructions: str
     last_error: Optional[str] = None
     max_completion_tokens: Optional[int] = 1000

@@ -119,13 +119,13 @@ class RunCreate(BaseModel):
 # --------------------------------------------------------------------------- #
 class RunReadDetailed(BaseModel):
     id: str
-    user_id: str  # ← NEW
+    user_id: str
     assistant_id: str
-    cancelled_at: Optional[datetime] = None
-    completed_at: Optional[datetime] = None
+    cancelled_at: Optional[int] = None
+    completed_at: Optional[int] = None
     created_at: int
     expires_at: Optional[int] = None
-    failed_at: Optional[datetime] = None
+    failed_at: Optional[int] = None
     incomplete_details: Optional[Dict[str, Any]] = None
     instructions: str
     last_error: Optional[str] = None

@@ -1,3 +1,10 @@
+## [0.17.15](https://github.com/frankie336/entities_common/compare/v0.17.14...v0.17.15) (2025-08-21)
+
+
+### Bug Fixes
+
+* set incomplete_details type to string ([34af8e7](https://github.com/frankie336/entities_common/commit/34af8e70b1363299e3fd8409dc0308e7f1b5a73a))
+
 ## [0.17.14](https://github.com/frankie336/entities_common/compare/v0.17.13...v0.17.14) (2025-08-21)
 
 

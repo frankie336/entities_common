@@ -46,7 +46,7 @@ class Run(BaseModel):
     created_at: int
     expires_at: int
     failed_at: Optional[int]
-    incomplete_details: Optional[Dict[str, Any]]
+    incomplete_details: Optional[str]
     instructions: str
     last_error: Optional[str]
     max_completion_tokens: Optional[int]
@@ -58,7 +58,7 @@ class Run(BaseModel):
     required_action: Optional[str]
     response_format: str
     started_at: Optional[int]
-    status: RunStatus | str  # accepts Enum or raw str
+    status: RunStatus | str
     thread_id: str
     tool_choice: str
     tools: List[Tool]
@@ -67,7 +67,6 @@ class Run(BaseModel):
     temperature: float
     top_p: float
     tool_resources: Dict[str, Any]
-
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -148,7 +147,6 @@ class RunReadDetailed(BaseModel):
     top_p: float
     tool_resources: Dict[str, Any]
     actions: List[ActionRead] = Field(default_factory=list)
-
     model_config = ConfigDict(from_attributes=True)
 
 

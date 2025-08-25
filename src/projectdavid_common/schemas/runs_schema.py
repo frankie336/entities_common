@@ -139,7 +139,7 @@ class RunReadDetailed(BaseModel):
     started_at: Optional[int] = None
     status: RunStatus | str
     thread_id: str
-    tool_choice: str
+    tool_choice: Optional[str] = None
     tools: List[ToolRead]
     truncation_strategy: Dict[str, Any]
     usage: Optional[Any] = None

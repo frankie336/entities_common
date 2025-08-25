@@ -1,3 +1,10 @@
+## [0.17.17](https://github.com/frankie336/entities_common/compare/v0.17.16...v0.17.17) (2025-08-25)
+
+
+### Bug Fixes
+
+* tool_choice to optional. ([5e0a719](https://github.com/frankie336/entities_common/commit/5e0a7194124f671a463a2f63cb56a131c85597f7))
+
 ## [0.17.16](https://github.com/frankie336/entities_common/compare/v0.17.15...v0.17.16) (2025-08-22)
 
 

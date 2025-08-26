@@ -3,7 +3,6 @@ schemas/run_schema.py
 Keeps client / server / SDK in sync with the new user_id column on runs.
 """
 
-from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Literal, Optional
 
@@ -27,6 +26,11 @@ class RunStatus(str, Enum):
     processing = "processing"
     expired = "expired"
     retrying = "retrying"
+
+
+class TruncationStrategy(str, Enum):
+    auto = "auto"
+    disabled = "disabled"
 
 
 # --------------------------------------------------------------------------- #
@@ -58,11 +62,11 @@ class Run(BaseModel):
     required_action: Optional[str]
     response_format: str
     started_at: Optional[int]
-    status: RunStatus | str
+    status: RunStatus
     thread_id: str
     tool_choice: str
     tools: List[Tool]
-    truncation_strategy: Dict[str, Any]
+    truncation_strategy: TruncationStrategy = TruncationStrategy.auto
     usage: Optional[Any]
     temperature: float
     top_p: float
@@ -100,11 +104,11 @@ class RunCreate(BaseModel):
     required_action: Optional[str] = None
     response_format: str = "text"
     started_at: Optional[int] = None
-    status: RunStatus | str = RunStatus.pending
+    status: RunStatus = RunStatus.pending
     thread_id: str
     tool_choice: str = "none"
     tools: List[Tool] = Field(default_factory=list)
-    truncation_strategy: Dict[str, Any] = Field(default_factory=dict)
+    truncation_strategy: TruncationStrategy = TruncationStrategy.auto
     usage: Optional[Any] = None
     temperature: float = 0.7
     top_p: float = 0.9
@@ -137,11 +141,11 @@ class RunReadDetailed(BaseModel):
     required_action: Optional[str] = None
     response_format: str
     started_at: Optional[int] = None
-    status: RunStatus | str
+    status: RunStatus
     thread_id: str
     tool_choice: Optional[str] = None
     tools: List[ToolRead]
-    truncation_strategy: Dict[str, Any]
+    truncation_strategy: TruncationStrategy = TruncationStrategy.auto
     usage: Optional[Any] = None
     temperature: float
     top_p: float

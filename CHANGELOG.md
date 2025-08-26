@@ -1,3 +1,10 @@
+## [0.17.18](https://github.com/frankie336/entities_common/compare/v0.17.17...v0.17.18) (2025-08-26)
+
+
+### Bug Fixes
+
+* TruncationStrategy Enum. ([cd6e2d1](https://github.com/frankie336/entities_common/commit/cd6e2d161f5a67f42fa894b99655eee880b61eab))
+
 ## [0.17.17](https://github.com/frankie336/entities_common/compare/v0.17.16...v0.17.17) (2025-08-25)
 
 

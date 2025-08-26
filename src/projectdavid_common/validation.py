@@ -41,6 +41,7 @@ from projectdavid_common.schemas.runs_schema import (
     RunReadDetailed,
     RunStatus,
     RunStatusUpdate,
+    TruncationStrategy,
 )
 from projectdavid_common.schemas.stream_schema import StreamRequest
 from projectdavid_common.schemas.threads_schema import (
@@ -144,6 +145,7 @@ class ValidationInterface:
     RunCreate = RunCreate
     RunReadDetailed = RunReadDetailed
     RunStatus = RunStatus
+    TruncationStrategy = TruncationStrategy
     RunStatusUpdate = RunStatusUpdate
     RunListResponse = RunListResponse
 

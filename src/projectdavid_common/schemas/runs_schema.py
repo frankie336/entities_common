@@ -34,13 +34,13 @@ class TruncationStrategy(str, Enum):
 
 
 # --------------------------------------------------------------------------- #
-#  Base‑level model returned by most endpoints
+#  Base-level model returned by most endpoints
 # --------------------------------------------------------------------------- #
 class Run(BaseModel):
     id: str
     user_id: Optional[str] = Field(
         default=None,
-        description="Filled in by the server from the caller’s API‑key. "
+        description="Filled in by the server from the caller’s API-key. "
         "Clients MAY omit or set to None.",
     )
 
@@ -66,7 +66,8 @@ class Run(BaseModel):
     thread_id: str
     tool_choice: str
     tools: List[Tool]
-    truncation_strategy: TruncationStrategy = TruncationStrategy.auto
+    # Accept 'auto' or None on read
+    truncation_strategy: Optional[TruncationStrategy] = None
     usage: Optional[Any]
     temperature: float
     top_p: float
@@ -76,17 +77,15 @@ class Run(BaseModel):
 
 # --------------------------------------------------------------------------- #
 #  Payload used by SDK / tests when creating runs
-#  user_id is optional ‑ server overwrites it from auth context
+#  user_id is optional - server overwrites it from auth context
 # --------------------------------------------------------------------------- #
 class RunCreate(BaseModel):
     id: str
     assistant_id: str
-    # ── NEW optional user_id (ignored by server if provided) ───────────── #
     user_id: Optional[str] = Field(
         default=None,
-        json_schema_extra={"readOnly": True},  # treated as server‑generated
+        json_schema_extra={"readOnly": True},
     )
-    # ───────────────────────────────────────────────────────────────────── #
     cancelled_at: Optional[int] = None
     completed_at: Optional[int] = None
     created_at: int
@@ -108,12 +107,12 @@ class RunCreate(BaseModel):
     thread_id: str
     tool_choice: str = "none"
     tools: List[Tool] = Field(default_factory=list)
-    truncation_strategy: TruncationStrategy = TruncationStrategy.auto
+    # Optional so callers can omit and let DB default 'auto' apply
+    truncation_strategy: Optional[TruncationStrategy] = None
     usage: Optional[Any] = None
     temperature: float = 0.7
     top_p: float = 0.9
     tool_resources: Dict[str, Any] = Field(default_factory=dict)
-
     model_config = ConfigDict(from_attributes=True)
 
 
@@ -145,7 +144,8 @@ class RunReadDetailed(BaseModel):
     thread_id: str
     tool_choice: Optional[str] = None
     tools: List[ToolRead]
-    truncation_strategy: TruncationStrategy = TruncationStrategy.auto
+    # Accept 'auto' or None on read
+    truncation_strategy: Optional[TruncationStrategy] = None
     usage: Optional[Any] = None
     temperature: float
     top_p: float
@@ -155,14 +155,14 @@ class RunReadDetailed(BaseModel):
 
 
 # --------------------------------------------------------------------------- #
-#  Small helper for the status‑only update endpoint
+#  Small helper for the status-only update endpoint
 # --------------------------------------------------------------------------- #
 class RunStatusUpdate(BaseModel):
     status: RunStatus
 
 
 # --------------------------------------------------------------------------- #
-#  Small helper for the status‑only update endpoint
+#  Small helper for the status-only update endpoint
 # --------------------------------------------------------------------------- #
 class RunListResponse(BaseModel):
     object: Literal["list"] = "list"

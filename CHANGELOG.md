@@ -1,3 +1,11 @@
+# [0.19.0](https://github.com/frankie336/entities_common/compare/v0.18.0...v0.19.0) (2025-10-14)
+
+
+### Features
+
+* **runs:** make truncation_strategy optional on create; add safe migration to string w/ default 'auto' ([8d14e11](https://github.com/frankie336/entities_common/commit/8d14e11fb2fe2a9d9a07bde68572375712f78604))
+* **runs:** make truncation_strategy optional on create; add safe migration to string w/ default 'auto' ([258542c](https://github.com/frankie336/entities_common/commit/258542cc7c1d32d616ec9aa6e8920af501487b6e))
+
 # [0.18.0](https://github.com/frankie336/entities_common/compare/v0.17.19...v0.18.0) (2025-10-12)
 
 

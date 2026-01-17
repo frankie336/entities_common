@@ -38,19 +38,28 @@ TOGETHER_AI_MODELS = {
 }
 
 HYPERBOLIC_MODELS = {
+    # DeepSeek
     "hyperbolic/deepseek-ai/DeepSeek-V3-0324": "deepseek-ai/DeepSeek-V3-0324",
     "hyperbolic/deepseek-ai/DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
     "hyperbolic/deepseek-ai/DeepSeek-V3": "deepseek-ai/DeepSeek-V3",
+    # llama
     "hyperbolic/meta-llama/Llama-3.3-70B-Instruct": "meta-llama/Llama-3.3-70B-Instruct",
     "hyperbolic/meta-llama/Llama-3.2-3B-Instruct": "meta-llama/Llama-3.2-3B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3.1-405B-Instruct": "meta-llama/Meta-Llama-3.1-405B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3.1-8B-Instruct": "meta-llama/Meta-Llama-3.1-8B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3.1-70B-Instruct": "meta-llama/Meta-Llama-3.1-70B-Instruct",
     "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
+    # Quen
     "hyperbolic/Qwen/QwQ-32B": "Qwen/QwQ-32B",
     "hyperbolic/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
     "hyperbolic/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
-    "hyperbolic/Qwen/QwQ-32B-Preview": "Qwen/QwQ-32B-Preview",
+    "hyperbolic/Qwen/Qwen3-Next-80B-A3B-Thinking": "Qwen/Qwen3-Next-80B-A3B-Thinking",
+    "hyperbolic/Qwen/Qwen3-Coder-480B-A35B-Instruct": "Qwen/Qwen3-Coder-480B-A35B-Instruct",
+    "hyperbolic/Qwen/Qwen3-235B-A22B-Instruct-2507": "Qwen/Qwen3-235B-A22B-Instruct-2507",
+    "hyperbolic/Qwen/Qwen3-235B-A22B": "Qwen/Qwen3-235B-A22B",
+    # OpenAI
+    "hyperbolic/openai/gpt-oss-120b": "openai/gpt-oss-120b",
+    "hyperbolic/openai/gpt-oss-20b": "openai/gpt-oss-20b",
 }
 
 GOOGLE_GEMINI_MODELS = {

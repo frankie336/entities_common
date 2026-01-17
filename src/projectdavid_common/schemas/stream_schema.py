@@ -1,6 +1,6 @@
 from typing import Optional
 
-from pydantic import BaseModel, Field, validator
+from pydantic import BaseModel, validator
 
 from projectdavid_common.constants.ai_model_map import MODEL_MAP
 

@@ -1,3 +1,10 @@
+## [0.19.1](https://github.com/frankie336/entities_common/compare/v0.19.0...v0.19.1) (2026-01-17)
+
+
+### Bug Fixes
+
+* break up MODEL_MAP ([174e554](https://github.com/frankie336/entities_common/commit/174e554e0be974e6a996e1b4cad49d615894668c))
+
 # [0.19.0](https://github.com/frankie336/entities_common/compare/v0.18.0...v0.19.0) (2025-10-14)
 
 

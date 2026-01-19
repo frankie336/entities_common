@@ -1,4 +1,4 @@
-#! python
+#! src/projectdavid_common/schemas/messages_schema.py
 from enum import Enum
 from typing import Any, Dict, List, Optional
 
@@ -20,6 +20,10 @@ class MessageCreate(BaseModel):
     assistant_id: str
     role: str  # Using string instead of Enum to allow flexible validation
     tool_id: Optional[str] = None
+
+    # --- Agentic Tracking ---
+    tool_call_id: Optional[str] = None  # ID of the call this message responds to
+
     meta_data: Optional[Dict[str, Any]] = None
     is_last_chunk: bool = False
 
@@ -48,9 +52,15 @@ class MessageCreate(BaseModel):
 
 class ToolMessageCreate(BaseModel):
     content: str
+    tool_call_id: Optional[str] = None
 
     model_config = ConfigDict(
-        json_schema_extra={"example": {"content": "This is the content of the tool message."}}
+        json_schema_extra={
+            "example": {
+                "content": "This is the content of the tool message.",
+                "tool_call_id": "call_abc123",
+            }
+        }
     )
 
 
@@ -68,6 +78,10 @@ class MessageRead(BaseModel):
     role: str
     run_id: Optional[str]
     tool_id: Optional[str] = None
+
+    # --- Agentic Tracking ---
+    tool_call_id: Optional[str] = None
+
     status: Optional[str]
     thread_id: str
     sender_id: Optional[str] = None
@@ -80,6 +94,7 @@ class MessageUpdate(BaseModel):
     meta_data: Optional[Dict[str, Any]]
     status: Optional[str]
     role: Optional[str]
+    tool_call_id: Optional[str] = None
 
     @field_validator("role", mode="before")
     @classmethod
@@ -111,7 +126,6 @@ class MessagesList(BaseModel):
 
 
 class MessageDeleted(BaseModel):
-
     id: str
     object: str = "thread.message.deleted"
     deleted: bool = True

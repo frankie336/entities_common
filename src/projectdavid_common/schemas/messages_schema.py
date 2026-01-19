@@ -58,7 +58,7 @@ class ToolMessageCreate(BaseModel):
         json_schema_extra={
             "example": {
                 "content": "This is the content of the tool message.",
-                "tool_call_id": "call_abc123"
+                "tool_call_id": "call_abc123",
             }
         }
     )

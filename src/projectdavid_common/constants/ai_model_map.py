@@ -62,45 +62,6 @@ HYPERBOLIC_MODELS = {
     "hyperbolic/openai/gpt-oss-20b": "openai/gpt-oss-20b",
 }
 
-GOOGLE_GEMINI_MODELS = {
-    "google/gemini-1.0-pro-vision-latest": "gemini-1.0-pro-vision-latest",
-    "google/gemini-pro-vision": "gemini-pro-vision",
-    "google/gemini-1.5-pro-latest": "gemini-1.5-pro-latest",
-    "google/gemini-1.5-pro-001": "gemini-1.5-pro-001",
-    "google/gemini-1.5-pro-002": "gemini-1.5-pro-002",
-    "google/gemini-1.5-pro": "gemini-1.5-pro",
-    "google/gemini-1.5-flash-latest": "gemini-1.5-flash-latest",
-    "google/gemini-1.5-flash-001": "gemini-1.5-flash-001",
-    "google/gemini-1.5-flash-001-tuning": "gemini-1.5-flash-001-tuning",
-    "google/gemini-1.5-flash": "gemini-1.5-flash",
-    "google/gemini-1.5-flash-002": "gemini-1.5-flash-002",
-    "google/gemini-1.5-flash-8b": "gemini-1.5-flash-8b",
-    "google/gemini-1.5-flash-8b-001": "gemini-1.5-flash-8b-001",
-    "google/gemini-1.5-flash-8b-latest": "gemini-1.5-flash-8b-latest",
-    "google/gemini-1.5-flash-8b-exp-0827": "gemini-1.5-flash-8b-exp-0827",
-    "google/gemini-1.5-flash-8b-exp-0924": "gemini-1.5-flash-8b-exp-0924",
-    "google/gemini-2.5-pro-exp-03-25": "gemini-2.5-pro-exp-03-25",
-    "google/gemini-2.5-pro-preview-03-25": "gemini-2.5-pro-preview-03-25",
-    "google/gemini-2.0-flash-exp": "gemini-2.0-flash-exp",
-    "google/gemini-2.0-flash": "gemini-2.0-flash",
-    "google/gemini-2.0-flash-001": "gemini-2.0-flash-001",
-    "google/gemini-2.0-flash-exp-image-generation": "gemini-2.0-flash-exp-image-generation",
-    "google/gemini-2.0-flash-lite-001": "gemini-2.0-flash-lite-001",
-    "google/gemini-2.0-flash-lite": "gemini-2.0-flash-lite",
-    "google/gemini-2.0-flash-lite-preview-02-05": "gemini-2.0-flash-lite-preview-02-05",
-    "google/gemini-2.0-flash-lite-preview": "gemini-2.0-flash-lite-preview",
-    "google/gemini-2.0-pro-exp": "gemini-2.0-pro-exp",
-    "google/gemini-2.0-pro-exp-02-05": "gemini-2.0-pro-exp-02-05",
-    "google/gemini-exp-1206": "gemini-exp-1206",
-    "google/gemini-2.0-flash-thinking-exp-01-21": "gemini-2.0-flash-thinking-exp-01-21",
-    "google/gemini-2.0-flash-thinking-exp": "gemini-2.0-flash-thinking-exp",
-    "google/gemini-2.0-flash-thinking-exp-1219": "gemini-2.0-flash-thinking-exp-1219",
-    "google/learnlm-1.5-pro-experimental": "learnlm-1.5-pro-experimental",
-    "google/gemma-3-1b-it": "gemma-3-1b-it",
-    "google/gemma-3-4b-it": "gemma-3-4b-it",
-    "google/gemma-3-12b-it": "gemma-3-12b-it",
-    "google/gemma-3-27b-it": "gemma-3-27b-it",
-}
 
 # --- MASTER COMBINED MAP ---
 # This merges them all into one flat lookup for the Router
@@ -108,5 +69,4 @@ MODEL_MAP = {
     **DEEPSEEK_NATIVE_MODELS,
     **TOGETHER_AI_MODELS,
     **HYPERBOLIC_MODELS,
-    **GOOGLE_GEMINI_MODELS,
 }

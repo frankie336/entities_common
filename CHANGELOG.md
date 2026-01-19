@@ -1,3 +1,15 @@
+# [0.21.0](https://github.com/frankie336/entities_common/compare/v0.20.0...v0.21.0) (2026-01-19)
+
+
+### Bug Fixes
+
+* Update actions_schema.py with too_call_id param ([80c967f](https://github.com/frankie336/entities_common/commit/80c967f5652ad92dda7de46eeb42c999bb33aaa1))
+
+
+### Features
+
+* Remove support for proprietary models. ([ef340ca](https://github.com/frankie336/entities_common/commit/ef340caefdb4c28012d5d887e06b058c74b93c8d))
+
 # [0.20.0](https://github.com/frankie336/entities_common/compare/v0.19.1...v0.20.0) (2026-01-17)
 
 

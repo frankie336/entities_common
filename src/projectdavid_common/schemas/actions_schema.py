@@ -1,4 +1,3 @@
-# src/projectdavid_common/schemas/actions_schema.py
 from datetime import datetime
 from enum import Enum
 from typing import Any, Dict, List, Optional
@@ -16,6 +15,10 @@ class ActionBase(BaseModel):
     status: str = "pending"
     function_args: Optional[Dict[str, Any]] = None
     result: Optional[Dict[str, Any]] = None
+
+    # New Fields
+    tool_call_id: Optional[str] = None
+    turn_index: Optional[int] = 0
 
     model_config = ConfigDict(from_attributes=True)
 
@@ -38,6 +41,10 @@ class ActionCreate(BaseModel):
     expires_at: Optional[datetime] = None
     status: Optional[str] = "pending"
 
+    # Optional input during creation (passed from Orchestrator)
+    tool_call_id: Optional[str] = None
+    turn_index: Optional[int] = 0
+
     @field_validator("tool_name", mode="before")
     @classmethod
     def validate_tool_fields(cls, v: Optional[str]) -> Optional[str]:
@@ -50,8 +57,8 @@ class ActionCreate(BaseModel):
             "example": {
                 "tool_name": "example_tool_name",
                 "run_id": "example_run_id",
-                "function_args": {"arg1": "value1", "arg2": "value2"},
-                "expires_at": "2024-09-10T12:00:00Z",
+                "tool_call_id": "call_abc123",
+                "function_args": {"arg1": "value1"},
                 "status": "pending",
             }
         }
@@ -63,6 +70,11 @@ class ActionRead(BaseModel):
     run_id: Optional[str] = None
     tool_id: Optional[str] = None
     tool_name: Optional[str] = None
+
+    # New Fields
+    tool_call_id: Optional[str] = None
+    turn_index: Optional[int] = None
+
     triggered_at: Optional[str] = None
     expires_at: Optional[str] = None
     is_processed: Optional[bool] = None
@@ -74,21 +86,6 @@ class ActionRead(BaseModel):
     model_config = ConfigDict(
         extra="forbid",
         validate_assignment=True,
-        json_schema_extra={
-            "example": {
-                "id": "action_123456",
-                "run_id": "run_123456",
-                "tool_id": "tool_123456",
-                "tool_name": "code_interpreter",
-                "triggered_at": "2025-03-24T12:00:00Z",
-                "expires_at": "2025-03-24T12:05:00Z",
-                "is_processed": False,
-                "processed_at": "2025-03-24T12:01:00Z",
-                "status": "in_progress",
-                "function_args": {"param1": "value1"},
-                "result": {"output": "result data"},
-            }
-        },
     )
 
 

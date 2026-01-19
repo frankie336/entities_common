@@ -1,3 +1,11 @@
+## [0.21.1](https://github.com/frankie336/entities_common/compare/v0.21.0...v0.21.1) (2026-01-19)
+
+
+### Bug Fixes
+
+* Update messages_schema.py with too_call_id param ([51f3b2f](https://github.com/frankie336/entities_common/commit/51f3b2f617775624a3e0c0244f74ef900bde46e9))
+* Update messages_schema.py with too_call_id param ([5988bda](https://github.com/frankie336/entities_common/commit/5988bdad22d333c000d93050dfe3399c050cc14b))
+
 # [0.21.0](https://github.com/frankie336/entities_common/compare/v0.20.0...v0.21.0) (2026-01-19)
 
 

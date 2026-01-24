@@ -1,3 +1,10 @@
+## [0.21.2](https://github.com/frankie336/entities_common/compare/v0.21.1...v0.21.2) (2026-01-24)
+
+
+### Bug Fixes
+
+* Update TOGETHER_AI_MODELS dictionary ([7ebe3e6](https://github.com/frankie336/entities_common/commit/7ebe3e698a45420efcc446a5ad95b30e1bb99e52))
+
 ## [0.21.1](https://github.com/frankie336/entities_common/compare/v0.21.0...v0.21.1) (2026-01-19)
 
 

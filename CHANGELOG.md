@@ -1,3 +1,10 @@
+## [0.21.4](https://github.com/frankie336/entities_common/compare/v0.21.3...v0.21.4) (2026-01-25)
+
+
+### Bug Fixes
+
+* refactor tools field in AssistantUpdate ([11cb730](https://github.com/frankie336/entities_common/commit/11cb73097b21350ff10089b2feda523ab9edf115))
+
 ## [0.21.3](https://github.com/frankie336/entities_common/compare/v0.21.2...v0.21.3) (2026-01-25)
 
 

@@ -85,7 +85,7 @@ class AssistantUpdate(BaseModel):
     response_format: Optional[str] = None
 
     # ─── relationship IDs (lists of strings) ──
-    tools: Optional[List[str]] = None
+    tools: Optional[List[dict]] = Field(None, description="OpenAI-style tool specs (dicts).")
     users: Optional[List[str]] = None
     vector_stores: Optional[List[str]] = None
 

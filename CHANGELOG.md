@@ -1,3 +1,10 @@
+## [0.21.5](https://github.com/frankie336/entities_common/compare/v0.21.4...v0.21.5) (2026-01-25)
+
+
+### Bug Fixes
+
+* Remove Tools schema ([85698bc](https://github.com/frankie336/entities_common/commit/85698bc2f895ae3100f01d4c91bd6e0caba72945))
+
 ## [0.21.4](https://github.com/frankie336/entities_common/compare/v0.21.3...v0.21.4) (2026-01-25)
 
 

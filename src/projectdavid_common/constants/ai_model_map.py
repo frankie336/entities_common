@@ -16,6 +16,7 @@ DEEPSEEK_NATIVE_MODELS = {
     "deepseek-ai/deepseek-chat": "deepseek-chat",
 }
 
+
 TOGETHER_AI_MODELS = {
     # --- DeepSeek ---
     "together-ai/deepseek-ai/DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
@@ -54,6 +55,9 @@ TOGETHER_AI_MODELS = {
     "together-ai/Qwen/Qwen3-VL-235B-A22B-Instruct-FP": "Qwen/Qwen3-VL-235B-A22B-Instruct-FP",
     "together-ai/Qwen/Qwen3-8B": "Qwen/Qwen3-8B",
     "together-ai/Qwen/Qwen3-14B-Base": "Qwen/Qwen3-14B-Base",
+    # OpenAI
+    "together-ai/openai/gpt-oss-120b": "openai/gpt-oss-120b",
+    "together-ai/openai/gpt-oss-20b": "openai/gpt-oss-20b",
     # Qwen 2.5 Series
     "together-ai/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
     "together-ai/Qwen/Qwen2.5-72B-Instruct-Turbo": "Qwen/Qwen2.5-72B-Instruct-Turbo",

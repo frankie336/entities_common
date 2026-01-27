@@ -63,12 +63,17 @@ TOGETHER_AI_MODELS = {
     # Misc
     "together-ai/Qwen/Qwen-Image": "Qwen/Qwen-Image",
     "together-ai/Qwen/Qwen2-7B": "Qwen/Qwen2-7B",
+    # OpenAI
+    "together-ai/openai/gpt-oss-120b": "openai/gpt-oss-120b",
+    "together-ai/openai/gpt-oss-20b": "openai/gpt-oss-20b",
 }
 
 
 HYPERBOLIC_MODELS = {
     # DeepSeek
     "hyperbolic/deepseek-ai/DeepSeek-V3-0324": "deepseek-ai/DeepSeek-V3-0324",
+    # new
+    "hyperbolic/deepseek-ai/DeepSeek-R1-0528": "deepseek-ai/DeepSeek-R1-0528",
     "hyperbolic/deepseek-ai/DeepSeek-R1": "deepseek-ai/DeepSeek-R1",
     "hyperbolic/deepseek-ai/DeepSeek-V3": "deepseek-ai/DeepSeek-V3",
     # llama
@@ -80,6 +85,7 @@ HYPERBOLIC_MODELS = {
     "hyperbolic/meta-llama/Meta-Llama-3-70B-Instruct": "meta-llama/Meta-Llama-3-70B-Instruct",
     # Quen
     "hyperbolic/Qwen/QwQ-32B": "Qwen/QwQ-32B",
+    "hyperbolic/Qwen/Qwen2.5-VL-7B-Instruct": "Qwen/Qwen2.5-VL-7B-Instruct",
     "hyperbolic/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
     "hyperbolic/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
     "hyperbolic/Qwen/Qwen3-Next-80B-A3B-Thinking": "Qwen/Qwen3-Next-80B-A3B-Thinking",
@@ -89,6 +95,8 @@ HYPERBOLIC_MODELS = {
     # OpenAI
     "hyperbolic/openai/gpt-oss-120b": "openai/gpt-oss-120b",
     "hyperbolic/openai/gpt-oss-20b": "openai/gpt-oss-20b",
+    # New
+    "hyperbolic/openai/gpt-oss-120b-turbo": "openai/gpt-oss-120b-turbo",
 }
 
 

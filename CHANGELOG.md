@@ -1,3 +1,10 @@
+## [0.21.6](https://github.com/frankie336/entities_common/compare/v0.21.5...v0.21.6) (2026-01-27)
+
+
+### Bug Fixes
+
+* Update AI model compatibility dict ([e7c3334](https://github.com/frankie336/entities_common/commit/e7c3334f9dcf7150c3df01ff464a9d55586733a5))
+
 ## [0.21.5](https://github.com/frankie336/entities_common/compare/v0.21.4...v0.21.5) (2026-01-25)
 
 

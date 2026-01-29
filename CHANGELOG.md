@@ -1,3 +1,10 @@
+## [0.21.7](https://github.com/frankie336/entities_common/compare/v0.21.6...v0.21.7) (2026-01-29)
+
+
+### Bug Fixes
+
+* Add many new TogetherAI models to TOGETHER_AI_MODELS ([140b7aa](https://github.com/frankie336/entities_common/commit/140b7aababca215458ad643b7e2edb58bb839cbe))
+
 ## [0.21.6](https://github.com/frankie336/entities_common/compare/v0.21.5...v0.21.6) (2026-01-27)
 
 

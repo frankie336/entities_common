@@ -1,3 +1,10 @@
+## [0.21.8](https://github.com/frankie336/entities_common/compare/v0.21.7...v0.21.8) (2026-01-31)
+
+
+### Bug Fixes
+
+* Add decision_payload and confidence_score to ActionRead schema ([61d1e37](https://github.com/frankie336/entities_common/commit/61d1e379ed61e5617ada7c04fcd76bd9340c4fe1))
+
 ## [0.21.7](https://github.com/frankie336/entities_common/compare/v0.21.6...v0.21.7) (2026-01-29)
 
 

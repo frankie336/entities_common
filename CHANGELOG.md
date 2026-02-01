@@ -1,3 +1,10 @@
+## [0.21.9](https://github.com/frankie336/entities_common/compare/v0.21.8...v0.21.9) (2026-02-01)
+
+
+### Bug Fixes
+
+* Resolve issues ActionRead decision_payload renamed to decision ([a073954](https://github.com/frankie336/entities_common/commit/a0739549e9d498aed7e1b11b39f22e8748be3b44))
+
 ## [0.21.8](https://github.com/frankie336/entities_common/compare/v0.21.7...v0.21.8) (2026-01-31)
 
 

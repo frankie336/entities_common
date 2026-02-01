@@ -21,7 +21,7 @@ class ActionBase(BaseModel):
     turn_index: Optional[int] = 0
 
     # Telemetry
-    decision_payload: Optional[Dict[str, Any]] = None
+    decision: Optional[Dict[str, Any]] = None
     confidence_score: Optional[float] = None
 
     model_config = ConfigDict(from_attributes=True)
@@ -50,7 +50,7 @@ class ActionCreate(BaseModel):
     turn_index: Optional[int] = 0
 
     # [NEW] Telemetry Fields (Passed from Worker/Router)
-    decision_payload: Optional[Dict[str, Any]] = None
+    decision: Optional[Dict[str, Any]] = None
 
     @field_validator("tool_name", mode="before")
     @classmethod
@@ -67,7 +67,7 @@ class ActionCreate(BaseModel):
                 "tool_call_id": "call_abc123",
                 "function_args": {"arg1": "value1"},
                 "status": "pending",
-                "decision_payload": {
+                "decision": {
                     "reason": "User requested flight times explicitly.",
                     "confidence": 0.95,
                     "selected_tool": "get_flight_times",
@@ -88,7 +88,7 @@ class ActionRead(BaseModel):
     turn_index: Optional[int] = None
 
     # [NEW] Telemetry Fields (Exposed to Client/Dashboard)
-    decision_payload: Optional[Dict[str, Any]] = None
+    decision: Optional[Dict[str, Any]] = None
     confidence_score: Optional[float] = None
 
     triggered_at: Optional[str] = None

@@ -1,3 +1,10 @@
+# [0.22.0](https://github.com/frankie336/entities_common/compare/v0.21.9...v0.22.0) (2026-02-05)
+
+
+### Features
+
+* add decision_telemetry, agent_mode to assistants_schema.py ([8768298](https://github.com/frankie336/entities_common/commit/8768298c0669c86b6549d3ebf7cb85ea888a5c63))
+
 ## [0.21.9](https://github.com/frankie336/entities_common/compare/v0.21.8...v0.21.9) (2026-02-01)
 
 

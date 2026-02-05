@@ -27,6 +27,17 @@ class AssistantCreate(BaseModel):
     temperature: float = Field(1.0, ge=0, le=2)
     response_format: str = Field("auto")
 
+    # ─── agentic settings (Level 3) ───────────
+    max_turns: int = Field(
+        1, ge=1, description="Max iterations. 1 = Standard, >1 = Autonomous loops."
+    )
+    agent_mode: bool = Field(
+        False, description="False = Standard (Level 2), True = Autonomous (Level 3)."
+    )
+    decision_telemetry: bool = Field(
+        False, description="Enable detailed reasoning/confidence logging."
+    )
+
     # ─── webhooks ─────────────────────────────
     webhook_url: Optional[HttpUrl] = None
     webhook_secret: Optional[str] = Field(None, min_length=16)
@@ -36,6 +47,8 @@ class AssistantCreate(BaseModel):
             "example": {
                 "name": "Search Assistant",
                 "model": "gpt-4o-mini",
+                "agent_mode": True,
+                "decision_telemetry": True,
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
             }
         }
@@ -64,6 +77,11 @@ class AssistantRead(BaseModel):
     temperature: float
     response_format: str
 
+    # ─── agentic settings ─────────────────────
+    max_turns: int
+    agent_mode: bool
+    decision_telemetry: bool
+
     vector_stores: List[VectorStoreRead] = Field(default_factory=list)
     webhook_url: Optional[HttpUrl] = None
 
@@ -83,6 +101,11 @@ class AssistantUpdate(BaseModel):
     top_p: Optional[float] = Field(None, ge=0, le=1)
     temperature: Optional[float] = Field(None, ge=0, le=2)
     response_format: Optional[str] = None
+
+    # ─── agentic settings ─────────────────────
+    max_turns: Optional[int] = Field(None, ge=1)
+    agent_mode: Optional[bool] = None
+    decision_telemetry: Optional[bool] = None
 
     # ─── relationship IDs (lists of strings) ──
     tools: Optional[List[dict]] = Field(None, description="OpenAI-style tool specs (dicts).")

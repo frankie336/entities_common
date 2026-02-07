@@ -20,11 +20,13 @@ DEEPSEEK_NATIVE_MODELS = {
 TOGETHER_AI_MODELS = {
     # --- Qwen ---
     "together-ai/Qwen/QwQ-32B": "Qwen/QwQ-32B",
+    "together-ai/Qwen/Qwen2.5-14B-Instruct": "Qwen/Qwen2.5-14B-Instruct",
     "together-ai/Qwen/Qwen-Image": "Qwen/Qwen-Image",
     "together-ai/Qwen/Qwen2-7B": "Qwen/Qwen2-7B",
     "together-ai/Qwen/Qwen2-VL-72B-Instruct": "Qwen/Qwen2-VL-72B-Instruct",
     "together-ai/Qwen/Qwen2.5-1.5B": "Qwen/Qwen2.5-1.5B",
     "together-ai/Qwen/Qwen2.5-72B-Instruct-Turbo": "Qwen/Qwen2.5-72B-Instruct-Turbo",
+    "together-ai/Qwen/Qwen2.5-72B-Instruct": "Qwen/Qwen2.5-72B-Instruct",
     "together-ai/Qwen/Qwen2.5-7B-Instruct-Turbo": "Qwen/Qwen2.5-7B-Instruct-Turbo",
     "together-ai/Qwen/Qwen2.5-Coder-32B-Instruct": "Qwen/Qwen2.5-Coder-32B-Instruct",
     "together-ai/Qwen/Qwen2.5-VL-72B-Instruct": "Qwen/Qwen2.5-VL-72B-Instruct",

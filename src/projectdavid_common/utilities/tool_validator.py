@@ -1,9 +1,8 @@
 # src/projectdavid_common/utilities/tool_validator.py
+import logging
 from typing import Any, Dict, List, Optional
 
-from logging_service import LoggingUtility
-
-LOG = LoggingUtility()
+LOG = logging.getLogger(__name__)
 
 
 class ToolValidator:
@@ -24,12 +23,22 @@ class ToolValidator:
                 if name:
                     registry[name] = required
         self.schema_registry = registry
+
+        # Standard logging usage
         LOG.info(f"[Validator] Registry built for {len(self.schema_registry)} tools.")
 
     def validate_args(self, tool_name: str, args: Dict[str, Any]) -> Optional[str]:
         """Returns error string if required fields are missing, else None."""
         required = self.schema_registry.get(tool_name, [])
-        missing = [f for f in required if f not in args or args[f] in [None, ""]]
+
+        # Handle cases where args might be None
+        safe_args = args if args else {}
+
+        missing = [f for f in required if f not in safe_args or safe_args[f] in [None, ""]]
+
         if missing:
-            return f"Validation Error: The tool '{tool_name}' requires missing arguments: {', '.join(missing)}."
+            error_msg = f"Validation Error: The tool '{tool_name}' requires missing arguments: {', '.join(missing)}."
+            LOG.warning(f"[Validator] {error_msg}")
+            return error_msg
+
         return None

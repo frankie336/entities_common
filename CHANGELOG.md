@@ -1,3 +1,11 @@
+# [0.23.0](https://github.com/frankie336/entities_common/compare/v0.22.0...v0.23.0) (2026-02-07)
+
+
+### Features
+
+* Implement ToolValidator ([864fa6a](https://github.com/frankie336/entities_common/commit/864fa6af4ea0772a1526cadc375ee43a2814d48d))
+* Implement ToolValidator ([ab20f5b](https://github.com/frankie336/entities_common/commit/ab20f5b32e6fd8b09f0ec76193b5f52fa933b7c8))
+
 # [0.22.0](https://github.com/frankie336/entities_common/compare/v0.21.9...v0.22.0) (2026-02-05)
 
 

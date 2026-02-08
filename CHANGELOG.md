@@ -1,3 +1,10 @@
+## [0.23.1](https://github.com/frankie336/entities_common/compare/v0.23.0...v0.23.1) (2026-02-08)
+
+
+### Bug Fixes
+
+* turn off logging ([3052836](https://github.com/frankie336/entities_common/commit/305283621ce676c2557a9bfc9d77d00b30369911))
+
 # [0.23.0](https://github.com/frankie336/entities_common/compare/v0.22.0...v0.23.0) (2026-02-07)
 
 

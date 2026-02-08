@@ -2,7 +2,7 @@
 import logging
 from typing import Any, Dict, List, Optional
 
-LOG = logging.getLogger(__name__)
+# LOG = logging.getLogger(__name__)
 
 
 class ToolValidator:
@@ -25,7 +25,7 @@ class ToolValidator:
         self.schema_registry = registry
 
         # Standard logging usage
-        LOG.info(f"[Validator] Registry built for {len(self.schema_registry)} tools.")
+        # LOG.info(f"[Validator] Registry built for {len(self.schema_registry)} tools.")
 
     def validate_args(self, tool_name: str, args: Dict[str, Any]) -> Optional[str]:
         """Returns error string if required fields are missing, else None."""
@@ -38,7 +38,7 @@ class ToolValidator:
 
         if missing:
             error_msg = f"Validation Error: The tool '{tool_name}' requires missing arguments: {', '.join(missing)}."
-            LOG.warning(f"[Validator] {error_msg}")
+            # LOG.warning(f"[Validator] {error_msg}")
             return error_msg
 
         return None

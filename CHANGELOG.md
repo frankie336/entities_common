@@ -1,3 +1,10 @@
+# [0.24.0](https://github.com/frankie336/entities_common/compare/v0.23.1...v0.24.0) (2026-02-10)
+
+
+### Features
+
+* Add DeviceIngest schema ([6fad231](https://github.com/frankie336/entities_common/commit/6fad2316a2c5464de0438ff8e778d9676f745e2d))
+
 ## [0.23.1](https://github.com/frankie336/entities_common/compare/v0.23.0...v0.23.1) (2026-02-08)
 
 

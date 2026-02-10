@@ -16,9 +16,8 @@ DEEPSEEK_NATIVE_MODELS = {
     "deepseek-ai/deepseek-chat": "deepseek-chat",
 }
 
-
 TOGETHER_AI_MODELS = {
-    # --- Qwen ---
+    # --- Qwen (Alibaba) ---
     "together-ai/Qwen/QwQ-32B": "Qwen/QwQ-32B",
     "together-ai/Qwen/Qwen2.5-14B-Instruct": "Qwen/Qwen2.5-14B-Instruct",
     "together-ai/Qwen/Qwen-Image": "Qwen/Qwen-Image",
@@ -36,6 +35,7 @@ TOGETHER_AI_MODELS = {
     "together-ai/Qwen/Qwen3-235B-A22B-fp8-tput": "Qwen/Qwen3-235B-A22B-fp8-tput",
     "together-ai/Qwen/Qwen3-8B": "Qwen/Qwen3-8B",
     "together-ai/Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8": "Qwen/Qwen3-Coder-480B-A35B-Instruct-FP8",
+    "together-ai/Qwen/Qwen3-Coder-Next-FP8": "Qwen/Qwen3-Coder-Next-FP8",
     "together-ai/Qwen/Qwen3-Next-80B-A3B-Instruct": "Qwen/Qwen3-Next-80B-A3B-Instruct",
     "together-ai/Qwen/Qwen3-Next-80B-A3B-Instruct-FP8": "Qwen/Qwen3-Next-80B-A3B-Instruct-FP8",
     "together-ai/Qwen/Qwen3-Next-80B-A3B-Thinking": "Qwen/Qwen3-Next-80B-A3B-Thinking",
@@ -92,9 +92,10 @@ TOGETHER_AI_MODELS = {
     # --- Moonshotai ---
     "together-ai/moonshotai/Kimi-K2-Instruct-0905": "moonshotai/Kimi-K2-Instruct-0905",
     "together-ai/moonshotai/Kimi-K2-Thinking": "moonshotai/Kimi-K2-Thinking",
+    "together-ai/moonshotai/Kimi-K2.5": "moonshotai/Kimi-K2.5",
     # --- Nvidia ---
     "together-ai/nvidia/NVIDIA-Nemotron-Nano-9B-v2": "nvidia/NVIDIA-Nemotron-Nano-9B-v2",
-    # --- Openai ---
+    # --- Openai (Together AI namespace) ---
     "together-ai/openai/gpt-oss-120b": "openai/gpt-oss-120b",
     "together-ai/openai/gpt-oss-20b": "openai/gpt-oss-20b",
     # --- Togethercomputer ---
@@ -107,7 +108,6 @@ TOGETHER_AI_MODELS = {
     "together-ai/zai-org/GLM-4.6": "zai-org/GLM-4.6",
     "together-ai/zai-org/GLM-4.7": "zai-org/GLM-4.7",
 }
-
 
 HYPERBOLIC_MODELS = {
     # DeepSeek

@@ -34,6 +34,8 @@ class AssistantCreate(BaseModel):
     agent_mode: bool = Field(
         False, description="False = Standard (Level 2), True = Autonomous (Level 3)."
     )
+    # NEW: Web Access toggle
+    web_access: bool = Field(False, description="Enable live web search and browsing capabilities.")
     decision_telemetry: bool = Field(
         False, description="Enable detailed reasoning/confidence logging."
     )
@@ -48,6 +50,7 @@ class AssistantCreate(BaseModel):
                 "name": "Search Assistant",
                 "model": "gpt-4o-mini",
                 "agent_mode": True,
+                "web_access": True,  # Example update
                 "decision_telemetry": True,
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
             }
@@ -80,6 +83,7 @@ class AssistantRead(BaseModel):
     # ─── agentic settings ─────────────────────
     max_turns: int
     agent_mode: bool
+    web_access: bool  # NEW
     decision_telemetry: bool
 
     vector_stores: List[VectorStoreRead] = Field(default_factory=list)
@@ -105,6 +109,7 @@ class AssistantUpdate(BaseModel):
     # ─── agentic settings ─────────────────────
     max_turns: Optional[int] = Field(None, ge=1)
     agent_mode: Optional[bool] = None
+    web_access: Optional[bool] = None  # NEW
     decision_telemetry: Optional[bool] = None
 
     # ─── relationship IDs (lists of strings) ──

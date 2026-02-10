@@ -1,3 +1,12 @@
+# [0.25.0](https://github.com/frankie336/entities_common/compare/v0.24.1...v0.25.0) (2026-02-10)
+
+
+### Features
+
+* Add web_access param to assistants_schema.py ([1865987](https://github.com/frankie336/entities_common/commit/1865987ff5c744c7c1c24342eacb8969f99a74e9))
+* Add web_access param to assistants_schema.py ([38c4565](https://github.com/frankie336/entities_common/commit/38c4565d69c19a3fea8a81a3dd407b84a6db1cff))
+* Add web_access param to assistants_schema.py ([c314317](https://github.com/frankie336/entities_common/commit/c3143176cde9e8bd6ee84b4e2adc90a30719a361))
+
 ## [0.24.1](https://github.com/frankie336/entities_common/compare/v0.24.0...v0.24.1) (2026-02-10)
 
 

@@ -17,7 +17,8 @@ requires-python = ">=3.10"
 dependencies = [
   "pydantic",
   "typing_extensions",
-  "httpx"
+  "httpx",
+  "load_dotenv"
 ]
 
 [project.optional-dependencies]

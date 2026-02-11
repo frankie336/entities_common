@@ -4,7 +4,8 @@ from typing import Any, Dict, List, Optional
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
 
 from projectdavid_common.schemas.vectors_schema import VectorStoreRead
-from src.projectdavid_common.constants.platform import PLATFORM_TOOLS
+
+from ..constants.platform import PLATFORM_TOOLS
 
 
 # ───────────────────────────────────────────────

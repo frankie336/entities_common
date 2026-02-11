@@ -1,3 +1,17 @@
+# [0.26.0](https://github.com/frankie336/entities_common/compare/v0.25.0...v0.26.0) (2026-02-11)
+
+
+### Bug Fixes
+
+* Reserve platform tool names ([1b2cd3d](https://github.com/frankie336/entities_common/commit/1b2cd3d04fe6c782ebebb661060332734a55a7c6))
+
+
+### Features
+
+* Add deep_research toggle to assistants_schema.py ([496786c](https://github.com/frankie336/entities_common/commit/496786cc0607a4dc52bfdbb21c9e63d0a2b3d4e9))
+* Add deep_research toggle to assistants_schema.py ([dad34db](https://github.com/frankie336/entities_common/commit/dad34dba559be6e025e0da84c85e881c9330fa19))
+* Add deep_research toggle to assistants_schema.py ([6b78732](https://github.com/frankie336/entities_common/commit/6b78732dbcc39bee44df73d2adfb113d1a0a9518))
+
 # [0.25.0](https://github.com/frankie336/entities_common/compare/v0.24.1...v0.25.0) (2026-02-10)
 
 

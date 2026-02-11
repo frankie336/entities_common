@@ -1,9 +1,41 @@
 # src/projectdavid_common/schemas/assistants_schema.py
 from typing import Any, Dict, List, Optional
 
-from pydantic import BaseModel, ConfigDict, Field, HttpUrl
+from pydantic import BaseModel, ConfigDict, Field, HttpUrl, field_validator
 
 from projectdavid_common.schemas.vectors_schema import VectorStoreRead
+from src.projectdavid_common.constants.platform import PLATFORM_TOOLS
+
+
+# ───────────────────────────────────────────────
+#  VALIDATION LOGIC
+# ───────────────────────────────────────────────
+def _validate_unique_tool_names(tools: Optional[List[dict]]) -> Optional[List[dict]]:
+    """
+    Ensures users do not define custom functions with names reserved by the platform.
+
+    Logic:
+    1. If type='code_interpreter', we ALLOW it (it's the platform tool flag).
+    2. If type='function' AND name='code_interpreter', we BLOCK it (naming collision).
+    """
+    if not tools:
+        return tools
+
+    for tool in tools:
+        t_type = tool.get("type", "")
+
+        # Only validate if the user is defining a CUSTOM FUNCTION.
+        # This allows {"type": "code_interpreter"} to pass through untouched.
+        if t_type == "function":
+            func_def = tool.get("function", {})
+            name = func_def.get("name")
+
+            if name and name in PLATFORM_TOOLS:
+                raise ValueError(
+                    f"The function name '{name}' is reserved for internal platform use. "
+                    "Please choose a different name for your custom tool."
+                )
+    return tools
 
 
 # ───────────────────────────────────────────────
@@ -35,7 +67,6 @@ class AssistantCreate(BaseModel):
     agent_mode: bool = Field(
         False, description="False = Standard (Level 2), True = Autonomous (Level 3)."
     )
-    # NEW: Web Access toggle
     web_access: bool = Field(False, description="Enable live web search and browsing capabilities.")
     decision_telemetry: bool = Field(
         False, description="Enable detailed reasoning/confidence logging."
@@ -45,13 +76,19 @@ class AssistantCreate(BaseModel):
     webhook_url: Optional[HttpUrl] = None
     webhook_secret: Optional[str] = Field(None, min_length=16)
 
+    # ─── VALIDATORS ───────────────────────────
+    @field_validator("tools")
+    @classmethod
+    def prevent_reserved_names(cls, v):
+        return _validate_unique_tool_names(v)
+
     model_config = ConfigDict(
         json_schema_extra={
             "example": {
                 "name": "Search Assistant",
                 "model": "gpt-4o-mini",
                 "agent_mode": True,
-                "web_access": True,  # Example update
+                "web_access": True,
                 "decision_telemetry": True,
                 "tool_resources": {"file_search": {"vector_store_ids": ["vs_docs"]}},
             }
@@ -84,7 +121,7 @@ class AssistantRead(BaseModel):
     # ─── agentic settings ─────────────────────
     max_turns: int
     agent_mode: bool
-    web_access: bool  # NEW
+    web_access: bool
     decision_telemetry: bool
 
     vector_stores: List[VectorStoreRead] = Field(default_factory=list)
@@ -94,7 +131,7 @@ class AssistantRead(BaseModel):
 
 
 # ───────────────────────────────────────────────
-#  ASSISTANT  •  UPDATE  (patched)
+#  ASSISTANT  •  UPDATE
 # ───────────────────────────────────────────────
 class AssistantUpdate(BaseModel):
     # ─── scalar fields ────────────────────────
@@ -110,7 +147,7 @@ class AssistantUpdate(BaseModel):
     # ─── agentic settings ─────────────────────
     max_turns: Optional[int] = Field(None, ge=1)
     agent_mode: Optional[bool] = None
-    web_access: Optional[bool] = None  # NEW
+    web_access: Optional[bool] = None
     decision_telemetry: Optional[bool] = None
 
     # ─── relationship IDs (lists of strings) ──
@@ -124,6 +161,12 @@ class AssistantUpdate(BaseModel):
     # ─── webhooks ─────────────────────────────
     webhook_url: Optional[HttpUrl] = None
     webhook_secret: Optional[str] = Field(None, min_length=16)
+
+    # ─── VALIDATORS ───────────────────────────
+    @field_validator("tools")
+    @classmethod
+    def prevent_reserved_names(cls, v):
+        return _validate_unique_tool_names(v)
 
     # forbid unknown keys so stray dicts can’t sneak in
     model_config = ConfigDict(extra="forbid")

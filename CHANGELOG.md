@@ -1,3 +1,10 @@
+# [0.27.0](https://github.com/frankie336/entities_common/compare/v0.26.0...v0.27.0) (2026-02-12)
+
+
+### Features
+
+* Add together-ai/Qwen/Qwen3-Next-80B-A3B-Instruct/deep-research to routing. ([b02afd4](https://github.com/frankie336/entities_common/commit/b02afd474f2a821ba56047caa8746af4d40ace0b))
+
 # [0.26.0](https://github.com/frankie336/entities_common/compare/v0.25.0...v0.26.0) (2026-02-11)
 
 

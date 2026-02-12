@@ -17,6 +17,8 @@ DEEPSEEK_NATIVE_MODELS = {
 }
 
 TOGETHER_AI_MODELS = {
+    # --- For deep research routing ---
+    "together-ai/Qwen/Qwen3-Next-80B-A3B-Instruct/deep-research": "Qwen/Qwen3-Next-80B-A3B-Instruct",
     # --- Qwen (Alibaba) ---
     "together-ai/Qwen/QwQ-32B": "Qwen/QwQ-32B",
     "together-ai/Qwen/Qwen2.5-14B-Instruct": "Qwen/Qwen2.5-14B-Instruct",
